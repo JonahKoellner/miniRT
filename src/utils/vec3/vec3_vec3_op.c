@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_vec3_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:17:05 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 17:06:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
+#include "../../../miniRT.h"
 
 t_vec3	vec3_add_vec3(t_vec3 first, t_vec3 second)
 {

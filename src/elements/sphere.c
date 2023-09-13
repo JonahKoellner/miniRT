@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_math.c                                        :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 09:45:41 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
+/*   Updated: 2023/09/13 21:19:04 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../miniRT.h"
+#include "../../miniRT.h"
 
-double	dot(t_vec3 u, t_vec3 v)
+bool	hit_sphere(t_sphere sphere, t_ray ray)
 {
-	return (u.x * v.x + u.z * v.z + u.y * v.y);
-}
+	t_vec3	oc;
+	double	a;
+	double	half_b;
+	double	c;
+	double	discriminant;
 
-t_vec3	cross(t_vec3 u, t_vec3 v)
-{
-	t_vec3 ret;
-
-	ret.x = u.y * v.z - u.z * v.y;
-	ret.y = u.z * v.x - u.x * v.z;
-	ret.z = u.x * v.y - u.y * v.x;
-	return (ret);
-}
-
-t_vec3	unit_vec(t_vec3 v)
-{
-	return (vec3_div_double(v, vec3_length(v)));
+	oc = vec3_sub_vec3(ray.origin, sphere.center);
+	a = vec3_length_squared(ray.direction);
+	half_b = vec3_dot(oc, ray.direction);
+	c = vec3_length_squared(oc) - sphere.radius * sphere.radius;
+	discriminant = half_b * half_b - a * c;
+	return (discriminant > 0);
 }

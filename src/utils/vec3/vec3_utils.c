@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:42:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/12 09:54:04 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
+#include "../../../miniRT.h"
 
 double	vec3_length(t_vec3 vec)
 {

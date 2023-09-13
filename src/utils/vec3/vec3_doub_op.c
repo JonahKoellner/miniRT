@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_doub_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:41:28 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 18:13:04 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
+#include "../../../miniRT.h"
 
 t_vec3	vec3_mult_double(t_vec3 first, double second)
 {

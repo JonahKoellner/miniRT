@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:14:32 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 17:06:47 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:15:20 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC3_H
 # define VEC3_H
-
-#include <math.h>
 
 typedef struct s_vec3{
 	double	x;
