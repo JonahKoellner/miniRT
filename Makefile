@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
+#    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 12:08:31 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/13 15:37:27 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ COBJ = ${SRC:.c=.o}
 all: libmlx $(NAME)
 
 libmlx:
+	@git submodule update --init --recursive
 	@cmake $(MLXDIR) -B $(MLXDIR)/build && make -C $(MLXDIR)/build -j4
 
 %.o: %.c
