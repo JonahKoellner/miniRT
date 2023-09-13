@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 10:03:55 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:20:51 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int main(int argc, char const *argv[])
 	mlx_t		*mlx;
 	mlx_image_t	*image;
 
+
+	argc++;
+	(void)argv;
 	mlx = mlx_init(256, 256, "miniRT", true);
 	if (!mlx)
 		return (1);
