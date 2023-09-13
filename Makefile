@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 09:44:38 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/13 09:49:46 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 #=================== Library =======================#
 MLXDIR = src/MLX42
-MLXLIB = ${MLXDIR}/build/libmlx42.a
+MLXLIB = ${MLXDIR}/libmlx42.a
 INCLUDE = ${MLXLIB} -Iinclude -lglfw -L"Users/$(USER)/homebrew/opt/glfw/lib/"
 
 #=================== Files =======================#
@@ -30,7 +30,7 @@ SRC =
 all: libmlx $(NAME)
 
 libmlx:
-	$(MAKE) -C $(MLXDIR)/build
+	$(MAKE) -C $(MLXDIR)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< && printf "\e[33mCompiling: $(notdir $<)\n"
