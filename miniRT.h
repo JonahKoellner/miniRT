@@ -6,13 +6,13 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 09:48:37 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 10:00:14 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-#include "src/MLX42/include/MLX42/MLX42.h"
+#include "lib/MLX42/include/MLX42/MLX42.h"
 
 #endif
