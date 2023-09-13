@@ -6,11 +6,11 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:41:28 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:39:44 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../miniRT.h"
+#include "miniRT.h"
 
 t_vec3	vec3_mult_double(t_vec3 first, double second)
 {

@@ -6,7 +6,7 @@
 #    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 15:37:27 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/13 22:52:54 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,48 @@ NAME = miniRT
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+#=================== Include =======================#
+
+INCLUDE = $(HEADER_INC) $(MLX_INC)
+
+#=================== Header ========================#
+
+HEADER_INC = -I $(HEADER_DIR)
+HEADER_DIR = include/
+HEADER_FILES = miniRT.h
+
 #=================== Library =======================#
 MLXDIR = ./lib/MLX42
 MLXLIB = ${MLXDIR}/build/libmlx42.a
-HEADER = -I ./include -I $(MLXDIR)/include
+MLX_INC = -I $(MLXDIR)/include
 LIBS = ${MLXLIB} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
 
 #=================== Files =======================#
-SRC = miniRT.c src/utils/ray/ray.c src/utils/vec3/vec3_doub_op.c src/utils/vec3/vec3_math.c src/utils/vec3/vec3_utils.c src/utils/vec3/vec3_vec3_op.c src/colors.c
-COBJ = ${SRC:.c=.o}
+ALL_C = $(SRC) $(ELEMENTS) $(UTILS) $(RAY) $(VEC3)
+
+SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC_DIR = src/
+SRC_FILES = miniRT.c
+
+ELEMENTS = $(addprefix $(ELEMENTS_DIR), $(ELEMENTS_FILES))
+ELEMENTS_DIR = $(addprefix $(SRC_DIR), elements/)
+ELEMENTS_FILES = sphere.c
+
+UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+UTILS_DIR = $(addprefix $(SRC_DIR), utils/)
+UTILS_FILES = colors.c
+
+RAY = $(addprefix $(RAY_DIR), $(RAY_FILES))
+RAY_DIR = $(addprefix $(UTILS_DIR), ray/)
+RAY_FILES = ray.c
+
+VEC3 = $(addprefix $(VEC3_DIR), $(VEC3_FILES))
+VEC3_DIR = $(addprefix $(UTILS_DIR), vec3/)
+VEC3_FILES = vec3_doub_op.c vec3_math.c vec3_utils.c vec3_vec3_op.c
+
+#=================== Objects =======================#
+
+COBJ =  $(pathsubst %.c, %.o, $(ALL_C))
 
 #=================== Commands =======================#
 all: libmlx $(NAME)
@@ -35,10 +68,10 @@ libmlx:
 	@cmake $(MLXDIR) -B $(MLXDIR)/build && make -C $(MLXDIR)/build -j4
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< && printf "\e[33mCompiled: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) && printf "\e[33mCompiled: $(notdir $<)\n"
 
 $(NAME): $(COBJ)
-	@$(CC) $(SRC) $(LIBS) $(HEADER) -o $(NAME) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
+	@$(CC) $(ALL_C) $(LIBS) -o $(NAME) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
 	@printf "\e[36mCreated target: $(NAME)\e[0m\n"
 
 clean:

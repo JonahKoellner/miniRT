@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/13 22:43:55 by mreidenb         ###   ########.fr       */
+/*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
+/*   Updated: 2023/09/13 22:19:07 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef MINIRT_H
+# define MINIRT_H
 
-bool	hit_sphere(t_sphere sphere, t_ray ray)
-{
-	t_vec3	oc;
-	double	a;
-	double	half_b;
-	double	c;
-	double	discriminant;
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <math.h>
 
-	oc = vec3_sub_vec3(ray.origin, sphere.center);
-	a = vec3_length_squared(ray.direction);
-	half_b = dot(oc, ray.direction);
-	c = vec3_length_squared(oc) - sphere.radius * sphere.radius;
-	discriminant = half_b * half_b - a * c;
-	return (discriminant > 0);
-}
+# include "../lib/MLX42/include/MLX42/MLX42.h"
+# include "../src/utils/vec3/vec3.h"
+# include "../src/utils/ray/ray.h"
+# include "../src/elements/elements.h"
+# include "../src/src.h"
+
+#endif

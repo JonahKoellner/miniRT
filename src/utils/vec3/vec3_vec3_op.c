@@ -6,11 +6,11 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:17:05 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 21:16:05 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:39:57 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../miniRT.h"
+#include "miniRT.h"
 
 t_vec3	vec3_add_vec3(t_vec3 first, t_vec3 second)
 {
