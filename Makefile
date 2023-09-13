@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 12:03:23 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/13 12:08:31 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ HEADER = -I ./include -I $(MLXDIR)/include
 LIBS = ${MLXLIB} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
 
 #=================== Files =======================#
-SRC = miniRT.c src/utils/ray/ray.c src/utils/vec3/vec3_doub_op.c src/utils/vec3/vec3_math.c src/utils/vec3/vec3_utils.c src/utils/vec3/vec3_vec3_op.c
+SRC = miniRT.c src/utils/ray/ray.c src/utils/vec3/vec3_doub_op.c src/utils/vec3/vec3_math.c src/utils/vec3/vec3_utils.c src/utils/vec3/vec3_vec3_op.c src/colors.c
 COBJ = ${SRC:.c=.o}
 
 #=================== Commands =======================#

@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 12:48:12 by jkollner         ###   ########.fr       */
+/*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
+/*   Updated: 2023/09/13 12:08:20 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef SRC_H
+# define SRC_H
 
-# include "lib/MLX42/include/MLX42/MLX42.h"
-# include "src/utils/ray/ray.h"
-# include "src/src.h"
+int	mlx_color(int r, int g, int b, int o);
 
 #endif
