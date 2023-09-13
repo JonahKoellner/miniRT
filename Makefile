@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 10:55:43 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/13 10:57:30 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ COBJ = ${SRC:.c=.o}
 #=================== Commands =======================#
 all: libmlx $(NAME)
 
-libmlx: ${MLXLIB}
+libmlx:
 	@cmake $(MLXDIR) -B $(MLXDIR)/build && make -C $(MLXDIR)/build -j4
 
 %.o: %.c
