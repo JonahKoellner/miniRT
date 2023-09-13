@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 18:39:26 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:41:24 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ uint32_t	ray_color(t_ray r)
 	double	a = 0.5 * (unit_direction.y + 1);
 	t_vec3	color = vec3_add_vec3(vec3_mult_double((t_vec3){1, 1, 1}, 1.0 - a),
 						vec3_mult_double((t_vec3){0.5, 0.7, 1.0}, a));
-	printf("r%f g%f b%f \n", color.x, color.y, color.z);
 	return (mlx_color(color.x * 255, color.y * 255, color.z * 255, 255));
 }
 
