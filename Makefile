@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/13 10:57:30 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/13 11:04:15 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ libmlx:
 	@cmake $(MLXDIR) -B $(MLXDIR)/build && make -C $(MLXDIR)/build -j4
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< && printf "\e[33mCompiling: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $< && printf "\e[33mCompiled: $(notdir $<)\n"
 
 $(NAME): $(COBJ)
-	@$(CC) $(SRC) $(LIBS) $(HEADER) -o $(NAME) && printf "\e[35mLinking: $(notdir $<)\n"
+	@$(CC) $(SRC) $(LIBS) $(HEADER) -o $(NAME) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
 	@printf "\e[36mCreated target: $(NAME)\e[0m\n"
 
 clean:
