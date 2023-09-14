@@ -6,7 +6,7 @@
 #    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/14 01:45:44 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/14 03:18:24 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,32 +65,42 @@ VEC3_FILES = vec3_doub_op.c vec3_math.c vec3_utils.c vec3_vec3_op.c
 
 COBJ =  $(pathsubst %.c, %.o, $(ALL_C))
 
+OBJ				= $(ALL_OBJ_DIR)$(ALL_OBJ)
+OBJ_DIR			=	obj/
+ALL_OBJ			=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(ALL_C))
+ALL_OBJ_DIR		=	$(sort $(dir $(ALL_OBJ)))
+
 #=================== Commands =======================#
 all: libft libmlx $(NAME)
 
 libft: $(LIBFT)
 
+libmlx: $(MLX)
+
 $(LIBFT):
 	@git submodule update --init --recursive
-	@make -C lib/libft
-
-libmlx: $(MLX)
+	@make -C lib/libft all
 
 $(MLX):
 	@git submodule update --init --recursive
 	@cmake $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4
 
-%.o: %.c
+$(ALL_OBJ_DIR):
+	@mkdir -p $(ALL_OBJ_DIR)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) && printf "\e[33mCompiled: $(notdir $<)\n"
 
-$(NAME): $(COBJ)
+$(NAME): $(OBJ)
 	@$(CC) $(ALL_C) $(LIBS) -o $(NAME) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
 	@printf "\e[36mCreated target: $(NAME)\e[0m\n"
 
 clean:
-	@rm -f ${COBJ} && printf "\e[1;31m⚠️  Removed $(COBJ) ⚠️\e[0m\n"
+	@rm -rf $(OBJ_DIR) && printf "\e[1;31m⚠️  Removed $(OBJ_DIR) ⚠️\e[0m\n"
+	@make -C $(LIBFT_DIR) clean && printf "\e[1;31m⚠️  Removed $(LIBFT_DIR)/*.o files ⚠️\e[0m\n"
 
 fclean: clean
+	@make -C $(LIBFT_DIR) fclean
 	@rm -rf $(MLX_DIR)/build && printf "\e[1;31m⚠️  Removed $(MLX_DIR)/build ⚠️\e[0m\n"
 	@rm -f ${NAME} && printf "\e[1;31m⚠️  Removed $(NAME) ⚠️\e[0m\n"
 
