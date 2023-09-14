@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 22:19:14 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:06:10 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	fade(mlx_image_t *image)
 
 uint32_t	ray_color(t_ray r)
 {
+	
 	t_vec3	unit_direction = unit_vec(r.direction);
 	double	a = 0.5 * (unit_direction.y + 1);
 	t_vec3	color = vec3_add_vec3(vec3_mult_double((t_vec3){1, 1, 1}, 1.0 - a),

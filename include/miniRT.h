@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 22:19:07 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/14 01:03:30 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../src/utils/vec3/vec3.h"
 # include "../src/utils/ray/ray.h"
 # include "../src/elements/elements.h"
+# include "../src/hit/hit.h"
 # include "../src/src.h"
 
 #endif

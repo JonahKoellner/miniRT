@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:41:28 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 21:39:44 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:03:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_vec3	vec3_mult_double(t_vec3 first, double second)
 {
-	t_vec3 ret;
+	t_vec3	ret;
 
 	ret.x = first.x * second;
 	ret.y = first.y * second;
@@ -24,7 +24,7 @@ t_vec3	vec3_mult_double(t_vec3 first, double second)
 
 t_vec3	vec3_div_double(t_vec3 first, double second)
 {
-	t_vec3 ret;
+	t_vec3	ret;
 
 	if (second == 0.0)
 		return ((t_vec3){0, 0, 0});

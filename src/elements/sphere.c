@@ -6,13 +6,13 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/13 22:43:55 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/14 01:07:32 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	hit_sphere(t_sphere sphere, t_ray ray)
+t_hit	hit_sphere(t_sphere sphere, t_ray ray)
 {
 	t_vec3	oc;
 	double	a;
@@ -25,5 +25,17 @@ bool	hit_sphere(t_sphere sphere, t_ray ray)
 	half_b = dot(oc, ray.direction);
 	c = vec3_length_squared(oc) - sphere.radius * sphere.radius;
 	discriminant = half_b * half_b - a * c;
-	return (discriminant > 0);
+	if (discriminant < 0)
+		return (-1.0);
+	else
+		return ((-half_b - sqrt(discriminant)) / a);
+}
+
+t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
+{
+	t_vec3	normal;
+
+	normal = vec3_div_double(vec3_sub_vec3(point, sphere.center),
+			sphere.radius);
+	return (normal);
 }
