@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/14 03:18:24 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/18 14:20:35 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ VEC3_FILES = vec3_doub_op.c vec3_math.c vec3_utils.c vec3_vec3_op.c
 COBJ =  $(pathsubst %.c, %.o, $(ALL_C))
 
 OBJ				= $(ALL_OBJ_DIR)$(ALL_OBJ)
-OBJ_DIR			=	obj/
+OBJ_DIR			=	.obj/
 ALL_OBJ			=	$(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(ALL_C))
 ALL_OBJ_DIR		=	$(sort $(dir $(ALL_OBJ)))
 
