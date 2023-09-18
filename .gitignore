@@ -1,5 +1,6 @@
 #vscode
 settings.json
+.DS_STORE
 
 #main Game file / Executable
 miniRT
