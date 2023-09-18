@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 19:12:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:34:56 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,23 @@ int	gradient_test(t_window	*window)
 	return (0);
 }
 
+void	init_objects(t_window *window)
+{
+	window->objects = ft_calloc(3, sizeof(t_object));
+	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, 0.5}};
+	window->objects[0].hit_func = &hit_sphere;
+	window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100}};
+	window->objects[1].hit_func = &hit_sphere;
+	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{1, 0, -3}, 0}}; //Limiter with r = 0, tmp
+	window->objects[2].hit_func = &hit_sphere;
+}
+
 int main(void)
 {
 	t_window	*window;
 	int			width;
 
-	width = 400;
+	width = 1000;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
 	window->camera = create_camera(width, (int)(width / window->aspect_ratio));
@@ -73,13 +84,11 @@ int main(void)
 	if (!window->mlx_window)
 		return (1);
 	window->mlx_image = mlx_new_image(window->mlx_window,
-						window->mlx_window->width, window->mlx_window->height);
+			window->mlx_window->width, window->mlx_window->height);
 	if (!window->mlx_image || (mlx_image_to_window(window->mlx_window, window->mlx_image, 0, 0) < 0))
 		return (1);
 
-	window->objects = malloc(3 * sizeof(t_object));
-	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){}};
-	window->objects[0].hit_func = &hit_sphere;
+	init_objects(window);
 
 	gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);

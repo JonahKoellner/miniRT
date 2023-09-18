@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 17:07:01 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:05:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vec3	pixel_sample_square(t_window *window, int i, int j)
 		u = -0.5 + drand48();
 		v = -0.5 + drand48();
 		ray = get_ray(window->camera, i + u, j + v);
-		pixel_color = vec3_add_vec3(pixel_color, ray_color(ray));
+		pixel_color = vec3_add_vec3(pixel_color, ray_color(ray, DEPTH, window->objects));
 	}
 	pixel_color = vec3_div_double(pixel_color, samples);
 	return (pixel_color);

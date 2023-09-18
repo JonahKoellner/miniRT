@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 19:18:46 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:04:58 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HIT_H
 # define HIT_H
 
+# define DEPTH 10
+
 # include "../utils/vec3/vec3.h"
 # include "../elements/elements.h"
 
 typedef struct s_hit
 {
+	bool	hit;
+	bool	front_facing;
 	t_vec3	point;
 	t_vec3	normal;
 	double	t;
@@ -40,6 +44,8 @@ typedef struct s_object{
 	t_hittable	obj;
 	t_hit		(*hit_func)(t_hittable obj, t_ray ray, t_interval interval);
 }	t_object;
+
+t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval);
 
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 
