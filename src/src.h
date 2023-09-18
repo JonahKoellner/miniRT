@@ -6,13 +6,13 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 12:08:20 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:39:14 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SRC_H
 # define SRC_H
 
-int	mlx_color(int r, int g, int b, int o);
-
+int			mlx_color(int r, int g, int b, int o);
+uint32_t	ray_color(t_ray r);
 #endif
