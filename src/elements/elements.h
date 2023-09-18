@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/14 02:36:09 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:37:26 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ typedef struct s_cylinder
 	double		height;
 }	t_cylinder;
 
-typedef struct s_camera
-{
-	t_vec3		origin;
-	t_vec3		direction;
-	double		fov;
-}	t_camera;
+// typedef struct s_camera
+// {
+// 	t_vec3		origin;
+// 	t_vec3		direction;
+// 	double		fov;
+// }	t_camera;
 
 typedef struct s_light
 {
