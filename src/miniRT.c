@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 14:03:41 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:35:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	key_hook(void* param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 }
-
 
 int	fade(mlx_image_t *image)
 {
@@ -96,13 +95,13 @@ int main(void)
 			mlx_put_pixel(image, i, j, ray_color(ray));
 		}
 	}
-
-
-
-
 	// fade(image);
 	mlx_loop_hook(mlx, key_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
 }
+
+
+
+
