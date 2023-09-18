@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 14:39:54 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:07:10 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 void	key_hook(void* param)
 {
@@ -48,16 +46,15 @@ t_camera	create_camera(int width, int height)
 
 int	gradient_test(t_window	*window)
 {
+	t_vec3	aa_color;
+
 	for (uint32_t j = 0; j < window->mlx_image->height; ++j)
 	{
 		for (uint32_t i = 0; i < window->mlx_image->width; ++i)
 		{
-			t_vec3 pix_center = vec3_add_vec3(window->camera.auf_lock, vec3_add_vec3
-					(vec3_mult_double(window->camera.pix_delt_u, i),
-						vec3_mult_double(window->camera.pix_delt_v, j)));
-			t_vec3	ray_direction = vec3_sub_vec3(pix_center, window->camera.cam_center);
-			t_ray	ray = {window->camera.cam_center, ray_direction};
-			mlx_put_pixel(window->mlx_image, i, j, ray_color(ray));
+			aa_color = pixel_sample_square(window, i, j);
+			// printf("r: %f, g: %f, b: %f\n", aa_color.x, aa_color.y, aa_color.z);
+			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
 		}
 	}
 	return (0);
@@ -66,11 +63,13 @@ int	gradient_test(t_window	*window)
 int main(void)
 {
 	t_window	*window;
+	int			width;
 
+	width = 400;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
-	window->camera = create_camera(400, (int)(400 / window->aspect_ratio));
-	window->mlx_window = mlx_init(400, (int)(400 / window->aspect_ratio), "miniRT", true);
+	window->camera = create_camera(width, (int)(width / window->aspect_ratio));
+	window->mlx_window = mlx_init(width, (int)(width / window->aspect_ratio), "miniRT", true);
 	if (!window->mlx_window)
 		return (1);
 	window->mlx_image = mlx_new_image(window->mlx_window,

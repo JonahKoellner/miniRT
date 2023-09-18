@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
+#    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/18 14:20:35 by jkollner         ###   ########.fr        #
+#    Updated: 2023/09/18 16:24:03 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ ELEMENTS_FILES = sphere.c
 
 UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 UTILS_DIR = $(addprefix $(SRC_DIR), utils/)
-UTILS_FILES = colors.c
+UTILS_FILES = colors.c anti_aliasing.c
 
 RAY = $(addprefix $(RAY_DIR), $(RAY_FILES))
 RAY_DIR = $(addprefix $(UTILS_DIR), ray/)

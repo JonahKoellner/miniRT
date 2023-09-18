@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/14 02:31:55 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:51:54 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_hit	hit_sphere(t_sphere sphere, t_ray ray, t_interval interval)
 	t_hit	hit;
 	double	root;
 
+	// printf("hit_sphere\n");
 	hit.t = -1.0;
 	root = sphere_root(sphere, ray);
 	if (root < interval.min || interval.max < root)
