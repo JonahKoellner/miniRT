@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:12:13 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/12 12:14:31 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:39:36 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
+#include "miniRT.h"
 
 t_vec3 p_at(t_vec3 direction, t_vec3 origin, double t)
 {

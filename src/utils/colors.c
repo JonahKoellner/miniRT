@@ -6,11 +6,11 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 13:41:04 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:04:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../miniRT.h"
+#include "miniRT.h"
 
 int	mlx_color(int r, int g, int b, int o)
 {
