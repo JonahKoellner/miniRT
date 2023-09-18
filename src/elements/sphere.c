@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 16:51:54 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:08:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,15 @@ static t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
 	return (normal);
 }
 
-t_hit	hit_sphere(t_sphere sphere, t_ray ray, t_interval interval)
+t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval)
 {
 	t_hit	hit;
 	double	root;
+	t_sphere sphere;
 
+	sphere = hit_obj.sphere;
 	// printf("hit_sphere\n");
+
 	hit.t = -1.0;
 	root = sphere_root(sphere, ray);
 	if (root < interval.min || interval.max < root)

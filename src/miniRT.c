@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 17:07:10 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:12:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int main(void)
 						window->mlx_window->width, window->mlx_window->height);
 	if (!window->mlx_image || (mlx_image_to_window(window->mlx_window, window->mlx_image, 0, 0) < 0))
 		return (1);
+
+	window->objects = malloc(3 * sizeof(t_object));
+	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){}};
+	window->objects[0].hit_func = &hit_sphere;
+
 	gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);

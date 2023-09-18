@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 16:21:57 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:19:24 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENTS_H
 # define ELEMENTS_H
+
+# include "../hit/hit.h"
 
 typedef struct s_sphere
 {
@@ -33,13 +35,6 @@ typedef struct s_cylinder
 	double		height;
 }	t_cylinder;
 
-// typedef struct s_camera
-// {
-// 	t_vec3		origin;
-// 	t_vec3		direction;
-// 	double		fov;
-// }	t_camera;
-
 typedef struct s_light
 {
 	t_vec3		origin;
@@ -59,11 +54,6 @@ typedef struct s_camera{
 	t_vec3	auf_lock;
 }	t_camera;
 
-typedef struct s_window{
-	mlx_t		*mlx_window;
-	mlx_image_t	*mlx_image;
-	double		aspect_ratio;
-	t_camera	camera;
-}	t_window;
+
 
 #endif

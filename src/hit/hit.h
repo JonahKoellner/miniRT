@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/14 03:40:43 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:18:46 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../utils/vec3/vec3.h"
 # include "../elements/elements.h"
-
 
 typedef struct s_hit
 {
@@ -37,6 +36,11 @@ typedef union u_hittable
 	t_cylinder	cylinder;
 }	t_hittable;
 
-t_hit	hit_sphere(t_sphere sphere, t_ray ray, t_interval interval);
+typedef struct s_object{
+	t_hittable	obj;
+	t_hit		(*hit_func)(t_hittable obj, t_ray ray, t_interval interval);
+}	t_object;
+
+t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 
 #endif

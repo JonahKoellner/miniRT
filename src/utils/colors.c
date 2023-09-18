@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 16:34:53 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:21:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vec3	ray_color(t_ray r)
 	t_hit	hit;
 	t_vec3	n;
 
-	hit = hit_sphere((t_sphere){{0, 0, -1}, 0.5}, r, (t_interval){0, INFINITY});
+	hit = hit_sphere((t_hittable){.sphere=(t_sphere){{0, 0, -1}, 0.5}}, r, (t_interval){0, INFINITY});
 	if (hit.t > 0.0)
 	{
 		n = vec3_sub_vec3(hit.point, (t_vec3){0, 0, -1});

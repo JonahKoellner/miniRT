@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 16:21:52 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:20:18 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../src/utils/vec3/vec3.h"
 # include "../src/utils/ray/ray.h"
-# include "../src/elements/elements.h"
 # include "../src/hit/hit.h"
+# include "../src/elements/elements.h"
+
 # include "../src/src.h"
 
 
