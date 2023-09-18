@@ -6,7 +6,7 @@
 #    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/18 16:24:03 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/18 23:03:14 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,10 @@ LIBFT_DIR = ./lib/libft
 LIBFT_INC = -I $(LIBFT_DIR)
 
 LIBS = ${MLX} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
-INCLUDE = $(HEADER_INC) $(MLX_INC)
+INCLUDE = $(HEADER_INC) $(MLX_INC) 
 
 #=================== Files =======================#
-ALL_C = $(SRC) $(ELEMENTS) $(UTILS) $(RAY) $(VEC3)
+ALL_C = $(SRC) $(ELEMENTS) $(HIT) $(UTILS) $(RAY) $(VEC3)
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_DIR = src/
@@ -47,7 +47,11 @@ SRC_FILES = miniRT.c
 
 ELEMENTS = $(addprefix $(ELEMENTS_DIR), $(ELEMENTS_FILES))
 ELEMENTS_DIR = $(addprefix $(SRC_DIR), elements/)
-ELEMENTS_FILES = sphere.c
+ELEMENTS_FILES = sphere.c materials.c
+
+HIT = $(addprefix $(HIT_DIR), $(HIT_FILES))
+HIT_DIR = $(addprefix $(SRC_DIR), hit/)
+HIT_FILES = hit.c
 
 UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 UTILS_DIR = $(addprefix $(SRC_DIR), utils/)
@@ -89,10 +93,10 @@ $(ALL_OBJ_DIR):
 	@mkdir -p $(ALL_OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) && printf "\e[33mCompiled: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) $(LIBFT_INC)  && printf "\e[33mCompiled: $(notdir $<)\n"
 
 $(NAME): $(OBJ)
-	@$(CC) $(ALL_C) $(LIBS) -o $(NAME) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
+	@$(CC) $(ALL_C) -o $(NAME) $(LIBS) $(LIBFT) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
 	@printf "\e[36mCreated target: $(NAME)\e[0m\n"
 
 clean:

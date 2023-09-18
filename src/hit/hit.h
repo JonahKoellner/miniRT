@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 22:04:58 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:02:17 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,27 @@
 # include "../utils/vec3/vec3.h"
 # include "../elements/elements.h"
 
+typedef enum MaterialType
+{
+	LAMBERTIAN,
+	METAL,
+	DIELECTRIC
+}	t_MaterialType;
+
+typedef struct s_material
+{
+	t_MaterialType	type;
+	t_vec3			color;
+}	t_material;
+
 typedef struct s_hit
 {
-	bool	hit;
-	bool	front_facing;
-	t_vec3	point;
-	t_vec3	normal;
-	double	t;
+	bool		hit;
+	bool		front_facing;
+	t_vec3		point;
+	t_vec3		normal;
+	double		t;
+	t_material	mat;
 }	t_hit;
 
 typedef struct s_interval
@@ -40,13 +54,18 @@ typedef union u_hittable
 	t_cylinder	cylinder;
 }	t_hittable;
 
+
+
 typedef struct s_object{
 	t_hittable	obj;
 	t_hit		(*hit_func)(t_hittable obj, t_ray ray, t_interval interval);
+	t_material	mat;
 }	t_object;
 
 t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval);
 
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
+
+t_ray	scatter(t_hit hit, t_ray ray);
 
 #endif

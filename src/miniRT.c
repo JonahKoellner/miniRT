@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 21:34:56 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 23:01:39 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,19 @@ int	gradient_test(t_window	*window)
 
 void	init_objects(t_window *window)
 {
+	t_material	material;
+	material.type = LAMBERTIAN;
+	material.color = (t_vec3){0.8, 0.8, 0.0};
 	window->objects = ft_calloc(3, sizeof(t_object));
 	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, 0.5}};
 	window->objects[0].hit_func = &hit_sphere;
+	window->objects[0].mat = material;
 	window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100}};
 	window->objects[1].hit_func = &hit_sphere;
+	window->objects[1].mat = material;
 	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{1, 0, -3}, 0}}; //Limiter with r = 0, tmp
 	window->objects[2].hit_func = &hit_sphere;
+	window->objects[2].mat = material;
 }
 
 int main(void)

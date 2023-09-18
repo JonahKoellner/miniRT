@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 19:20:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:06:08 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ typedef struct s_window{
 
 int			mlx_color(t_vec3 color);
 t_vec3		pixel_sample_square(t_window *window, int i, int j);
-t_vec3		ray_color(t_ray r);
+t_vec3		ray_color(t_ray r, int deph,t_object *objects);
 
 #endif

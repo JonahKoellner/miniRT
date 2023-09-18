@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 21:36:49 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:58:31 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval)
 	t_hit	temp_hit;
 
 	i = -1;
-	hit.t = -1.0;
-	temp_hit.t = -1.0;
+	hit.t = i;
 	while (objects[++i].obj.sphere.radius != 0)
 	{
 		temp_hit = objects[i].hit_func(objects[i].obj, ray, interval);
@@ -35,6 +34,7 @@ t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval)
 				hit.front_facing = false;
 				hit.normal = vec3_mult_double(hit.normal, -1);
 			}
+			hit.mat = objects[i].mat;
 		}
 	}
 	hit.normal = vec3_add_vec3(hit.normal, (t_vec3){1, 1, 1});
