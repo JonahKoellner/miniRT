@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 11:20:49 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:02:07 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ int	gradient_test(t_window	*window)
 			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
 		}
 		printf("\r");
-		printf("Traced ==> %.2f %%", ((double)(j * window->mlx_image->width)
+		printf("Traced ==> %.0f %%", ((double)(j * window->mlx_image->width)
 			/ (window->mlx_image->height * window->mlx_image->width)) * 100);
 		fflush(stdout);
 	}
 	printf("\r");
-	printf("Traced ==> 100.00 %%\n");
+	printf("Traced ==> 100 %%\n");
 	return (0);
 }
 
