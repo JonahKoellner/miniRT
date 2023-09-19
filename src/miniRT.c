@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 12:02:07 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:34:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	init_objects(t_window *window)
 	material.color = (t_vec3){0.8, 0.8, 0.0};
 	material.reflectance = 0.2;
 	t_material	material2;
-	material2.type = LAMBERTIAN;
+	material2.type = METAL;
 	material2.color = (t_vec3){0.8, 0.8, 0.0};
 	material2.reflectance = 0.7;
 	window->objects = ft_calloc(5, sizeof(t_object));
@@ -81,7 +81,7 @@ void	init_objects(t_window *window)
 	window->objects[0].mat = material;
 	window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, 0.5}};
 	window->objects[1].hit_func = &hit_sphere;
-	window->objects[1].mat = material2;
+	window->objects[1].mat = material;
 	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, -1000.5, -1}, 1000}};
 	window->objects[2].hit_func = &hit_sphere;
 	window->objects[2].mat = material2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   materials.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:58:10 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 23:08:22 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:31:45 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ t_ray	lambaterian_scatter(t_hit hit, t_ray ret)
 	return (ret);
 }
 
+t_vec3 reflect(t_vec3 v, t_vec3 n)
+{
+	t_vec3 ret;
+
+	ret = vec3_sub_vec3(v, (vec3_mult_double(n ,(2 * dot(v, n)))));
+	return (ret);
+}
+
+t_ray metal_scatter(t_hit hit, t_ray ray)
+{
+	t_vec3 reflected;
+
+	reflected = reflect(unit_vec(ray.direction), hit.normal);
+	ray.origin = hit.point;
+	ray.direction = reflected;
+	return (ray);
+}
+
+
 t_ray	scatter(t_hit hit, t_ray ray)
 {
 	t_ray	ret;
@@ -65,8 +84,8 @@ t_ray	scatter(t_hit hit, t_ray ray)
 	ret = ray;
 	if (hit.mat.type == LAMBERTIAN)
 		ret = lambaterian_scatter(hit, ray);
-	// else if (hit.material.type == METAL)
-	// 	ret = metal_scatter(hit, ray, material);
+	else if (hit.mat.type == METAL)
+		ret = metal_scatter(hit, ray);
 	// else if (hit.material.type == DIELECTRIC)
 	// 	ret = dielectric_scatter(hit, ray, material);
 	return (ret);
