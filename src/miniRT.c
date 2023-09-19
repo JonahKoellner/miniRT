@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 15:55:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:00:14 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	init_objects(t_window *window)
 	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -2}, 0.5}};
 	window->objects[2].hit_func = &hit_sphere;
 	window->objects[2].mat = material;
-	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{0, -1000.5, -1}, 1000}};
+	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{0, -1001.0, -1}, 1000}};
 	window->objects[3].hit_func = &hit_sphere;
 	window->objects[3].mat = material2;
 }
