@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:14:32 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 21:55:36 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:20:34 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ double	dot(t_vec3 u, t_vec3 v);
 t_vec3	unit_vec(t_vec3 v);
 double	random_double(double min, double max);
 t_vec3	random_unit_vec3(void);
+t_vec3	vec3_mult_vec3(t_vec3 first, t_vec3 second);
 
 #endif

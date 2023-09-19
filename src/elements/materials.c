@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:58:10 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/19 12:31:45 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:41:36 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_ray metal_scatter(t_hit hit, t_ray ray)
 	ray.direction = reflected;
 	return (ray);
 }
-
 
 t_ray	scatter(t_hit hit, t_ray ray)
 {

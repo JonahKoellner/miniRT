@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/19 10:50:08 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:49:28 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_material
 {
 	t_MaterialType	type;
 	t_vec3			color;
-	double			reflectance;
+	// double			reflectance;
 }	t_material;
 
 typedef struct s_hit

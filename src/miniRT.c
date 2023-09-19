@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 12:34:09 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:54:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,50 @@ int	gradient_test(t_window	*window)
 
 void	init_objects(t_window *window)
 {
+	// t_material mat_ground;
+	// mat_ground.type = LAMBERTIAN;
+	// mat_ground.color = (t_vec3){0.8, 0.8, 0.0};
+	// // mat_ground.reflectance = 0.2;
+
+	// t_material mat_mid;
+	// mat_mid.type = LAMBERTIAN;
+	// mat_mid.color = (t_vec3){0.7, 0.3, 0.3};
+	// // mat_ground.reflectance = 0.2;
+
+	// t_material mat_metal_even;
+	// mat_metal_even.type = METAL;
+	// mat_metal_even.color = (t_vec3){0.8, 0.8, 0.8};
+	// // mat_metal_even.reflectance = 0.7;
+
+	// t_material mat_metal_yellow;
+	// mat_metal_yellow.type = METAL;
+	// mat_metal_yellow.color = (t_vec3){0.8, 0.6, 0.2};
+	// // mat_metal_yellow.reflectance = 0.7;
+
+
+	// window->objects = ft_calloc(5, sizeof(t_object));
+	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
+	// window->objects[0].hit_func = &hit_sphere;
+	// window->objects[0].mat = mat_ground;
+
+	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
+	// window->objects[1].hit_func = &hit_sphere;
+	// window->objects[1].mat = mat_mid;
+
+	// window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{-1.0, 0, -1.0}, .5}};
+	// window->objects[2].hit_func = &hit_sphere;
+	// window->objects[2].mat = mat_metal_even;
+
+	// window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
+	// window->objects[3].hit_func = &hit_sphere;
+	// window->objects[3].mat = mat_metal_even;
+
 	t_material	material;
 	material.type = LAMBERTIAN;
 	material.color = (t_vec3){0.8, 0.8, 0.0};
-	material.reflectance = 0.2;
 	t_material	material2;
 	material2.type = METAL;
-	material2.color = (t_vec3){0.8, 0.8, 0.0};
-	material2.reflectance = 0.7;
+	material2.color = (t_vec3){0.8, 0.0, 0.8};
 	window->objects = ft_calloc(5, sizeof(t_object));
 	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -1}, 0.3}};
 	window->objects[0].hit_func = &hit_sphere;
