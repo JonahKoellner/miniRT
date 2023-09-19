@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 10:26:05 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:20:49 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,15 @@ int	gradient_test(t_window	*window)
 		for (uint32_t i = 0; i < window->mlx_image->width; ++i)
 		{
 			aa_color = pixel_sample_square(window, i, j);
-			// printf("r: %f, g: %f, b: %f\n", aa_color.x, aa_color.y, aa_color.z);
 			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
 		}
+		printf("\r");
+		printf("Traced ==> %.2f %%", ((double)(j * window->mlx_image->width)
+			/ (window->mlx_image->height * window->mlx_image->width)) * 100);
+		fflush(stdout);
 	}
+	printf("\r");
+	printf("Traced ==> 100.00 %%\n");
 	return (0);
 }
 
@@ -65,22 +70,24 @@ void	init_objects(t_window *window)
 	t_material	material;
 	material.type = LAMBERTIAN;
 	material.color = (t_vec3){0.8, 0.8, 0.0};
+	material.reflectance = 0.2;
+	t_material	material2;
+	material2.type = LAMBERTIAN;
+	material2.color = (t_vec3){0.8, 0.8, 0.0};
+	material2.reflectance = 0.7;
 	window->objects = ft_calloc(5, sizeof(t_object));
 	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -1}, 0.3}};
 	window->objects[0].hit_func = &hit_sphere;
 	window->objects[0].mat = material;
 	window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, 0.5}};
 	window->objects[1].hit_func = &hit_sphere;
-	window->objects[1].mat = material;
+	window->objects[1].mat = material2;
 	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, -1000.5, -1}, 1000}};
 	window->objects[2].hit_func = &hit_sphere;
-	window->objects[2].mat = material;
+	window->objects[2].mat = material2;
 	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{-.5, .5, -1}, 0.3}};
 	window->objects[3].hit_func = &hit_sphere;
 	window->objects[3].mat = material;
-	// window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{1, 0, -3}, 0}}; //Limiter with r = 0, tmp
-	// window->objects[2].hit_func = &hit_sphere;
-	// window->objects[2].mat = material;
 }
 
 int main(void)

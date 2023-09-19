@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 23:02:17 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:50:08 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_material
 {
 	t_MaterialType	type;
 	t_vec3			color;
+	double			reflectance;
 }	t_material;
 
 typedef struct s_hit

@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:00 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:01:49 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_vec3	ray_color(t_ray r, int deph, t_object *objects)
 		return ((t_vec3){0, 0, 0});
 	if (hit.t > 0)
 		return (vec3_mult_double(ray_color(scatter(hit, r), deph - 1, objects),
-				0.7));
+				hit.mat.reflectance));
 	//normal vector shading
 	// if (hit.t > 0.0)
 	// 	return (vec3_mult_double(hit.normal, 0.5));
