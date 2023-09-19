@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 13:54:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:43:04 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,20 @@ t_camera	create_camera(int width, int height)
 	return (camera);
 }
 
+void	loading(double val, int max)
+{
+	// printf("%d\n", (int)((val / max) * 10));
+	printf("Tracing[");
+	printf("%.*s", (int)((val / max) * 10), "==========");
+	printf("%.*s", 10 - (int)((val / max) * 10), "          ");
+	printf("]%.0f %%", ((val / max) * 100));
+}
+
 int	gradient_test(t_window	*window)
 {
 	t_vec3	aa_color;
+
+	printf("\n");
 
 	for (uint32_t j = 0; j < window->mlx_image->height; ++j)
 	{
@@ -56,12 +67,13 @@ int	gradient_test(t_window	*window)
 			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
 		}
 		printf("\r");
-		printf("Traced ==> %.0f %%", ((double)(j * window->mlx_image->width)
-			/ (window->mlx_image->height * window->mlx_image->width)) * 100);
+		loading((double)(j * window->mlx_image->width), (window->mlx_image->height * window->mlx_image->width));
+		// printf("Traced ==> %.0f %%", ((double)(j * window->mlx_image->width)
+			// / (window->mlx_image->height * window->mlx_image->width)) * 100);
 		fflush(stdout);
 	}
 	printf("\r");
-	printf("Traced ==> 100 %%\n");
+	printf("Tracing[==========]100 %%\n");
 	return (0);
 }
 
@@ -110,7 +122,7 @@ void	init_objects(t_window *window)
 	material.color = (t_vec3){0.8, 0.8, 0.0};
 	t_material	material2;
 	material2.type = METAL;
-	material2.color = (t_vec3){0.8, 0.0, 0.8};
+	material2.color = (t_vec3){0.9, 0.9, 0.9};
 	window->objects = ft_calloc(5, sizeof(t_object));
 	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -1}, 0.3}};
 	window->objects[0].hit_func = &hit_sphere;
