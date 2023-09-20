@@ -6,14 +6,14 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/19 13:49:28 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:08:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HIT_H
 # define HIT_H
 
-# define DEPTH 10
+# define DEPTH 50
 
 # include "../utils/vec3/vec3.h"
 # include "../elements/elements.h"

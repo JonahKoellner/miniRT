@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 13:32:34 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:39:31 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vec3	ray_color(t_ray r, int deph, t_object *objects)
 	t_vec3		color;
 	t_hit		hit;
 
-	hit = hit_object(objects, r, (t_interval){.001, INFINITY});
+	hit = hit_object(objects, r, (t_interval){0.001, INFINITY});
 	if (deph <= 0)
 		return ((t_vec3){0, 0, 0});
 	if (hit.t > 0)
