@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anti_aliasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/19 14:48:55 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:53:57 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3	pixel_sample_square(t_window *window, int i, int j)
 	double	u;
 	double	v;
 
-	samples = 50;
+	samples = 10;
 	pixel_color = (t_vec3){0, 0, 0};
 	for (int s = 0; s < samples; ++s)
 	{
