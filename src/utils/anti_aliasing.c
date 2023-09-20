@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 17:29:38 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:34:50 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec3	pixel_sample_square(t_window *window, int i, int j)
 	double	u;
 	double	v;
 
-	samples = 10;
+	samples = 100;
 	pixel_color = (t_vec3){0, 0, 0};
 	for (int s = 0; s < samples; ++s)
 	{
