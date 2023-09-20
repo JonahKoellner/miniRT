@@ -6,7 +6,7 @@
 #    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/18 23:03:14 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/20 22:07:26 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC_FILES = miniRT.c
 
 ELEMENTS = $(addprefix $(ELEMENTS_DIR), $(ELEMENTS_FILES))
 ELEMENTS_DIR = $(addprefix $(SRC_DIR), elements/)
-ELEMENTS_FILES = sphere.c materials.c
+ELEMENTS_FILES = sphere.c cylinder.c plane.c materials.c
 
 HIT = $(addprefix $(HIT_DIR), $(HIT_FILES))
 HIT_DIR = $(addprefix $(SRC_DIR), hit/)

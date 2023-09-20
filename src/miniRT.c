@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/20 18:34:02 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/21 00:35:21 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,25 @@ void	init_objects(t_window *window)
 	mat_metal_yellow.color = (t_vec3){0.8, 0.6, 0.2};
 	// mat_metal_yellow.reflectance = 0.7;
 
+	t_material stop;
+	stop.type = STOP;
 
-	window->objects = ft_calloc(5, sizeof(t_object));
-	window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
-	window->objects[0].hit_func = &hit_sphere;
+	window->objects = ft_calloc(6, sizeof(t_object));
+	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
+	// window->objects[0].hit_func = &hit_sphere;
+	// window->objects[0].mat = mat_ground;
+
+	window->objects[0].obj = (t_hittable){.plane = (t_plane){{0, -0.5, -1}, {0, -1, 0}}};
+	window->objects[0].hit_func = &hit_plane;
 	window->objects[0].mat = mat_ground;
 
-	window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
-	window->objects[1].hit_func = &hit_sphere;
-	window->objects[1].mat = mat_mid;
+	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
+	// window->objects[1].hit_func = &hit_sphere;
+	// window->objects[1].mat = mat_mid;
+	
+	window->objects[1].obj = (t_hittable){.cylinder = (t_cylinder){{0, -0.5, -1}, {0, 1, 0.0}, .5, 50}};
+	window->objects[1].hit_func = &hit_cylinder;
+	window->objects[1].mat = mat_metal_yellow;
 
 	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{-1.0, 0, -1.0}, .5}};
 	window->objects[2].hit_func = &hit_sphere;
@@ -115,7 +125,9 @@ void	init_objects(t_window *window)
 
 	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
 	window->objects[3].hit_func = &hit_sphere;
-	window->objects[3].mat = mat_metal_yellow;
+	window->objects[3].mat = mat_mid;
+	
+	window->objects[4].mat = stop;
 
 	// t_material	material;
 	// material.type = LAMBERTIAN;
@@ -144,7 +156,7 @@ int main(void)
 	t_window	*window;
 	int			width;
 
-	width = 1000;
+	width = 400;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
 	window->camera = create_camera(width, (int)(width / window->aspect_ratio));

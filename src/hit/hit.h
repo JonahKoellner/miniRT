@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 17:29:50 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:25:15 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef enum MaterialType
 {
 	LAMBERTIAN,
 	METAL,
-	DIELECTRIC
+	DIELECTRIC,
+	STOP
 }	t_MaterialType;
 
 typedef struct s_material
@@ -66,6 +67,10 @@ typedef struct s_object{
 t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval);
 
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
+
+t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval);
+
+t_hit	hit_cylinder(t_hittable hit_obj, t_ray ray, t_interval interval);
 
 t_ray	scatter(t_hit hit, t_ray ray);
 

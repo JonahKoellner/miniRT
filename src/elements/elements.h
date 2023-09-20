@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 19:19:24 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:44:20 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_vec3		center;
-	t_vec3		normal;
-	double		diameter;
+	t_vec3		axis;
+	double		radius;
 	double		height;
 }	t_cylinder;
 

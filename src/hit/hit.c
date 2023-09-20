@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 17:25:14 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:59:42 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval)
 
 	i = -1;
 	hit.t = i;
-	while (objects[++i].obj.sphere.radius != 0)
+	while (objects[++i].mat.type != STOP)
 	{
 		temp_hit = objects[i].hit_func(objects[i].obj, ray, interval);
 		if (temp_hit.t > 0.0 && (hit.t < 0.0 || temp_hit.t < hit.t))
