@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/18 22:58:31 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:25:14 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval)
 			hit.mat = objects[i].mat;
 		}
 	}
-	hit.normal = vec3_add_vec3(hit.normal, (t_vec3){1, 1, 1});
 	return (hit);
 }
