@@ -6,35 +6,35 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:44:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/25 11:07:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:43:48 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gnl.h"
 
-int	ft_strlen(char *string)
-{
-	int	counter;
+//int	ft_strlen(char *string)
+//{
+//	int	counter;
 
-	if (string == NULL)
-		return (0);
-	counter = 0;
-	while (string[counter] != '\0')
-		counter++;
-	return (counter);
-}
+//	if (string == NULL)
+//		return (0);
+//	counter = 0;
+//	while (string[counter] != '\0')
+//		counter++;
+//	return (counter);
+//}
 
-void	ft_bzero(char *buffer, int n)
-{
-	int	counter;
+//void	ft_bzero(char *buffer, int n)
+//{
+//	int	counter;
 
-	counter = 0;
-	while (counter < n)
-	{
-		buffer[counter] = 0;
-		counter++;
-	}
-}
+//	counter = 0;
+//	while (counter < n)
+//	{
+//		buffer[counter] = 0;
+//		counter++;
+//	}
+//}
 
 /*
 Mix of realloc and join methode.
