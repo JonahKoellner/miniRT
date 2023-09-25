@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/21 00:35:21 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:14:43 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	init_objects(t_window *window)
 	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
 	// window->objects[1].hit_func = &hit_sphere;
 	// window->objects[1].mat = mat_mid;
-	
+
 	window->objects[1].obj = (t_hittable){.cylinder = (t_cylinder){{0, -0.5, -1}, {0, 1, 0.0}, .5, 50}};
 	window->objects[1].hit_func = &hit_cylinder;
 	window->objects[1].mat = mat_metal_yellow;
@@ -126,7 +126,7 @@ void	init_objects(t_window *window)
 	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
 	window->objects[3].hit_func = &hit_sphere;
 	window->objects[3].mat = mat_mid;
-	
+
 	window->objects[4].mat = stop;
 
 	// t_material	material;
@@ -151,7 +151,7 @@ void	init_objects(t_window *window)
 	// window->objects[3].mat = material2;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	t_window	*window;
 	int			width;
@@ -169,8 +169,9 @@ int main(void)
 		return (1);
 
 	init_objects(window);
-
-	gradient_test(window);
+	if (argc == 2)
+		parser(argv[1]);
+	//gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);
 	mlx_terminate(window->mlx_window);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/20 22:07:26 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/09/25 11:08:48 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,16 @@ MLX_DIR = ./lib/MLX42
 MLX_LIB = /build/libmlx42.a
 MLX_INC = -I $(MLX_DIR)/include
 
-LIBFT = $(LIBFT_DIR)$(LIBFT_LIB)
-LIBFT_LIB = /libft.a
-LIBFT_DIR = ./lib/libft
-LIBFT_INC = -I $(LIBFT_DIR)
+#LIBFT = $(LIBFT_DIR)$(LIBFT_LIB)
+#LIBFT_LIB = /libft.a
+#LIBFT_DIR = ./lib/libft
+#LIBFT_INC = -I $(LIBFT_DIR)
 
 LIBS = ${MLX} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
-INCLUDE = $(HEADER_INC) $(MLX_INC) 
+INCLUDE = $(HEADER_INC) $(MLX_INC)
 
 #=================== Files =======================#
-ALL_C = $(SRC) $(ELEMENTS) $(HIT) $(UTILS) $(RAY) $(VEC3)
+ALL_C = $(SRC) $(ELEMENTS) $(HIT) $(UTILS) $(RAY) $(VEC3) $(PARSER)
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_DIR = src/
@@ -64,6 +64,10 @@ RAY_FILES = ray.c
 VEC3 = $(addprefix $(VEC3_DIR), $(VEC3_FILES))
 VEC3_DIR = $(addprefix $(UTILS_DIR), vec3/)
 VEC3_FILES = vec3_doub_op.c vec3_math.c vec3_utils.c vec3_vec3_op.c
+
+PARSER = $(addprefix $(PARSER_DIR), $(PARSER_FILES))
+PARSER_DIR = $(addprefix $(SRC_DIR), parser/)
+PARSER_FILES = parser.c gnl.c gnl_utils.c
 
 #=================== Objects =======================#
 
@@ -93,7 +97,7 @@ $(ALL_OBJ_DIR):
 	@mkdir -p $(ALL_OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) $(LIBFT_INC)  && printf "\e[33mCompiled: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) && printf "\e[33mCompiled: $(notdir $<)\n"
 
 $(NAME): $(OBJ)
 	@$(CC) $(ALL_C) -o $(NAME) $(LIBS) $(LIBFT) && printf "\e[35mLinking: $(COBJ) ==> $(NAME)\n"
