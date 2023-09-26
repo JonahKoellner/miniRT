@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/20 17:29:32 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:57:45 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	mlx_color(t_vec3 color)
 	return (r << 24 | g << 16 | b << 8 | 255);
 }
 
-t_vec3	ray_color(t_ray r, int deph, t_object *objects)
+t_vec3	ray_color(t_ray r, int deph, t_obj_list *objects)
 {
 	t_vec3		unit_direction;
 	double		a;

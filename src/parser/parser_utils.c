@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:02:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 11:04:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:52:55 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,55 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-//int	ft_strncmp(const char *s1, const char *s2, size_t n)
-//{
-//	size_t		i;
+int	ft_strchrn(char *str, char c)
+{
+	int	index;
+	int	ret;
 
-//	i = 0;
-//	while (i < n && (s1[i] || s2[i]))
-//	{
-//		if (s1[i] != s2[i])
-//			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-//		i++;
-//	}
-//	return (0);
-//}
+	ret = 0;
+	index = 0;
+	while (str[index])
+	{
+		if (str[index] == c)
+			ret++;
+		index++;
+	}
+	return (ret);
+}
+
+int	ft_strdnum(char *str)
+{
+	int	index;
+
+	index = 0;
+	while (str[index])
+	{
+		if (!((str[index] <= 'z' && str[index] >= 'a')
+			|| (str[index] <= 'Z' && str[index] >= 'A')) && str[index] != '.')
+			return (1);
+		index++;
+	}
+	return (0);
+}
+
+int	ft_atov(char *str, t_vec3 *vec)
+{
+	char	**split;
+
+	split = ft_split(str, ',');
+	if (ft_veclen(split) != 3)
+		return (1);
+	if (ft_strchrn(split[0], '.') > 1 || ft_strchrn(split[1], '.') > 1
+		|| ft_strchrn(split[2], '.') > 1)
+			return (1);
+	if (ft_strdnum(split[0]) || ft_strdnum(split[1]) || ft_strdnum(split[2]))
+		return (1);
+	vec->x = ft_atof(split[0]);
+	vec->y = ft_atof(split[1]);
+	vec->z = ft_atof(split[2]);
+	ft_vecfree(split);
+	return (0);
+}
 
 double ft_atof(char *str)
 {

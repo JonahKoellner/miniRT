@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/25 15:57:05 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:11:50 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
 	width = 400;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
-	//window->camera = create_camera(width, (int)(width / window->aspect_ratio));
+	window->camera = create_camera(width, (int)(width / window->aspect_ratio));
 	window->mlx_window = mlx_init(width, (int)(width / window->aspect_ratio), "miniRT", true);
 	if (!window->mlx_window)
 		return (1);
@@ -170,7 +170,8 @@ int main(int argc, char *argv[])
 
 	//init_objects(window);
 	if (argc == 2)
-		parser(argv[1]);
+		if (parser(argv[1], window))
+			return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
 	//gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);

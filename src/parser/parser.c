@@ -6,22 +6,30 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 12:35:22 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:48:48 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_object	id_object(char *definition_line, int *map)
+int	id_obj(char *definition_line, int *map, t_window *window)
+{
+	if (!ft_strncmp("A ", definition_line, 2))
+		create_ambient_light(definition_line, map, window);
+	else if (!ft_strncmp("C ", definition_line, 2))
+		create_camera(definition_line, map, window);
+	else if (!ft_strncmp("L ", definition_line, 2))
+		create_light(definition_line, map, window);
+	else
+		return (0);
+	return (1);
+}
+
+t_object	id_hit(char *definition_line, int *map)
 {
 	t_object	obj;
-	if (!ft_strncmp("A ", definition_line, 2))
-		obj = create_ambient_light(definition_line ,map);
-	else if (!ft_strncmp("C ", definition_line, 2))
-		obj = create_camera(definition_line, map);
-	else if (!ft_strncmp("L ", definition_line, 2))
-		obj = create_light(definition_line, map);
-	else if (!ft_strncmp("pl ", definition_line, 3))
+
+	if (!ft_strncmp("pl ", definition_line, 3))
 		obj = create_plane(definition_line, map);
 	else if (!ft_strncmp("sp ", definition_line, 3))
 		obj = create_sphere(definition_line, map);
@@ -32,38 +40,27 @@ t_object	id_object(char *definition_line, int *map)
 	return (obj);
 }
 
-t_obj_list	*interpretate_object(char *line, t_obj_list *list_obj, int *map)
+t_obj_list	*in_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 {
-	int	index;
+	int			index;
+	t_object	hit;
 
 	index = 0;
 	while (ft_isspace(line[index]))
 		index++;
 	if (line[index] == '\0')
 		return (NULL);
-	list_obj->obj = id_object(&line[index], map);
-	list_obj->next_obj = ft_calloc(1, sizeof(t_obj_list));
-	return (list_obj->next_obj);
+	if (id_obj(&line[index], map, window))
+		return (l_obj);
+	hit = id_hit(&line[index], map);
+	if (map[OBJECT_ERROR] > 0)
+		return (NULL);
+	l_obj->obj = hit;
+	l_obj->next_obj = ft_calloc(1, sizeof(t_obj_list));
+	return (l_obj->next_obj);
 }
 
-int	check_map(int *map)
-{
-	printf("{\nOBJECT_CAMERA: %d,\n", map[OBJECT_CAMERA]);
-	printf("OBJECT_LIGHT: %d,\n", map[OBJECT_LIGHT]);
-	printf("OBJECT_SPHERE: %d,\n", map[OBJECT_SPHERE]);
-	printf("OBJECT_PLANE: %d,\n", map[OBJECT_PLANE]);
-	//printf("OBJECT_SQUARE: %d\n", map[OBJECT_SQUARE]);
-	printf("OBJECT_CYLINDER: %d,\n", map[OBJECT_CYLINDER]);
-	//printf("OBJECT_TRIANGLE: %d\n", map[OBJECT_TRIANGLE]);
-	printf("OBJECT_AMBIENT_LIGHT: %d,\n", map[OBJECT_AMBIENT_LIGHT]);
-	printf("OBJECT_ERROR: %d\n}\n", map[OBJECT_ERROR]);
-	if (map[OBJECT_CAMERA] > 1 || map[OBJECT_LIGHT] > 1
-		|| map[OBJECT_AMBIENT_LIGHT] > 1 || map[OBJECT_ERROR] > 0)
-		return (1);
-	return (0);
-}
-
-t_obj_list	*read_file(int fd)
+t_obj_list	*read_file(int fd, t_window *window)
 {
 	char		*gnl;
 	t_obj_list	*head;
@@ -79,7 +76,7 @@ t_obj_list	*read_file(int fd)
 	while (gnl)
 	{
 		if (!(gnl[0] == '\n'))
-			head = interpretate_object(gnl, head, map);
+			head = in_obj(gnl, head, map, window);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);
@@ -88,16 +85,17 @@ t_obj_list	*read_file(int fd)
 	return (root);
 }
 
-int parser(char *filename)
+int parser(char *filename, t_window *window)
 {
 	t_obj_list	*head;
-	int		fd;
+	int			fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	head = read_file(fd);
+	head = read_file(fd, window);
 	if (!head)
 		return (1);
+	window->objects = head;
 	return (0);
 }

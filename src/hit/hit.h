@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/25 15:54:01 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:59:28 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_obj_list{
 	struct s_obj_list *next_obj;
 }	t_obj_list;
 
-t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval);
+t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval);
 
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 
