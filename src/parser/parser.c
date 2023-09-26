@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/25 15:53:39 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 11:05:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 t_object	id_object(char *definition_line, int *map)
 {
 	t_object	obj;
-	if (!ft_strncmp("A", definition_line, 2))
+	if (!ft_strncmp("A ", definition_line, 2))
 		obj = create_ambient_light(definition_line ,map);
-	else if (!ft_strncmp("C", definition_line, 2))
+	else if (!ft_strncmp("C ", definition_line, 2))
 		obj = create_camera(definition_line, map);
-	else if (!ft_strncmp("L", definition_line, 2))
+	else if (!ft_strncmp("L ", definition_line, 2))
 		obj = create_light(definition_line, map);
-	else if (!ft_strncmp("pl", definition_line, 3))
+	else if (!ft_strncmp("pl ", definition_line, 3))
 		obj = create_plane(definition_line, map);
-	else if (!ft_strncmp("sp", definition_line, 3))
+	else if (!ft_strncmp("sp ", definition_line, 3))
 		obj = create_sphere(definition_line, map);
-	else if (!ft_strncmp("cy", definition_line, 3))
+	else if (!ft_strncmp("cy ", definition_line, 3))
 		obj = create_cylinder(definition_line, map);
 	else
 		obj = create_error(map);
@@ -48,6 +48,15 @@ t_obj_list	*interpretate_object(char *line, t_obj_list *list_obj, int *map)
 
 int	check_map(int *map)
 {
+	printf("{\nOBJECT_CAMERA: %d,\n", map[OBJECT_CAMERA]);
+	printf("OBJECT_LIGHT: %d,\n", map[OBJECT_LIGHT]);
+	printf("OBJECT_SPHERE: %d,\n", map[OBJECT_SPHERE]);
+	printf("OBJECT_PLANE: %d,\n", map[OBJECT_PLANE]);
+	//printf("OBJECT_SQUARE: %d\n", map[OBJECT_SQUARE]);
+	printf("OBJECT_CYLINDER: %d,\n", map[OBJECT_CYLINDER]);
+	//printf("OBJECT_TRIANGLE: %d\n", map[OBJECT_TRIANGLE]);
+	printf("OBJECT_AMBIENT_LIGHT: %d,\n", map[OBJECT_AMBIENT_LIGHT]);
+	printf("OBJECT_ERROR: %d\n}\n", map[OBJECT_ERROR]);
 	if (map[OBJECT_CAMERA] > 1 || map[OBJECT_LIGHT] > 1
 		|| map[OBJECT_AMBIENT_LIGHT] > 1)
 		return (1);
@@ -56,10 +65,10 @@ int	check_map(int *map)
 
 t_obj_list	*read_file(int fd)
 {
-	char	*gnl;
+	char		*gnl;
 	t_obj_list	*head;
 	t_obj_list	*root;
-	int		*map;
+	int			*map;
 
 	gnl = get_next_line(fd);
 	head = ft_calloc(1, sizeof(t_obj_list));
@@ -71,7 +80,7 @@ t_obj_list	*read_file(int fd)
 	{
 		if (!(gnl[0] == '\n'))
 			head = interpretate_object(gnl, head, map);
-		if (check_map(map))
+		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);
 		gnl = get_next_line(fd);
