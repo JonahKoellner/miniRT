@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 13:48:48 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:45:56 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_object	id_hit(char *definition_line, int *map)
 {
 	t_object	obj;
 
+	definition_line = ft_strtrim(definition_line, " \n");
 	if (!ft_strncmp("pl ", definition_line, 3))
 		obj = create_plane(definition_line, map);
 	else if (!ft_strncmp("sp ", definition_line, 3))

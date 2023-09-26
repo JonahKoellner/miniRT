@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 15:11:50 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:48:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@ void	key_hook(void* param)
 		mlx_close_window(mlx);
 }
 
-//t_camera	create_camera(int width, int height)
-//{
-//	t_camera camera;
+t_camera	create_ccamera(int width, int height)
+{
+	t_camera camera;
 
-//	camera.viewport_height = 2.0;
-//	camera.focal_length = 1.0;
-//	camera.viewport_width = camera.viewport_height
-//								* ((double)(width) / height);
-//	camera.cam_center = (t_vec3){0, 0, 0};
-//	camera.viewport_u = (t_vec3){camera.viewport_width, 0, 0};
-//	camera.viewport_v = (t_vec3){0, - camera.viewport_height, 0};
-//	camera.pix_delt_u = vec3_div_double(camera.viewport_u, (double)width);
-//	camera.pix_delt_v = vec3_div_double(camera.viewport_v, (double)height);
+	camera.viewport_height = 2.0;
+	camera.focal_length = 1.0;
+	camera.viewport_width = camera.viewport_height
+								* ((double)(width) / height);
+	camera.cam_center = (t_vec3){0, 0, 0};
+	camera.viewport_u = (t_vec3){camera.viewport_width, 0, 0};
+	camera.viewport_v = (t_vec3){0, - camera.viewport_height, 0};
+	camera.pix_delt_u = vec3_div_double(camera.viewport_u, (double)width);
+	camera.pix_delt_v = vec3_div_double(camera.viewport_v, (double)height);
 
-//	camera.viewport_upr_left = vec3_sub_vec3(vec3_sub_vec3(vec3_sub_vec3
-//				(camera.cam_center,
-//					(t_vec3){0, 0, camera.focal_length}), vec3_div_double
-//				(camera.viewport_u, 2)),
-//					vec3_div_double(camera.viewport_v, 2));
-//	camera.auf_lock = vec3_add_vec3(camera.viewport_upr_left,
-//			vec3_mult_double
-//			(vec3_add_vec3(camera.pix_delt_u, camera.pix_delt_v), 0.5));
-//	return (camera);
-//}
+	camera.viewport_upr_left = vec3_sub_vec3(vec3_sub_vec3(vec3_sub_vec3
+				(camera.cam_center,
+					(t_vec3){0, 0, camera.focal_length}), vec3_div_double
+				(camera.viewport_u, 2)),
+					vec3_div_double(camera.viewport_v, 2));
+	camera.auf_lock = vec3_add_vec3(camera.viewport_upr_left,
+			vec3_mult_double
+			(vec3_add_vec3(camera.pix_delt_u, camera.pix_delt_v), 0.5));
+	return (camera);
+}
 
 void	loading(double val, int max)
 {
@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
 	width = 400;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
-	window->camera = create_camera(width, (int)(width / window->aspect_ratio));
+	window->camera = create_ccamera(width, (int)(width / window->aspect_ratio));
 	window->mlx_window = mlx_init(width, (int)(width / window->aspect_ratio), "miniRT", true);
 	if (!window->mlx_window)
 		return (1);
@@ -172,7 +172,7 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 		if (parser(argv[1], window))
 			return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
-	//gradient_test(window);
+	gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);
 	mlx_terminate(window->mlx_window);

@@ -6,18 +6,11 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:02:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 14:52:55 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:46:59 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-
-int	ft_isspace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f')
-		return (1);
-	return (0);
-}
 
 int	ft_strchrn(char *str, char c)
 {
@@ -42,9 +35,11 @@ int	ft_strdnum(char *str)
 	index = 0;
 	while (str[index])
 	{
-		if (!((str[index] <= 'z' && str[index] >= 'a')
-			|| (str[index] <= 'Z' && str[index] >= 'A')) && str[index] != '.')
-			return (1);
+		if (!(str[index] >= '0' && str[index] <= '9') && str[index] != '.' && str[index] != '-'
+			&& str[index] != '+')
+			{
+				return (1);
+			}
 		index++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 14:55:53 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:22:16 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef enum e_object_type
 } t_object_type;
 
 int			parser(char *filename, t_window *window);
-int			ft_isspace(char c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 double 		ft_atof(char *str);
 t_object	create_plane(char *define_line, int *map);
