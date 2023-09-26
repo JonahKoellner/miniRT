@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 11:05:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:35:22 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_map(int *map)
 	printf("OBJECT_AMBIENT_LIGHT: %d,\n", map[OBJECT_AMBIENT_LIGHT]);
 	printf("OBJECT_ERROR: %d\n}\n", map[OBJECT_ERROR]);
 	if (map[OBJECT_CAMERA] > 1 || map[OBJECT_LIGHT] > 1
-		|| map[OBJECT_AMBIENT_LIGHT] > 1)
+		|| map[OBJECT_AMBIENT_LIGHT] > 1 || map[OBJECT_ERROR] > 0)
 		return (1);
 	return (0);
 }
