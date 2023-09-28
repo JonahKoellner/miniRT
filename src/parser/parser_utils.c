@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:02:04 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 15:46:59 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:40:37 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ int	ft_strdnum(char *str)
 	index = 0;
 	while (str[index])
 	{
-		if (!(str[index] >= '0' && str[index] <= '9') && str[index] != '.' && str[index] != '-'
+		if (!(str[index] >= '0' && str[index] <= '9')
+			&& str[index] != '.' && str[index] != '-'
 			&& str[index] != '+')
-			{
-				return (1);
-			}
+			return (1);
 		index++;
 	}
 	return (0);
@@ -54,7 +53,7 @@ int	ft_atov(char *str, t_vec3 *vec)
 		return (1);
 	if (ft_strchrn(split[0], '.') > 1 || ft_strchrn(split[1], '.') > 1
 		|| ft_strchrn(split[2], '.') > 1)
-			return (1);
+		return (1);
 	if (ft_strdnum(split[0]) || ft_strdnum(split[1]) || ft_strdnum(split[2]))
 		return (1);
 	vec->x = ft_atof(split[0]);
@@ -64,30 +63,30 @@ int	ft_atov(char *str, t_vec3 *vec)
 	return (0);
 }
 
-double ft_atof(char *str)
+double	ft_atof(char *str)
 {
 	double	result;
-	double	decimal;
-	int		sign;
-	int		i;
+	double	fraction;
+	int		fractiondigits;
+	int		negative;
 
+	negative = 1;
 	result = 0.0;
-	decimal = 0.0;
-	sign = 1;
-	i = 0;
-	if (str[i] == '-')
+	fraction = 0.0;
+	fractiondigits = 0;
+	if (*str == '-' && str++)
+		negative = -1;
+	while (ft_isdigit(*str))
+		result = result * 10.0 + (*(str++) - '0');
+	if (*str == '.')
 	{
-		sign = -1;
-		i++;
+		str++;
+		while (ft_isdigit(*str))
+		{
+			fraction = fraction * 10.0 + (*(str++) - '0');
+			fractiondigits++;
+		}
 	}
-	while (str[i] && str[i] != '.')
-		result = result * 10.0 + (double)(str[i++] - '0');
-	if (str[i] == '.')
-	{
-		while (str[++i])
-			decimal = decimal * 10.0 + (double)(str[i++] - '0');
-	}
-	while (decimal >= 1.0)
-		decimal /= 10.0;
-	return sign * (result + decimal);
+	result += fraction / pow(10, fractiondigits);
+	return (negative * result);
 }

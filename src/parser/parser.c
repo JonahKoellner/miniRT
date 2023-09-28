@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:17:27 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:24:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,13 @@ int parser(char *filename, t_window *window)
 	if (!head)
 		return (1);
 	window->objects = head;
+	while (head->next_obj)
+	{
+		printf("type: %d\n", head->obj.mat.type);
+		printf("color: %f %f %f\n", head->obj.mat.color.x, head->obj.mat.color.y, head->obj.mat.color.z);
+		printf("center: %f %f %f\n", head->obj.obj.sphere.center.x, head->obj.obj.sphere.center.y, head->obj.obj.sphere.center.z);
+		printf("radius: %f\n", head->obj.obj.sphere.radius);
+		head = head->next_obj;
+	}
 	return (0);
 }
