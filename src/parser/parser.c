@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:42:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:44:37 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_obj_list	*read_file(int fd, t_window *window)
 	return (root);
 }
 
-int parser(char *filename, t_window *window)
+int	parser(char *filename, t_window *window)
 {
 	t_obj_list	*head;
 	int			fd;
