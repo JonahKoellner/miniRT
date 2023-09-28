@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 15:45:56 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:17:27 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_object	id_hit(char *definition_line, int *map)
 	return (obj);
 }
 
-t_obj_list	*in_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
+t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 {
 	int			index;
 	t_object	hit;
@@ -77,7 +77,7 @@ t_obj_list	*read_file(int fd, t_window *window)
 	while (gnl)
 	{
 		if (!(gnl[0] == '\n'))
-			head = in_obj(gnl, head, map, window);
+			head = make_obj(gnl, head, map, window);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);

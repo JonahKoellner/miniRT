@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 15:48:09 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:08:30 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,11 @@ int main(int argc, char *argv[])
 		return (1);
 
 	//init_objects(window);
-	if (argc == 2)
-		if (parser(argv[1], window))
-			return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
+	if (argc != 2)
+		return (1);
+	if (parser(argv[1], window))
+		return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
+
 	gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);
