@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 17:57:13 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:28:53 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ typedef struct s_window{
 	double		aspect_ratio;
 	t_camera	camera;
 	t_obj_list	*objects;
+	t_light		*lights;
+	int			num_lights;
 }	t_window;
 
 
 int			mlx_color(t_vec3 color);
 t_vec3		pixel_sample_square(t_window *window, int i, int j);
 t_vec3		ray_color(t_ray r, int deph, t_window *window);
+t_vec3		light_color(t_hit hit, t_window *window, int i);
 
 #endif

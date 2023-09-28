@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:08:30 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:49:27 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,19 @@ int	gradient_test(t_window	*window)
 //	// window->objects[3].mat = material2;
 //}
 
+void	init_lights(t_window *window)
+{
+	window->lights = ft_calloc(1, sizeof(t_light));
+	window->lights[0].origin = (t_vec3){-2, 2, 1};
+	window->lights[0].color = (t_vec3){1, 1, 1};
+	window->lights[0].brightness = 0.3;
+	// window->lights[1].origin = (t_vec3){2, 2, 1};
+	// window->lights[1].color = (t_vec3){1, 1, 1};
+	// window->lights[2].origin = (t_vec3){0, 0, 1};
+	// window->lights[2].color = (t_vec3){1, 1, 1};
+	window->num_lights = 1;
+}
+
 int main(int argc, char *argv[])
 {
 	t_window	*window;
@@ -167,7 +180,7 @@ int main(int argc, char *argv[])
 			window->mlx_window->width, window->mlx_window->height);
 	if (!window->mlx_image || (mlx_image_to_window(window->mlx_window, window->mlx_image, 0, 0) < 0))
 		return (1);
-
+	init_lights(window);
 	//init_objects(window);
 	if (argc != 2)
 		return (1);

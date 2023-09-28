@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/26 15:49:44 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:16:22 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval)
 
 	i = -1;
 	hit.t = i;
-	//while (objects[++i].mat.type != STOP)
 	while (objects->next_obj)
 	{
 		temp_hit = objects->obj.hit_func(objects->obj.obj, ray, interval);
