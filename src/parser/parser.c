@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:24:09 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	if (id_obj(&line[index], map, window))
 		return (l_obj);
 	hit = id_hit(&line[index], map);
-	if (map[OBJECT_ERROR] > 0)
+	if (map[OBJ_ERROR] > 0)
 		return (NULL);
 	l_obj->obj = hit;
 	l_obj->next_obj = ft_calloc(1, sizeof(t_obj_list));
@@ -72,7 +72,7 @@ t_obj_list	*read_file(int fd, t_window *window)
 	head = ft_calloc(1, sizeof(t_obj_list));
 	if (!head)
 		return (NULL);
-	map = ft_calloc(OBJECT_ENUM_SIZE, sizeof(int));
+	map = ft_calloc(OBJ_ENUM_SIZE, sizeof(int));
 	root = head;
 	while (gnl)
 	{

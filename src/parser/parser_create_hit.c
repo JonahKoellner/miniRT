@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:28:27 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:32 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_object	create_plane(char *define_line, int *map)
 {
 	(void)(define_line);
-	map[OBJECT_PLANE]++;
+	map[OBJ_PLANE]++;
 	printf("plane\n");
 	return ((t_object){});
 }
@@ -28,38 +28,38 @@ t_object	create_sphere(char *define_line, int *map)
 
 	split = ft_split(define_line, ' ');
 	if (!split)
-		return (map[OBJECT_ERROR]++, (t_object){});
+		return (map[OBJ_ERROR]++, (t_object){});
 	vec = ft_calloc(1, sizeof(t_vec3));
 	if (!vec)
-		return (ft_vecfree(split), map[OBJECT_ERROR]++, (t_object){});
+		return (ft_vecfree(split), map[OBJ_ERROR]++, (t_object){});
 	if (ft_atov(split[1], vec))
-		return (free(vec), ft_vecfree(split), map[OBJECT_ERROR]++, (t_object){});
+		return (free(vec), ft_vecfree(split), map[OBJ_ERROR]++, (t_object){});
 	obj.obj.sphere.center = *vec;
 	obj.obj.sphere.radius = ft_atof(split[2]);
 	if (obj.obj.sphere.radius < 0)
-		return (ft_vecfree(split), free(vec), map[OBJECT_ERROR]++, (t_object){});
+		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
 	if (ft_atov(split[3], vec))
-		return (ft_vecfree(split), free(vec), map[OBJECT_ERROR]++, (t_object){});
+		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
 	if ((vec->x > 255 || vec->x < 0) || (vec->y > 255 || vec->y < 0)
 		|| (vec->z > 255 || vec->z < 0))
-			return (ft_vecfree(split), free(vec), map[OBJECT_ERROR]++, (t_object){});
+		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
 	obj.mat.color = *vec;
 	obj.mat.type = LAMBERTIAN;
 	obj.hit_func = &hit_sphere;
-	return (map[OBJECT_SPHERE]++, ft_vecfree(split), free(vec), obj);
+	return (map[OBJ_SPHERE]++, ft_vecfree(split), free(vec), obj);
 }
 
 t_object	create_cylinder(char *define_line, int *map)
 {
 	(void)(define_line);
-	map[OBJECT_CYLINDER]++;
+	map[OBJ_CYLINDER]++;
 	printf("cylinder\n");
 	return ((t_object){});
 }
 
 t_object	create_error(int *map)
 {
-	map[OBJECT_ERROR]++;
+	map[OBJ_ERROR]++;
 	printf("error\n");
 	return ((t_object){});
 }

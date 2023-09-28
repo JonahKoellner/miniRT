@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/26 15:22:16 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/28 14:42:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 typedef enum e_object_type
 {
-	OBJECT_AMBIENT_LIGHT,
-	OBJECT_CAMERA,
-	OBJECT_LIGHT,
-	OBJECT_PLANE,
-	OBJECT_SPHERE,
-	OBJECT_CYLINDER,
-	OBJECT_ERROR,
-	OBJECT_ENUM_SIZE
+	OBJ_AMBIENT_LIGHT,
+	OBJ_CAMERA,
+	OBJ_LIGHT,
+	OBJ_PLANE,
+	OBJ_SPHERE,
+	OBJ_CYLINDER,
+	OBJ_ERROR,
+	OBJ_ENUM_SIZE
 } t_object_type;
 
 int			parser(char *filename, t_window *window);
