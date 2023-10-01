@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 18:49:27 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:13:17 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,9 @@ int	gradient_test(t_window	*window)
 void	init_lights(t_window *window)
 {
 	window->lights = ft_calloc(1, sizeof(t_light));
-	window->lights[0].origin = (t_vec3){-2, 2, 1};
+	window->lights[0].origin = (t_vec3){1, 0.2, 1};
 	window->lights[0].color = (t_vec3){1, 1, 1};
-	window->lights[0].brightness = 0.3;
+	window->lights[0].brightness = 0.1;
 	// window->lights[1].origin = (t_vec3){2, 2, 1};
 	// window->lights[1].color = (t_vec3){1, 1, 1};
 	// window->lights[2].origin = (t_vec3){0, 0, 1};

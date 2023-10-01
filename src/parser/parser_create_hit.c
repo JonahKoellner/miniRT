@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:42:32 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/01 17:10:50 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_object	create_sphere(char *define_line, int *map)
 		|| (vec->z > 255 || vec->z < 0))
 		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
 	obj.mat.color = *vec;
-	obj.mat.type = LAMBERTIAN;
+	obj.mat.type = METAL;
 	obj.hit_func = &hit_sphere;
 	return (map[OBJ_SPHERE]++, ft_vecfree(split), free(vec), obj);
 }
