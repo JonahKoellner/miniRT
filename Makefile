@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/10/02 10:59:27 by jkollner         ###   ########.fr        #
+#    Updated: 2023/10/02 16:09:47 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ LIBFT_DIR = ./lib/libft
 LIBFT_INC = -I $(LIBFT_DIR)
 
 LIBS = ${MLX} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
+#LIBS = ${MLX} -Iinclude -lglfw -L"/home/linuxbrew/.linuxbrew/Cellar/glfw/3.3.8/lib"
 INCLUDE = $(HEADER_INC) $(MLX_INC)
 
 #=================== Files =======================#

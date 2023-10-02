@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 15:12:14 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:14:23 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ void	*ft_realloc(void *first, int size, int increasing_size)
 	ret = ft_calloc(size + increasing_size, (sizeof(*first)));
 	if (!ret)
 		return (NULL);
+	ft_memcpy(ret, first, size * sizeof(first));
+	printf("iinside\n");
 	free(first);
-	ret = ft_memcpy(ret, first, size * sizeof(first));
+	printf("ret: %p\n", ret);
 	return (ret);
 }
 
@@ -94,9 +96,11 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
 	window->lights = ft_realloc(window->lights, window->num_lights, 1);
+	//window->lights = ft_calloc(window->num_lights + 1, sizeof(t_light));
+	printf("realloc not null %p window->lights\n", window->lights);
 	if (window->lights == NULL)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	window->lights[window->num_lights] = light;
-	window->num_lights++;
+	window->num_lights += 1;
 	return (map[OBJ_LIGHT]++, ft_vecfree(split), (t_object){});
 }

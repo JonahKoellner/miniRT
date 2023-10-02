@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 11:08:25 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:16:36 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	id_obj(char *definition_line, int *map, t_window *window)
 		create_light(definition_line, map, window);
 	else
 		return (0);
+	printf("in id-obj end\n");
 	return (1);
 }
 
@@ -53,7 +54,8 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	if (line[index] == '\0')
 		return (l_obj);
 	if (id_obj(&line[index], map, window))
-		return (l_obj);
+		return (printf("ret l_obj\n"), l_obj);
+	printf("after id_obj\n");
 	hit = id_hit(&line[index], map);
 	if (map[OBJ_ERROR] > 0)
 		return (NULL);
@@ -74,13 +76,15 @@ t_obj_list	*read_file(int fd, t_window *window)
 	if (!head)
 		return (NULL);
 	map = ft_calloc(OBJ_ENUM_SIZE, sizeof(int));
+	if (map == NULL)
+		return (NULL);
 	root = head;
 	while (gnl)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
+		printf("head %p\n", head);
 		check_map(map);
-		printf("%p\n", head);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);
@@ -98,16 +102,17 @@ int	parser(char *filename, t_window *window)
 	if (fd < 0)
 		return (1);
 	head = read_file(fd, window);
+	printf("back in parser\n");
 	if (!head)
 		return (1);
 	window->objects = head;
-	while (head->next_obj)
-	{
-		printf("type: %d\n", head->obj.mat.type);
-		printf("color: %f %f %f\n", head->obj.mat.color.x, head->obj.mat.color.y, head->obj.mat.color.z);
-		printf("center: %f %f %f\n", head->obj.obj.sphere.center.x, head->obj.obj.sphere.center.y, head->obj.obj.sphere.center.z);
-		printf("radius: %f\n", head->obj.obj.sphere.radius);
-		head = head->next_obj;
-	}
+	//while (head->next_obj)
+	//{
+	//	printf("type: %d\n", head->obj.mat.type);
+	//	printf("color: %f %f %f\n", head->obj.mat.color.x, head->obj.mat.color.y, head->obj.mat.color.z);
+	//	printf("center: %f %f %f\n", head->obj.obj.sphere.center.x, head->obj.obj.sphere.center.y, head->obj.obj.sphere.center.z);
+	//	printf("radius: %f\n", head->obj.obj.sphere.radius);
+	//	head = head->next_obj;
+	//}
 	return (0);
 }
