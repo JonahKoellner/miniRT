@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/01 17:10:50 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:11:13 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,21 @@ t_object	create_plane(char *define_line, int *map)
 t_object	create_sphere(char *define_line, int *map)
 {
 	char		**split;
-	t_vec3		*vec;
 	t_object	obj;
 
 	split = ft_split(define_line, ' ');
 	if (!split)
 		return (map[OBJ_ERROR]++, (t_object){});
-	vec = ft_calloc(1, sizeof(t_vec3));
-	if (!vec)
-		return (ft_vecfree(split), map[OBJ_ERROR]++, (t_object){});
-	if (ft_atov(split[1], vec))
-		return (free(vec), ft_vecfree(split), map[OBJ_ERROR]++, (t_object){});
-	obj.obj.sphere.center = *vec;
-	obj.obj.sphere.radius = ft_atof(split[2]);
-	if (obj.obj.sphere.radius < 0)
-		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
-	if (ft_atov(split[3], vec))
-		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
-	if ((vec->x > 255 || vec->x < 0) || (vec->y > 255 || vec->y < 0)
-		|| (vec->z > 255 || vec->z < 0))
-		return (ft_vecfree(split), free(vec), map[OBJ_ERROR]++, (t_object){});
-	obj.mat.color = *vec;
+	if (!(ft_veclen(split) == 4 || ft_veclen(split) == 5))
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	obj.obj.sphere.center = fill_vec(split[1], map, -INFINITY, INFINITY);
+	obj.obj.sphere.radius = fill_double(split[2], map, 0, INFINITY);
+	obj.mat.color = fill_vec(split[3], map, 0, 255);
 	obj.mat.type = METAL;
+	if (ft_veclen(split) == 5)
+		obj.mat.type = fill_material(split[4], map);
 	obj.hit_func = &hit_sphere;
-	return (map[OBJ_SPHERE]++, ft_vecfree(split), free(vec), obj);
+	return (map[OBJ_SPHERE]++, ft_vecfree(split), obj);
 }
 
 t_object	create_cylinder(char *define_line, int *map)

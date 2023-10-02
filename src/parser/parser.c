@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:44:37 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:08:25 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	id_obj(char *definition_line, int *map, t_window *window)
 {
 	if (!ft_strncmp("A ", definition_line, 2))
-		create_ambient_light(definition_line, map, window);
+		create_amb_light(definition_line, map, window);
 	else if (!ft_strncmp("C ", definition_line, 2))
 		create_camera(definition_line, map, window);
 	else if (!ft_strncmp("L ", definition_line, 2))
@@ -30,6 +30,7 @@ t_object	id_hit(char *definition_line, int *map)
 	t_object	obj;
 
 	definition_line = ft_strtrim(definition_line, " \n");
+	printf("def: %s\n", definition_line);
 	if (!ft_strncmp("pl ", definition_line, 3))
 		obj = create_plane(definition_line, map);
 	else if (!ft_strncmp("sp ", definition_line, 3))
@@ -50,7 +51,7 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	while (ft_isspace(line[index]))
 		index++;
 	if (line[index] == '\0')
-		return (NULL);
+		return (l_obj);
 	if (id_obj(&line[index], map, window))
 		return (l_obj);
 	hit = id_hit(&line[index], map);
@@ -78,6 +79,8 @@ t_obj_list	*read_file(int fd, t_window *window)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
+		check_map(map);
+		printf("%p\n", head);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);

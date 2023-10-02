@@ -6,13 +6,13 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 14:42:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:57:59 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_object	create_ambient_light(char *define_line, int *map, t_window *window)
+t_object	create_amb_light(char *define_line, int *map, t_window *window)
 {
 	//int			index;
 	//char		**split;

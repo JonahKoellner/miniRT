@@ -6,7 +6,7 @@
 #    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/09/25 15:58:10 by jkollner         ###   ########.fr        #
+#    Updated: 2023/10/02 10:59:27 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ VEC3_FILES = vec3_doub_op.c vec3_math.c vec3_utils.c vec3_vec3_op.c
 
 PARSER = $(addprefix $(PARSER_DIR), $(PARSER_FILES))
 PARSER_DIR = $(addprefix $(SRC_DIR), parser/)
-PARSER_FILES = parser.c gnl.c gnl_utils.c parser_create_hit.c parser_create_obj.c parser_error.c parser_utils.c
+PARSER_FILES = parser.c gnl.c gnl_utils.c parser_create_hit.c parser_create_obj.c parser_error.c parser_utils.c parser_creation_utils.c
 
 #=================== Objects =======================#
 
