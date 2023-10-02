@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/01 17:23:26 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:50:58 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_object{
 }	t_object;
 
 typedef struct s_obj_list{
-	t_object obj;
-	struct s_obj_list *next_obj;
+	t_object			obj;
+	struct s_obj_list	*next_obj;
 }	t_obj_list;
 
 t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval);
