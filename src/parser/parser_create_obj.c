@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 10:57:59 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:49:08 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,20 @@ t_object	create_camera(char *define_line, int *map, t_window *window)
 
 t_object	create_light(char *define_line, int *map, t_window *window)
 {
-	if (map[OBJ_LIGHT] > 0)
+	char		**split;
+	t_object	obj;
+
+	split = ft_split(define_line, ' ');
+	if (!split)
 		return (map[OBJ_ERROR]++, (t_object){});
-	(void)define_line;
-	(void)window;
-	map[OBJ_LIGHT]++;
-	printf("light\n");
-	return ((t_object){});
+	if (!(ft_veclen(split) == 4 || ft_veclen(split) == 5))
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	obj.obj.sphere.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
+	obj.obj.sphere.brightness = fill_double(split[2], map, 0, 1);
+	obj.mat.color = fill_vec(split[3], map, 0, 255);
+	obj.mat.type = METAL;
+	if (ft_veclen(split) == 5)
+		obj.mat.type = fill_material(split[4], map);
+	obj.hit_func = &hit_sphere;
+	return (map[OBJ_LIGHT]++, ft_vecfree(split), obj);
 }
