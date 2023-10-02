@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 15:06:49 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:11:12 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	*ft_realloc(void *first, int size, int increasing_size)
 	if (!ret)
 		return (NULL);
 	free(first);
-	ret = ft_memcpy(ret, first, size);
+	ret = ft_memcpy(ret, first, size * sizeof(first));
 	return (ret);
 }
 
@@ -93,8 +93,8 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 	light.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
-	window->num_lights++;
 	window->lights = ft_realloc(window->lights, window->num_lights, 1);
-	window->lights[window->num_lights - 1] = light;
+	window->lights[window->num_lights] = light;
+	window->num_lights++;
 	return (map[OBJ_LIGHT]++, ft_vecfree(split), (t_object){});
 }
