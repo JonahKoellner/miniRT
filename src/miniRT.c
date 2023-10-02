@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/01 17:13:17 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:12:31 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ int main(int argc, char *argv[])
 			window->mlx_window->width, window->mlx_window->height);
 	if (!window->mlx_image || (mlx_image_to_window(window->mlx_window, window->mlx_image, 0, 0) < 0))
 		return (1);
-	init_lights(window);
+	// init_lights(window);
 	//init_objects(window);
 	if (argc != 2)
 		return (1);

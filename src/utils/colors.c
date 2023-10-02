@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/01 17:58:50 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:19:01 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vec3	ray_color(t_ray r, int deph, t_window *window)
 {
 	t_vec3		color;
 	t_hit		hit;
-	t_vec3		ambient = (t_vec3){0.5, 0.5, 0.5};
+	t_vec3		ambient = (t_vec3){0.0, 0.0, 0.0};
 	int			i;
 
 	i = 0;
