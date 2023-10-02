@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 15:11:12 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/02 15:12:14 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
 	window->lights = ft_realloc(window->lights, window->num_lights, 1);
+	if (window->lights == NULL)
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	window->lights[window->num_lights] = light;
 	window->num_lights++;
 	return (map[OBJ_LIGHT]++, ft_vecfree(split), (t_object){});
