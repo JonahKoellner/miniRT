@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 16:16:36 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/04 10:54:35 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	id_obj(char *definition_line, int *map, t_window *window)
 {
+	definition_line = ft_strtrim(definition_line, " \n");
 	if (!ft_strncmp("A ", definition_line, 2))
 		create_amb_light(definition_line, map, window);
 	else if (!ft_strncmp("C ", definition_line, 2))
@@ -22,7 +23,6 @@ int	id_obj(char *definition_line, int *map, t_window *window)
 		create_light(definition_line, map, window);
 	else
 		return (0);
-	printf("in id-obj end\n");
 	return (1);
 }
 
@@ -31,7 +31,6 @@ t_object	id_hit(char *definition_line, int *map)
 	t_object	obj;
 
 	definition_line = ft_strtrim(definition_line, " \n");
-	printf("def: %s\n", definition_line);
 	if (!ft_strncmp("pl ", definition_line, 3))
 		obj = create_plane(definition_line, map);
 	else if (!ft_strncmp("sp ", definition_line, 3))
@@ -54,8 +53,7 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	if (line[index] == '\0')
 		return (l_obj);
 	if (id_obj(&line[index], map, window))
-		return (printf("ret l_obj\n"), l_obj);
-	printf("after id_obj\n");
+		return (l_obj);
 	hit = id_hit(&line[index], map);
 	if (map[OBJ_ERROR] > 0)
 		return (NULL);
@@ -83,8 +81,7 @@ t_obj_list	*read_file(int fd, t_window *window)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
-		printf("head %p\n", head);
-		check_map(map);
+		//check_map(map);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);
@@ -102,7 +99,6 @@ int	parser(char *filename, t_window *window)
 	if (fd < 0)
 		return (1);
 	head = read_file(fd, window);
-	printf("back in parser\n");
 	if (!head)
 		return (1);
 	window->objects = head;

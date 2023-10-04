@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 16:14:23 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/04 10:44:22 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,20 @@ t_object	create_camera(char *define_line, int *map, t_window *window)
 
 }
 
-void	*ft_realloc(void *first, int size, int increasing_size)
+void	*ft_array_realloc(void *array, size_t old_size, size_t new_size, size_t elem_size)
 {
-	void	*ret;
+	void	*new_array;
 
-	ret = ft_calloc(size + increasing_size, (sizeof(*first)));
-	if (!ret)
+	new_array = ft_calloc(new_size, elem_size);
+	if (!new_array)
 		return (NULL);
-	ft_memcpy(ret, first, size * sizeof(first));
-	printf("iinside\n");
-	free(first);
-	printf("ret: %p\n", ret);
-	return (ret);
+	if (array)
+	{
+		ft_memcpy(new_array, array, old_size * elem_size);
+		free(array);
+	}
+	return (new_array);
 }
-
 t_object	create_light(char *define_line, int *map, t_window *window)
 {
 	char		**split;
@@ -95,9 +95,8 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 	light.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
-	window->lights = ft_realloc(window->lights, window->num_lights, 1);
-	//window->lights = ft_calloc(window->num_lights + 1, sizeof(t_light));
-	printf("realloc not null %p window->lights\n", window->lights);
+	printf("Error %d\n", map[OBJ_ERROR]);
+	window->lights = ft_array_realloc(window->lights, window->num_lights, window->num_lights + 1, sizeof(t_light));
 	if (window->lights == NULL)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	window->lights[window->num_lights] = light;
