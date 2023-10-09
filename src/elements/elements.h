@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 21:44:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/26 15:56:54 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_light
 {
 	t_vec3		origin;
 	double		brightness;
+	t_vec3		color;
 }	t_light;
 
 typedef struct s_camera{

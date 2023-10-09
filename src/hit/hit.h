@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 22:25:15 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 11:50:58 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ typedef struct s_material
 {
 	t_MaterialType	type;
 	t_vec3			color;
-	// double			reflectance;
+	double			ambient;
+	double			diffuse;
+	double			specular;
 }	t_material;
 
 typedef struct s_hit
@@ -56,15 +58,18 @@ typedef union u_hittable
 	t_cylinder	cylinder;
 }	t_hittable;
 
-
-
 typedef struct s_object{
 	t_hittable	obj;
 	t_hit		(*hit_func)(t_hittable obj, t_ray ray, t_interval interval);
 	t_material	mat;
 }	t_object;
 
-t_hit	hit_object(t_object *objects, t_ray ray, t_interval interval);
+typedef struct s_obj_list{
+	t_object			obj;
+	struct s_obj_list	*next_obj;
+}	t_obj_list;
+
+t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval);
 
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 

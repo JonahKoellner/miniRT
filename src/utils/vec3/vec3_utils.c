@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:42:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/18 21:54:51 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:42:12 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,14 @@ t_vec3	random_unit_vec3(void)
 			random_double(-1, 1),
 			random_double(-1, 1),
 			random_double(-1, 1)
+		});
+}
+t_vec3	vec3_clamp(t_vec3 vec, double min, double max)
+{
+	return ((t_vec3)
+		{
+			fmin(fmax(vec.x, min), max),
+			fmin(fmax(vec.y, min), max),
+			fmin(fmax(vec.z, min), max)
 		});
 }

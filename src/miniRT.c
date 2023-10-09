@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/21 00:35:21 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:08:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	key_hook(void* param)
 		mlx_close_window(mlx);
 }
 
-t_camera	create_camera(int width, int height)
+t_camera	create_ccamera(int width, int height)
 {
 	t_camera camera;
 
@@ -77,81 +77,94 @@ int	gradient_test(t_window	*window)
 	return (0);
 }
 
-void	init_objects(t_window *window)
+//void	init_objects(t_window *window)
+//{
+//	t_material mat_ground;
+//	mat_ground.type = LAMBERTIAN;
+//	mat_ground.color = (t_vec3){0.8, 0.8, 0.0};
+//	// mat_ground.reflectance = 0.2;
+
+//	t_material mat_mid;
+//	mat_mid.type = LAMBERTIAN;
+//	mat_mid.color = (t_vec3){0.7, 0.3, 0.3};
+//	// mat_ground.reflectance = 0.2;
+
+//	t_material mat_metal_even;
+//	mat_metal_even.type = METAL;
+//	mat_metal_even.color = (t_vec3){0.8, 0.8, 0.8};
+//	// mat_metal_even.reflectance = 0.7;
+
+//	t_material mat_metal_yellow;
+//	mat_metal_yellow.type = METAL;
+//	mat_metal_yellow.color = (t_vec3){0.8, 0.6, 0.2};
+//	// mat_metal_yellow.reflectance = 0.7;
+
+//	t_material stop;
+//	stop.type = STOP;
+
+//	window->objects = ft_calloc(6, sizeof(t_object));
+//	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
+//	// window->objects[0].hit_func = &hit_sphere;
+//	// window->objects[0].mat = mat_ground;
+
+//	window->objects[0].obj = (t_hittable){.plane = (t_plane){{0, -0.5, -1}, {0, -1, 0}}};
+//	window->objects[0].hit_func = &hit_plane;
+//	window->objects[0].mat = mat_ground;
+
+//	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
+//	// window->objects[1].hit_func = &hit_sphere;
+//	// window->objects[1].mat = mat_mid;
+
+//	window->objects[1].obj = (t_hittable){.cylinder = (t_cylinder){{0, -0.5, -1}, {0, 1, 0.0}, .5, 50}};
+//	window->objects[1].hit_func = &hit_cylinder;
+//	window->objects[1].mat = mat_metal_yellow;
+
+//	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{-1.0, 0, -1.0}, .5}};
+//	window->objects[2].hit_func = &hit_sphere;
+//	window->objects[2].mat = mat_metal_even;
+
+//	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
+//	window->objects[3].hit_func = &hit_sphere;
+//	window->objects[3].mat = mat_mid;
+
+//	window->objects[4].mat = stop;
+
+//	// t_material	material;
+//	// material.type = LAMBERTIAN;
+//	// material.color = (t_vec3){0.0, 0.0, 0.0};
+//	// t_material	material2;
+//	// material2.type = METAL;
+//	// material2.color = (t_vec3){0.9, 0.9, 0.9};
+//	// window->objects = ft_calloc(5, sizeof(t_object));
+//	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -2}, 0.3}};
+//	// window->objects[0].hit_func = &hit_sphere;
+//	// window->objects[0].mat = material;
+//	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{-.5, .5, -2}, 0.3}};
+//	// window->objects[1].hit_func = &hit_sphere;
+//	// window->objects[1].mat = material;
+//	// material.color = (t_vec3){1.0, 0.8, 0.5};
+//	// window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -2}, 0.5}};
+//	// window->objects[2].hit_func = &hit_sphere;
+//	// window->objects[2].mat = material;
+//	// window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{0, -1001.0, -1}, 1000}};
+//	// window->objects[3].hit_func = &hit_sphere;
+//	// window->objects[3].mat = material2;
+//}
+
+void	init_lights(t_window *window)
 {
-	t_material mat_ground;
-	mat_ground.type = LAMBERTIAN;
-	mat_ground.color = (t_vec3){0.8, 0.8, 0.0};
-	// mat_ground.reflectance = 0.2;
-
-	t_material mat_mid;
-	mat_mid.type = LAMBERTIAN;
-	mat_mid.color = (t_vec3){0.7, 0.3, 0.3};
-	// mat_ground.reflectance = 0.2;
-
-	t_material mat_metal_even;
-	mat_metal_even.type = METAL;
-	mat_metal_even.color = (t_vec3){0.8, 0.8, 0.8};
-	// mat_metal_even.reflectance = 0.7;
-
-	t_material mat_metal_yellow;
-	mat_metal_yellow.type = METAL;
-	mat_metal_yellow.color = (t_vec3){0.8, 0.6, 0.2};
-	// mat_metal_yellow.reflectance = 0.7;
-
-	t_material stop;
-	stop.type = STOP;
-
-	window->objects = ft_calloc(6, sizeof(t_object));
-	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
-	// window->objects[0].hit_func = &hit_sphere;
-	// window->objects[0].mat = mat_ground;
-
-	window->objects[0].obj = (t_hittable){.plane = (t_plane){{0, -0.5, -1}, {0, -1, 0}}};
-	window->objects[0].hit_func = &hit_plane;
-	window->objects[0].mat = mat_ground;
-
-	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
-	// window->objects[1].hit_func = &hit_sphere;
-	// window->objects[1].mat = mat_mid;
-	
-	window->objects[1].obj = (t_hittable){.cylinder = (t_cylinder){{0, -0.5, -1}, {0, 1, 0.0}, .5, 50}};
-	window->objects[1].hit_func = &hit_cylinder;
-	window->objects[1].mat = mat_metal_yellow;
-
-	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{-1.0, 0, -1.0}, .5}};
-	window->objects[2].hit_func = &hit_sphere;
-	window->objects[2].mat = mat_metal_even;
-
-	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
-	window->objects[3].hit_func = &hit_sphere;
-	window->objects[3].mat = mat_mid;
-	
-	window->objects[4].mat = stop;
-
-	// t_material	material;
-	// material.type = LAMBERTIAN;
-	// material.color = (t_vec3){0.0, 0.0, 0.0};
-	// t_material	material2;
-	// material2.type = METAL;
-	// material2.color = (t_vec3){0.9, 0.9, 0.9};
-	// window->objects = ft_calloc(5, sizeof(t_object));
-	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -2}, 0.3}};
-	// window->objects[0].hit_func = &hit_sphere;
-	// window->objects[0].mat = material;
-	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{-.5, .5, -2}, 0.3}};
-	// window->objects[1].hit_func = &hit_sphere;
-	// window->objects[1].mat = material;
-	// material.color = (t_vec3){1.0, 0.8, 0.5};
-	// window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -2}, 0.5}};
-	// window->objects[2].hit_func = &hit_sphere;
-	// window->objects[2].mat = material;
-	// window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{0, -1001.0, -1}, 1000}};
-	// window->objects[3].hit_func = &hit_sphere;
-	// window->objects[3].mat = material2;
+	window->lights = ft_calloc(1, sizeof(t_light));
+	window->lights[0].origin = (t_vec3){1, 0.2, 1};
+	window->lights[0].color = (t_vec3){1, 1, 1};
+	window->lights[0].brightness = 0.1;
+	// window->lights[1].origin = (t_vec3){2, 2, 1};
+	// window->lights[1].color = (t_vec3){1, 1, 1};
+	// window->lights[2].origin = (t_vec3){0, 0, 1};
+	// window->lights[2].color = (t_vec3){1, 1, 1};
+	window->num_lights = 1;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	t_window	*window;
 	int			width;
@@ -159,7 +172,7 @@ int main(void)
 	width = 400;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
-	window->camera = create_camera(width, (int)(width / window->aspect_ratio));
+	window->camera = create_ccamera(width, (int)(width / window->aspect_ratio));
 	window->mlx_window = mlx_init(width, (int)(width / window->aspect_ratio), "miniRT", true);
 	if (!window->mlx_window)
 		return (1);
@@ -167,9 +180,15 @@ int main(void)
 			window->mlx_window->width, window->mlx_window->height);
 	if (!window->mlx_image || (mlx_image_to_window(window->mlx_window, window->mlx_image, 0, 0) < 0))
 		return (1);
-
-	init_objects(window);
-
+	window->lights = ft_calloc(1, sizeof(t_light));
+	window->num_lights = 0;
+	// init_lights(window);
+	//init_objects(window);
+	if (argc != 2)
+		return (1);
+	if (parser(argv[1], window))
+		return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
+	printf("back in main\n");
 	gradient_test(window);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anti_aliasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 18:34:50 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:53:58 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_vec3	pixel_sample_square(t_window *window, int i, int j)
 		u = -0.5 + drand48();
 		v = -0.5 + drand48();
 		ray = get_ray(window->camera, i + u, j + v);
-		pixel_color = vec3_add_vec3(pixel_color, ray_color(ray, DEPTH, window->objects));
+		pixel_color = vec3_add_vec3(pixel_color, ray_color(ray, DEPTH, window));
 	}
 	pixel_color = vec3_div_double(pixel_color, samples);
 	return (pixel_color);
