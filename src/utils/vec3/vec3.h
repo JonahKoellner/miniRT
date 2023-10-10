@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:14:32 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 19:11:19 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:24:12 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_vec3	vmultv(t_vec3 first, t_vec3 second);
 t_vec3	rand_on_hemi(t_vec3 normal);
 t_vec3	random_unitv(void);
 bool	near_zero(t_vec3 vec);
+t_vec3	negate(t_vec3 v);
 
 #endif

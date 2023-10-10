@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 22:02:44 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 01:53:42 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,31 @@ void	key_hook(void* param)
 		mlx_close_window(mlx);
 }
 
-t_camera	create_ccamera(int width, int height)
+t_camera	create_ccamera(int width, int height, t_ray	cam_ray, double fov)
 {
 	t_camera camera;
-
-	camera.viewport_height = 2.0;
-	camera.focal_length = 1.0;
+	t_vec3	u;
+	t_vec3	v;
+	t_vec3	w;
+	
+	w = unitv(cam_ray.direction);
+	u = unitv(cross((t_vec3){0, 1, 0}, w));
+	v = negate(cross(u, w));
+	camera.viewport_height = 2 * tan(degrees_to_radians(fov) / 2);
+	camera.focal_length = 0.2;
 	camera.viewport_width = camera.viewport_height
 								* ((double)(width) / height);
-	camera.cam_center = (t_vec3){0, 0, 0};
-	camera.viewport_u = (t_vec3){camera.viewport_width, 0, 0};
-	camera.viewport_v = (t_vec3){0, - camera.viewport_height, 0};
+	camera.cam_center = cam_ray.origin;
+	camera.viewport_u = vmultv((t_vec3){camera.viewport_width, 0, 0}, u);
+	camera.viewport_v = vmultv((t_vec3){0, - camera.viewport_height, 0}, v);
 	camera.pix_delt_u = vdivd(camera.viewport_u, (double)width);
 	camera.pix_delt_v = vdivd(camera.viewport_v, (double)height);
-
-	camera.viewport_upr_left = vsubv(vsubv(vsubv
-				(camera.cam_center,
-					(t_vec3){0, 0, camera.focal_length}), vdivd
-				(camera.viewport_u, 2)),
-					vdivd(camera.viewport_v, 2));
+	// camera.viewport_upr_left = vsubv(vsubv(vsubv(camera.cam_center,
+	// 				vmultv((t_vec3){0, 0, camera.focal_length}, w)),
+	// 			vdivd(camera.viewport_u, 2)), vdivd(camera.viewport_v, 2));
+	camera.viewport_upr_left = vsubv(camera.cam_center,
+			vaddv(vaddv(vdivd(camera.viewport_u, 2), vdivd(camera.viewport_v, 2)),
+				vmultv((t_vec3){0, 0, camera.focal_length}, w)));
 	camera.auf_lock = vaddv(camera.viewport_upr_left,
 			vmultd
 			(vaddv(camera.pix_delt_u, camera.pix_delt_v), 0.5));
@@ -132,28 +138,15 @@ int gradient_test(t_window *window)
 // 	return (0);
 // }
 
-void	init_lights(t_window *window)
-{
-	window->lights = ft_calloc(1, sizeof(t_light));
-	window->lights[0].origin = (t_vec3){1, 0.2, 1};
-	window->lights[0].color = (t_vec3){1, 1, 1};
-	window->lights[0].brightness = 0.1;
-	// window->lights[1].origin = (t_vec3){2, 2, 1};
-	// window->lights[1].color = (t_vec3){1, 1, 1};
-	// window->lights[2].origin = (t_vec3){0, 0, 1};
-	// window->lights[2].color = (t_vec3){1, 1, 1};
-	window->num_lights = 1;
-}
-
 int main(int argc, char *argv[])
 {
 	t_window	*window;
 	int			width;
 
-	width = 1440;
+	width = 800;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
-	window->camera = create_ccamera(width, (int)(width / window->aspect_ratio));
+	// window->camera = create_ccamera(width, (int)(width / window->aspect_ratio));
 	window->mlx_window = mlx_init(width, (int)(width / window->aspect_ratio), "miniRT", true);
 	if (!window->mlx_window)
 		return (1);

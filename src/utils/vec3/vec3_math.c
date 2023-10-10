@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:45:41 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 23:23:57 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ t_vec3	random_in_unit_sphere(void)
 			continue ;
 		return (p);
 	}
+}
+
+t_vec3	negate(t_vec3 v)
+{
+	return ((t_vec3){-v.x, -v.y, -v.z});
 }

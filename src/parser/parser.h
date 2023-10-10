@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 10:58:29 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/11 00:58:38 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int				ft_strdnum(char *str);
 t_vec3			fill_vec(char *subj, int *map, double min, double max);
 double			fill_double(char *subj, int *map, double min, double max);
 t_MaterialType	fill_material(char *subj, int *map);
+
+void			*parse_camera(char *str, int *map, t_window *window);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/10 18:03:48 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:35:27 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_camera{
 	double	viewport_height;
 	double	focal_length;
 	double	viewport_width;
+	double	fov;
 	t_vec3	cam_center;
 	t_vec3	viewport_u;
 	t_vec3	viewport_v;

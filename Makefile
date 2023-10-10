@@ -6,7 +6,7 @@
 #    By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/10/10 21:56:48 by mreidenb         ###   ########.fr        #
+#    Updated: 2023/10/10 22:51:58 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ HIT_FILES = hit.c
 
 UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 UTILS_DIR = $(addprefix $(SRC_DIR), utils/)
-UTILS_FILES = colors.c anti_aliasing.c
+UTILS_FILES = colors.c anti_aliasing.c math_utils.c
 
 RAY = $(addprefix $(RAY_DIR), $(RAY_FILES))
 RAY_DIR = $(addprefix $(UTILS_DIR), ray/)
