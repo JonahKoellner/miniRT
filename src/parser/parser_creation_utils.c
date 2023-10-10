@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_creation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/04 10:54:28 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:07:17 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 	if ((ret.x > max || ret.x < min) || (ret.y > max || ret.y < min)
 		|| (ret.z > max || ret.z < min))
 		return (map[OBJ_ERROR]++, (t_vec3){});
+	// hack around
+	if (min == 0 && max == 255)
+	{
+		ret.x /= 255;
+		ret.y /= 255;
+		ret.z /= 255;
+	}
 	return (ret);
 }
 
