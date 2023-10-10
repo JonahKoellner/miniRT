@@ -6,16 +6,16 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 18:28:53 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:45:30 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SRC_H
 # define SRC_H
 
-# define BACK_COL_R 0
-# define BACK_COL_G 0
-# define BACK_COL_B 0
+# define BACK_COL_R 0.5
+# define BACK_COL_G 0.3
+# define BACK_COL_B 0.3
 
 typedef struct s_window{
 	mlx_t		*mlx_window;
@@ -25,8 +25,8 @@ typedef struct s_window{
 	t_obj_list	*objects;
 	t_light		*lights;
 	int			num_lights;
+	t_ambient	ambient;
 }	t_window;
-
 
 int			mlx_color(t_vec3 color);
 t_vec3		pixel_sample_square(t_window *window, int i, int j);

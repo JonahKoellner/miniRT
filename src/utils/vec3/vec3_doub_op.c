@@ -6,13 +6,13 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:41:28 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/13 23:03:48 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:55:38 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vec3	vec3_mult_double(t_vec3 first, double second)
+t_vec3	vmultd(t_vec3 first, double second)
 {
 	t_vec3	ret;
 
@@ -22,7 +22,7 @@ t_vec3	vec3_mult_double(t_vec3 first, double second)
 	return (ret);
 }
 
-t_vec3	vec3_div_double(t_vec3 first, double second)
+t_vec3	vdivd(t_vec3 first, double second)
 {
 	t_vec3	ret;
 

@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 17:21:44 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static double	sphere_root(t_sphere sphere, t_ray ray)
 	double	c;
 	double	discriminant;
 
-	oc = vec3_sub_vec3(ray.origin, sphere.center);
-	a = vec3_length_squared(ray.direction);
+	oc = vsubv(ray.origin, sphere.center);
+	a = vlen_squared(ray.direction);
 	half_b = dot(oc, ray.direction);
-	c = vec3_length_squared(oc) - sphere.radius * sphere.radius;
+	c = vlen_squared(oc) - sphere.radius * sphere.radius;
 	discriminant = half_b * half_b - a * c;
 	if (discriminant < 0)
 		return (-1.0);
@@ -35,9 +35,9 @@ static t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
 {
 	t_vec3	normal;
 
-	normal = vec3_div_double(vec3_sub_vec3(point, sphere.center),
+	normal = vdivd(vsubv(point, sphere.center),
 			sphere.radius);
-	normal = unit_vec(normal);
+	normal = unitv(normal);
 	return (normal);
 }
 

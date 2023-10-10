@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/26 15:56:54 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:03:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ typedef struct s_light
 	t_vec3		color;
 }	t_light;
 
+typedef struct s_ambient
+{
+	t_vec3		color;
+	double		brightness;
+}	t_ambient;
+
 typedef struct s_camera{
 	double	viewport_height;
 	double	focal_length;
@@ -54,7 +60,5 @@ typedef struct s_camera{
 	t_vec3	viewport_upr_left;
 	t_vec3	auf_lock;
 }	t_camera;
-
-
 
 #endif

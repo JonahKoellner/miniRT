@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:14:32 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 13:20:34 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:11:19 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ typedef struct s_vec3{
 	double	z;
 }	t_vec3;
 
-t_vec3	vec3_sub_vec3(t_vec3 first, t_vec3 second);
-t_vec3	vec3_add_vec3(t_vec3 first, t_vec3 second);
-t_vec3	vec3_mult_double(t_vec3 first, double second);
-t_vec3	vec3_div_double(t_vec3 first, double second);
-double	vec3_length(t_vec3 vec);
-double	vec3_length_squared(t_vec3 vec);
+t_vec3	vsubv(t_vec3 first, t_vec3 second);
+t_vec3	vaddv(t_vec3 first, t_vec3 second);
+t_vec3	vmultd(t_vec3 first, double second);
+t_vec3	vdivd(t_vec3 first, double second);
+double	vlen(t_vec3 vec);
+double	vlen_squared(t_vec3 vec);
 t_vec3	cross(t_vec3 u, t_vec3 v);
 double	dot(t_vec3 u, t_vec3 v);
-t_vec3	unit_vec(t_vec3 v);
+t_vec3	unitv(t_vec3 v);
 double	random_double(double min, double max);
-t_vec3	random_unit_vec3(void);
-t_vec3	vec3_mult_vec3(t_vec3 first, t_vec3 second);
+t_vec3	random_unitv3(void);
+t_vec3	vmultv(t_vec3 first, t_vec3 second);
+t_vec3	rand_on_hemi(t_vec3 normal);
+t_vec3	random_unitv(void);
+bool	near_zero(t_vec3 vec);
 
 #endif

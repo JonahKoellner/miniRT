@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_vec3_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:17:05 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/19 13:20:17 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vec3	vec3_add_vec3(t_vec3 first, t_vec3 second)
+t_vec3	vaddv(t_vec3 first, t_vec3 second)
 {
 	t_vec3 ret;
 
@@ -22,7 +22,7 @@ t_vec3	vec3_add_vec3(t_vec3 first, t_vec3 second)
 	return (ret);
 }
 
-t_vec3	vec3_sub_vec3(t_vec3 first, t_vec3 second)
+t_vec3	vsubv(t_vec3 first, t_vec3 second)
 {
 	t_vec3 ret;
 
@@ -32,7 +32,7 @@ t_vec3	vec3_sub_vec3(t_vec3 first, t_vec3 second)
 	return (ret);
 }
 
-t_vec3	vec3_mult_vec3(t_vec3 first, t_vec3 second)
+t_vec3	vmultv(t_vec3 first, t_vec3 second)
 {
 	t_vec3 ret;
 

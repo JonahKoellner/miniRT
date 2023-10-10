@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:06:29 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/20 22:06:59 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval)
 	denom = dot(hit_obj.plane.normal, ray.direction);
 	if (fabs(denom) > 0.0001)
 	{
-		root = dot(vec3_sub_vec3(hit_obj.plane.origin, ray.origin),
+		root = dot(vsubv(hit_obj.plane.origin, ray.origin),
 				hit_obj.plane.normal) / denom;
 		if (root < interval.min || interval.max < root)
 			return (hit);

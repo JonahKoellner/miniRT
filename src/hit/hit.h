@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/10 13:44:53 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:03:50 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum MaterialType
 {
 	LAMBERTIAN,
 	METAL,
+	PLASTIC,
 	DIELECTRIC
 }	t_MaterialType;
 
@@ -32,6 +33,7 @@ typedef struct s_material
 	double			ambient;
 	double			diffuse;
 	double			specular;
+	double			shininess;
 }	t_material;
 
 typedef struct s_hit
@@ -77,5 +79,7 @@ t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval);
 t_hit	hit_cylinder(t_hittable hit_obj, t_ray ray, t_interval interval);
 
 t_ray	scatter(t_hit hit, t_ray ray);
+
+t_material	materials(t_material material);
 
 #endif

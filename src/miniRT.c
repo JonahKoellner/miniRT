@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/02 16:08:09 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:02:44 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+#include <pthread.h>
 
 void	key_hook(void* param)
 {
@@ -30,17 +31,17 @@ t_camera	create_ccamera(int width, int height)
 	camera.cam_center = (t_vec3){0, 0, 0};
 	camera.viewport_u = (t_vec3){camera.viewport_width, 0, 0};
 	camera.viewport_v = (t_vec3){0, - camera.viewport_height, 0};
-	camera.pix_delt_u = vec3_div_double(camera.viewport_u, (double)width);
-	camera.pix_delt_v = vec3_div_double(camera.viewport_v, (double)height);
+	camera.pix_delt_u = vdivd(camera.viewport_u, (double)width);
+	camera.pix_delt_v = vdivd(camera.viewport_v, (double)height);
 
-	camera.viewport_upr_left = vec3_sub_vec3(vec3_sub_vec3(vec3_sub_vec3
+	camera.viewport_upr_left = vsubv(vsubv(vsubv
 				(camera.cam_center,
-					(t_vec3){0, 0, camera.focal_length}), vec3_div_double
+					(t_vec3){0, 0, camera.focal_length}), vdivd
 				(camera.viewport_u, 2)),
-					vec3_div_double(camera.viewport_v, 2));
-	camera.auf_lock = vec3_add_vec3(camera.viewport_upr_left,
-			vec3_mult_double
-			(vec3_add_vec3(camera.pix_delt_u, camera.pix_delt_v), 0.5));
+					vdivd(camera.viewport_v, 2));
+	camera.auf_lock = vaddv(camera.viewport_upr_left,
+			vmultd
+			(vaddv(camera.pix_delt_u, camera.pix_delt_v), 0.5));
 	return (camera);
 }
 
@@ -53,103 +54,83 @@ void	loading(double val, int max)
 	printf("]%.0f %%", ((val / max) * 100));
 }
 
-int	gradient_test(t_window	*window)
+typedef struct {
+	uint32_t start;
+	uint32_t end;
+	t_window *window;
+} thread_args_t;
+
+void *render_thread(void *args)
 {
-	t_vec3	aa_color;
+	thread_args_t *thread_args = (thread_args_t *)args;
+	t_vec3 aa_color;
 
-	printf("\n");
-
-	for (uint32_t j = 0; j < window->mlx_image->height; ++j)
+	for (uint32_t j = thread_args->start; j < thread_args->end; ++j)
 	{
-		for (uint32_t i = 0; i < window->mlx_image->width; ++i)
+		for (uint32_t i = 0; i < thread_args->window->mlx_image->width; ++i)
 		{
-			aa_color = pixel_sample_square(window, i, j);
-			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
+			aa_color = pixel_sample_square(thread_args->window, i, j);
+			mlx_put_pixel(thread_args->window->mlx_image, i, j, mlx_color(aa_color));
 		}
-		printf("\r");
-		loading((double)(j * window->mlx_image->width), (window->mlx_image->height * window->mlx_image->width));
-		// printf("Traced ==> %.0f %%", ((double)(j * window->mlx_image->width)
-			// / (window->mlx_image->height * window->mlx_image->width)) * 100);
-		fflush(stdout);
 	}
+
+	return NULL;
+}
+
+int gradient_test(t_window *window)
+{
+	const uint32_t num_threads = 4;
+	pthread_t threads[num_threads];
+	thread_args_t thread_args[num_threads];
+	uint32_t rows_per_thread = window->mlx_image->height / num_threads;
+	uint32_t remaining_rows = window->mlx_image->height % num_threads;
+	uint32_t start = 0;
+
+	printf("\nTracing[          ]  0 %%");
+
+	for (uint32_t i = 0; i < num_threads; ++i)
+	{
+		thread_args[i].start = start;
+		thread_args[i].end = start + rows_per_thread + (i < remaining_rows ? 1 : 0);
+		thread_args[i].window = window;
+		pthread_create(&threads[i], NULL, render_thread, &thread_args[i]);
+		start = thread_args[i].end;
+	}
+
+	for (uint32_t i = 0; i < num_threads; ++i)
+	{
+		pthread_join(threads[i], NULL);
+	}
+
 	printf("\r");
 	printf("Tracing[==========]100 %%\n");
 	return (0);
 }
 
-//void	init_objects(t_window *window)
-//{
-//	t_material mat_ground;
-//	mat_ground.type = LAMBERTIAN;
-//	mat_ground.color = (t_vec3){0.8, 0.8, 0.0};
-//	// mat_ground.reflectance = 0.2;
+// int	gradient_test(t_window	*window)
+// {
+// 	t_vec3	aa_color;
 
-//	t_material mat_mid;
-//	mat_mid.type = LAMBERTIAN;
-//	mat_mid.color = (t_vec3){0.7, 0.3, 0.3};
-//	// mat_ground.reflectance = 0.2;
+// 	printf("\n");
 
-//	t_material mat_metal_even;
-//	mat_metal_even.type = METAL;
-//	mat_metal_even.color = (t_vec3){0.8, 0.8, 0.8};
-//	// mat_metal_even.reflectance = 0.7;
-
-//	t_material mat_metal_yellow;
-//	mat_metal_yellow.type = METAL;
-//	mat_metal_yellow.color = (t_vec3){0.8, 0.6, 0.2};
-//	// mat_metal_yellow.reflectance = 0.7;
-
-//	t_material stop;
-//	stop.type = STOP;
-
-//	window->objects = ft_calloc(6, sizeof(t_object));
-//	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{0, -100.5, -1}, 100.0}};
-//	// window->objects[0].hit_func = &hit_sphere;
-//	// window->objects[0].mat = mat_ground;
-
-//	window->objects[0].obj = (t_hittable){.plane = (t_plane){{0, -0.5, -1}, {0, -1, 0}}};
-//	window->objects[0].hit_func = &hit_plane;
-//	window->objects[0].mat = mat_ground;
-
-//	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -1}, .5}};
-//	// window->objects[1].hit_func = &hit_sphere;
-//	// window->objects[1].mat = mat_mid;
-
-//	window->objects[1].obj = (t_hittable){.cylinder = (t_cylinder){{0, -0.5, -1}, {0, 1, 0.0}, .5, 50}};
-//	window->objects[1].hit_func = &hit_cylinder;
-//	window->objects[1].mat = mat_metal_yellow;
-
-//	window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{-1.0, 0, -1.0}, .5}};
-//	window->objects[2].hit_func = &hit_sphere;
-//	window->objects[2].mat = mat_metal_even;
-
-//	window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{1.0, 0, -1.0}, .5}};
-//	window->objects[3].hit_func = &hit_sphere;
-//	window->objects[3].mat = mat_mid;
-
-//	window->objects[4].mat = stop;
-
-//	// t_material	material;
-//	// material.type = LAMBERTIAN;
-//	// material.color = (t_vec3){0.0, 0.0, 0.0};
-//	// t_material	material2;
-//	// material2.type = METAL;
-//	// material2.color = (t_vec3){0.9, 0.9, 0.9};
-//	// window->objects = ft_calloc(5, sizeof(t_object));
-//	// window->objects[0].obj = (t_hittable){.sphere = (t_sphere){{.5, .5, -2}, 0.3}};
-//	// window->objects[0].hit_func = &hit_sphere;
-//	// window->objects[0].mat = material;
-//	// window->objects[1].obj = (t_hittable){.sphere = (t_sphere){{-.5, .5, -2}, 0.3}};
-//	// window->objects[1].hit_func = &hit_sphere;
-//	// window->objects[1].mat = material;
-//	// material.color = (t_vec3){1.0, 0.8, 0.5};
-//	// window->objects[2].obj = (t_hittable){.sphere = (t_sphere){{0, 0, -2}, 0.5}};
-//	// window->objects[2].hit_func = &hit_sphere;
-//	// window->objects[2].mat = material;
-//	// window->objects[3].obj = (t_hittable){.sphere = (t_sphere){{0, -1001.0, -1}, 1000}};
-//	// window->objects[3].hit_func = &hit_sphere;
-//	// window->objects[3].mat = material2;
-//}
+// 	#pragma omp parallel for num_threads(16)
+// 	for (uint32_t j = 0; j < window->mlx_image->height; ++j)
+// 	{
+// 		for (uint32_t i = 0; i < window->mlx_image->width; ++i)
+// 		{
+// 			aa_color = pixel_sample_square(window, i, j);
+// 			mlx_put_pixel(window->mlx_image, i, j, mlx_color(aa_color));
+// 		}
+// 		printf("\r");
+// 		loading((double)(j * window->mlx_image->width), (window->mlx_image->height * window->mlx_image->width));
+// 		// printf("Traced ==> %.0f %%", ((double)(j * window->mlx_image->width)
+// 			// / (window->mlx_image->height * window->mlx_image->width)) * 100);
+// 		fflush(stdout);
+// 	}
+// 	printf("\r");
+// 	printf("Tracing[==========]100 %%\n");
+// 	return (0);
+// }
 
 void	init_lights(t_window *window)
 {
@@ -169,7 +150,7 @@ int main(int argc, char *argv[])
 	t_window	*window;
 	int			width;
 
-	width = 400;
+	width = 1440;
 	window = malloc(1 * sizeof(t_window));
 	window->aspect_ratio = 16.0 / 9.0;
 	window->camera = create_ccamera(width, (int)(width / window->aspect_ratio));
@@ -247,14 +228,14 @@ int main(int argc, char *argv[])
 // 	t_vec3	cam_center = {0, 0, 0};
 // 	t_vec3	viewport_u = {viewport_width, 0, 0};
 // 	t_vec3	viewport_v = {0, -viewport_height, 0};
-// 	t_vec3	pix_delt_u = vec3_div_double(viewport_u, (double)width);
-// 	t_vec3	pix_delt_v = vec3_div_double(viewport_v, (double)height);
+// 	t_vec3	pix_delt_u = vdivd(viewport_u, (double)width);
+// 	t_vec3	pix_delt_v = vdivd(viewport_v, (double)height);
 
-// 	t_vec3	viewport_upr_left = vec3_sub_vec3(vec3_sub_vec3(vec3_sub_vec3
-// 				(cam_center, (t_vec3){0, 0, focal_length}), vec3_div_double
-// 				(viewport_u, 2)), vec3_div_double(viewport_v, 2));
-// 	t_vec3	auf_lock = vec3_add_vec3(viewport_upr_left, vec3_mult_double
-// 			(vec3_add_vec3(pix_delt_u, pix_delt_v), 0.5));
+// 	t_vec3	viewport_upr_left = vsubv(vsubv(vsubv
+// 				(cam_center, (t_vec3){0, 0, focal_length}), vdivd
+// 				(viewport_u, 2)), vdivd(viewport_v, 2));
+// 	t_vec3	auf_lock = vaddv(viewport_upr_left, vmultd
+// 			(vaddv(pix_delt_u, pix_delt_v), 0.5));
 
 // 	mlx = mlx_init((int)width, (int)height, "miniRT", true);
 // 	if (!mlx)
@@ -268,10 +249,10 @@ int main(int argc, char *argv[])
 // 	{
 // 		for (uint32_t i = 0; i < image->width; ++i)
 // 		{
-// 			t_vec3 pix_center = vec3_add_vec3(auf_lock, vec3_add_vec3
-// 					(vec3_mult_double(pix_delt_u, i),
-// 						vec3_mult_double(pix_delt_v, j)));
-// 			t_vec3	ray_direction = vec3_sub_vec3(pix_center, cam_center);
+// 			t_vec3 pix_center = vaddv(auf_lock, vaddv
+// 					(vmultd(pix_delt_u, i),
+// 						vmultd(pix_delt_v, j)));
+// 			t_vec3	ray_direction = vsubv(pix_center, cam_center);
 // 			t_ray	ray = {cam_center, ray_direction};
 // 			mlx_put_pixel(image, i, j, ray_color(ray));
 // 		}

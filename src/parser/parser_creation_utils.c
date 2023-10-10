@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_creation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/09 19:07:17 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/10 17:57:23 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ t_MaterialType	fill_material(char *subj, int *map)
 		return (METAL);
 	else if (!ft_strncmp("lambertian", subj, 10))
 		return (LAMBERTIAN);
+	else if (!ft_strncmp("plastic", subj, 7))
+		return (PLASTIC);
 	else if (!ft_strncmp("dielectric", subj, 10))
 		return (DIELECTRIC);
 	else

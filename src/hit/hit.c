@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/09/28 18:16:22 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:55:13 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval)
 			else
 			{
 				hit.front_facing = false;
-				hit.normal = vec3_mult_double(hit.normal, -1);
+				hit.normal = vmultd(hit.normal, -1);
 			}
 			hit.mat = objects->obj.mat;
 		}

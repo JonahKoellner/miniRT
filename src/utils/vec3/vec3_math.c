@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:45:41 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/28 18:23:48 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_vec3	cross(t_vec3 u, t_vec3 v)
 	return (ret);
 }
 
-t_vec3	unit_vec(t_vec3 v)
+t_vec3	unitv(t_vec3 v)
 {
-	return (vec3_div_double(v, vec3_length(v)));
+	return (vdivd(v, vlen(v)));
 }
 
 t_vec3	random_in_unit_sphere(void)
@@ -38,9 +38,9 @@ t_vec3	random_in_unit_sphere(void)
 
 	while (1)
 	{
-		p = vec3_sub_vec3(vec3_mult_double(random_unit_vec3(), 2),
+		p = vsubv(vmultd(random_unitv3(), 2),
 				(t_vec3){1, 1, 1});
-		if (vec3_length_squared(p) >= 1)
+		if (vlen_squared(p) >= 1)
 			continue ;
 		return (p);
 	}

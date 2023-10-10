@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_obj.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/04 10:44:22 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:08:53 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,19 @@
 
 t_object	create_amb_light(char *define_line, int *map, t_window *window)
 {
-	//int			index;
-	//char		**split;
-	//t_object	ambient_light;
+	char		**split;
+	t_ambient	light;
 
-	//if (map[OBJ_AMBIENT_LIGHT] > 0)
-	//	return (map[OBJ_ERROR]++, (t_object){});
-	//index = 0;
-	//split = ft_split(define_line, ' ');
-	//if (ft_veclen(split) != 3) // num_args + identifier
-	//	return (map[OBJ_ERROR]++, (t_object){});
-	//ambient_light.obj = t_ambinet_light;
-	//ambient_light.obj.ratio = ft_atof(split[1]);
-	(void)define_line;
-	(void)window;
-	map[OBJ_AMBIENT_LIGHT]++;
-	printf("ambient light\n");
-	//return (ambient_light);
-	return ((t_object){}); // for compiling now
+	split = ft_split(define_line, ' ');
+	if (!split)
+		return (map[OBJ_ERROR]++, (t_object){});
+	if (!(ft_veclen(split) == 3))
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	light.brightness = fill_double(split[1], map, 0, 1);
+	light.color = fill_vec(split[2], map, 0, 255);
+	printf("Error %d\n", map[OBJ_ERROR]);
+	window->ambient = light;
+	return (map[OBJ_AMBIENT_LIGHT]++, ft_vecfree(split), (t_object){});
 }
 
 t_object	create_camera(char *define_line, int *map, t_window *window)
