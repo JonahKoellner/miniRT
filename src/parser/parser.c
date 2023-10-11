@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 10:43:51 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/11 22:27:55 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	hit = id_hit(&line[index], map);
 	if (map[OBJ_ERROR] > 0)
 		return (NULL);
+	hit.transform = mat4_identity();
 	l_obj->obj = hit;
 	l_obj->next_obj = ft_calloc(1, sizeof(t_obj_list));
 	return (l_obj->next_obj);

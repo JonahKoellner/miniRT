@@ -6,14 +6,14 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/10 22:35:27 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 00:23:13 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ELEMENTS_H
 # define ELEMENTS_H
 
-# include "../hit/hit.h"
+// # include "../hit/hit.h"
 
 typedef struct s_sphere
 {

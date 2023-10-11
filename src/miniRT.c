@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 10:52:42 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/11 21:50:52 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ t_camera	create_ccamera(int width, int height, t_ray	cam_ray, double fov)
 	t_vec3	v;
 	t_vec3	w;
 
-	w = unitv(cam_ray.direction);
+	w = negate(unitv(cam_ray.direction));
 	u = unitv(cross((t_vec3){0, 1, 0}, w));
 	v = negate(cross(u, w));
 	camera.viewport_height = 2 * tan(degrees_to_radians(fov) / 2);
-	camera.focal_length = 0.2;
+	camera.focal_length = 1;
 	camera.viewport_width = camera.viewport_height
 								* ((double)(width) / height);
 	camera.cam_center = cam_ray.origin;
@@ -90,7 +90,7 @@ void *render_thread(void *args)
 
 int gradient_test(t_window *window)
 {
-	const uint32_t num_threads = 4;
+	const uint32_t num_threads = 12;
 	pthread_t threads[num_threads];
 	thread_args_t thread_args[num_threads];
 	uint32_t rows_per_thread = window->mlx_image->height / num_threads;

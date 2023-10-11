@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:14:32 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 23:24:12 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:21:52 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_vec3{
 
 t_vec3	vsubv(t_vec3 first, t_vec3 second);
 t_vec3	vaddv(t_vec3 first, t_vec3 second);
+t_vec3	vmultv(t_vec3 first, t_vec3 second);
+t_vec3	vdivv(t_vec3 first, t_vec3 second);
 t_vec3	vmultd(t_vec3 first, double second);
 t_vec3	vdivd(t_vec3 first, double second);
 double	vlen(t_vec3 vec);
@@ -30,7 +32,6 @@ double	dot(t_vec3 u, t_vec3 v);
 t_vec3	unitv(t_vec3 v);
 double	random_double(double min, double max);
 t_vec3	random_unitv3(void);
-t_vec3	vmultv(t_vec3 first, t_vec3 second);
 t_vec3	rand_on_hemi(t_vec3 normal);
 t_vec3	random_unitv(void);
 bool	near_zero(t_vec3 vec);

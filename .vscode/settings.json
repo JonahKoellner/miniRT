@@ -3,7 +3,12 @@
 		"minirt.h": "c",
 		"elements.h": "c",
 		"src.h": "c",
-		"parser.h": "c"
+		"parser.h": "c",
+		"cmath": "c",
+		"complex": "c",
+		"mat4.h": "c",
+		"texture.h": "c",
+		"ios": "c"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_obj.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 10:43:30 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/11 16:34:49 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_object	create_camera(char *define_line, int *map, t_window *window)
 	ray.direction = fill_vec(split[2], map, -1, 1);
 	fov = fill_double(split[3], map, 0, 180);
 	//printf("Error %d\n", map[OBJ_ERROR]);
+	printf("x %lf, y %lf, z %lf, dirx %lf, diry %lf, dirz %lf, fov %lf\n", ray.origin.x, ray.origin.y, ray.origin.z, ray.direction.x, ray.direction.y, ray.direction.z, fov);
 	window->camera = create_ccamera(window->mlx_window->width, window->mlx_window->height, ray, fov);
 	return (map[OBJ_CAMERA]++, ft_vecfree(split), (t_object){});
 

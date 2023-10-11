@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 17:57:23 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 23:22:45 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 		return (map[OBJ_ERROR]++, (t_vec3){});
 	// hack around
 	if (min == 0 && max == 255)
-	{
-		ret.x /= 255;
-		ret.y /= 255;
-		ret.z /= 255;
-	}
+		ret = vdivv(ret, (t_vec3){255, 255, 255});
 	return (ret);
 }
 
