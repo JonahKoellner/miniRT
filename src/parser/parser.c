@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 00:58:19 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:43:51 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	id_obj(char *definition_line, int *map, t_window *window)
 	if (!ft_strncmp("A ", definition_line, 2))
 		create_amb_light(definition_line, map, window);
 	else if (!ft_strncmp("C ", definition_line, 2))
-		parse_camera(definition_line, map, window);
+		create_camera(definition_line, map, window);
 	else if (!ft_strncmp("L ", definition_line, 2))
 		create_light(definition_line, map, window);
 	else

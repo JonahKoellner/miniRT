@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 01:53:42 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:52:42 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_camera	create_ccamera(int width, int height, t_ray	cam_ray, double fov)
 	t_vec3	u;
 	t_vec3	v;
 	t_vec3	w;
-	
+
 	w = unitv(cam_ray.direction);
 	u = unitv(cross((t_vec3){0, 1, 0}, w));
 	v = negate(cross(u, w));
@@ -53,11 +53,13 @@ t_camera	create_ccamera(int width, int height, t_ray	cam_ray, double fov)
 
 void	loading(double val, int max)
 {
+	static double loaded = 0;
 	// printf("%d\n", (int)((val / max) * 10));
+	loaded += val;
 	printf("Tracing[");
-	printf("%.*s", (int)((val / max) * 10), "==========");
-	printf("%.*s", 10 - (int)((val / max) * 10), "          ");
-	printf("]%.0f %%", ((val / max) * 100));
+	printf("%.*s", (int)((loaded / max) * 10), "==========");
+	printf("%.*s", 10 - (int)((loaded / max) * 10), "          ");
+	printf("]%.0f %%", ((loaded / max) * 100));
 }
 
 typedef struct {
@@ -78,6 +80,9 @@ void *render_thread(void *args)
 			aa_color = pixel_sample_square(thread_args->window, i, j);
 			mlx_put_pixel(thread_args->window->mlx_image, i, j, mlx_color(aa_color));
 		}
+		printf("\r");
+		loading((double)(thread_args->window->mlx_image->width), (thread_args->window->mlx_image->height * thread_args->window->mlx_image->width));
+		fflush(stdout);
 	}
 
 	return NULL;
