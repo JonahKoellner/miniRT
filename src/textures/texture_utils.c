@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:53:46 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 00:39:36 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:27:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ t_texture	*load_texture(char *filename)
 	texture->pixels = ft_calloc(data->width * data->height, sizeof(t_vec3));
 	if (!texture->pixels)
 		return (free(texture), mlx_delete_texture(data), NULL);
-	i = 0;
-	while (i < data->width * data->height)
+	i = -1;
+	while (++i < data->width * data->height)
 	{
 		texture->pixels[i].x = data->pixels[i * data->bytes_per_pixel];
 		texture->pixels[i].y = data->pixels[i * data->bytes_per_pixel + 1];
 		texture->pixels[i].z = data->pixels[i * data->bytes_per_pixel + 2];
-		vdivv(texture->pixels[i++], (t_vec3){255, 255, 255});
+		texture->pixels[i] = vdivv(texture->pixels[i], (t_vec3){255, 255, 255});
 	}
 	mlx_delete_texture(data);
 	return (texture);
