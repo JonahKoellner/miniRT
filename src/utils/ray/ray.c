@@ -6,13 +6,13 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:12:13 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:34:36 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vec3 p_at(t_vec3 direction, t_vec3 origin, double t)
+t_vec3	p_at(t_vec3 direction, t_vec3 origin, double t)
 {
 	return (vaddv(origin, vmultd(direction, t)));
 }

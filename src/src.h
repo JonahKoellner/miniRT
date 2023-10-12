@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 00:39:51 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:47:20 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ t_u_v		get_uv(t_vec3 point);
 t_texture	*load_texture(char *filename);
 t_vec3		texture_get_pixel(t_texture *texture, double u, double v);
 t_vec3		get_surface_color(t_object *object, t_vec3 point);
-t_vec3		get_surface_normal(t_object *object, t_vec3 point, t_vec3 normal);
+t_vec3		get_normal(t_object *object, t_vec3 point, t_vec3 normal);
 
 #endif
