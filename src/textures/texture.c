@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:53:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 17:47:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:31:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_vec3	get_surface_color(t_object *object, t_vec3 point)
 	if (object->mat.bump_color.color)
 	{
 		local_point = transform_point(point, object->transform);
-		get_uv(local_point);
+		uv = get_uv(local_point);
 		return (texture_get_pixel(object->mat.bump_color.color, uv.u, uv.v));
 	}
 	return (object->mat.color);
