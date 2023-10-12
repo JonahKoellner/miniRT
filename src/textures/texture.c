@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:53:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 18:31:48 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:43:02 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@ t_vec3	texture_get_pixel(t_texture *texture, double u, double v)
 
 	x = (int)(u * texture->width) % texture->width;
 	y = (int)(v * texture->height) % texture->height;
+	// printf("texture->pixels[y * texture->width + x] = %f\n", texture->pixels[y * texture->width + x].x);
 	return (texture->pixels[y * texture->width + x]);
 }
 
 t_vec3	get_surface_color(t_object *object, t_vec3 point)
 {
-	t_vec3	local_point;
 	t_u_v	uv;
 
 	if (object->mat.bump_color.color)
 	{
-		local_point = transform_point(point, object->transform);
-		uv = get_uv(local_point);
+		uv = get_uv(point);
 		return (texture_get_pixel(object->mat.bump_color.color, uv.u, uv.v));
 	}
 	return (object->mat.color);

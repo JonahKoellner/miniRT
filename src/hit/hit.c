@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 17:47:27 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:42:52 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval)
 				hit.front_facing = true;
 			else
 				hit.normal = vmultd(hit.normal, -1);
+			hit.mat = objects->obj.mat;
 			hit.normal = get_normal(&objects->obj, hit.point, hit.normal);
 			hit.mat.color = get_surface_color(&objects->obj, hit.point);
-			hit.mat = objects->obj.mat;
 		}
 		objects = objects->next_obj;
 	}
