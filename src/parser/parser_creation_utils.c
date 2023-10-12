@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_creation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 23:22:45 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:03:35 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,37 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 	// hack around
 	if (min == 0 && max == 255)
 		ret = vdivv(ret, (t_vec3){255, 255, 255});
+	return (ret);
+}
+
+int	num_color(char *subj)
+{
+	int	index;
+
+	index = 0;
+	while (subj[index])
+	{
+		if (!(subj[index] >= '0' && subj[index] <= '9')
+			&& subj[index] != '.' && subj[index] != ',')
+			return (1);
+		index++;
+	}
+	return (0);
+}
+
+t_bump_color fill_bumpmap(char *fileColor, char *fileBump)
+{
+	t_bump_color	ret;
+
+	if (fileColor == NULL || fileBump == NULL)
+	{
+		ret.bump = NULL;
+		ret.color = NULL;
+		return (ret);
+	}
+	printf("filling\n");
+	ret.color = load_texture(fileColor);
+	ret.bump = load_texture(fileBump);
 	return (ret);
 }
 
