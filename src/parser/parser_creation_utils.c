@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 18:14:41 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:18:57 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ t_bump_color fill_bumpmap(char *fileColor, char *fileBump)
 	}
 	printf("filling\n");
 
-	pathColor = ft_strjoin("textures/maps/", fileColor);
-	pathBump =  ft_strjoin("textures/maps/", fileBump);
+	pathColor = ft_strjoin("src/textures/maps/", fileColor);
+	pathBump =  ft_strjoin("src/textures/maps/", fileBump);
 	ret.color = load_texture(pathColor);
 	ret.bump = load_texture(pathBump);
+	printf("%s\n%s\n", pathBump, pathColor);
 	free(pathBump);
 	free(pathColor);
 	return (ret);
