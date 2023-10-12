@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 18:03:35 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:14:41 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	num_color(char *subj)
 t_bump_color fill_bumpmap(char *fileColor, char *fileBump)
 {
 	t_bump_color	ret;
+	char			*pathColor;
+	char			*pathBump;
 
 	if (fileColor == NULL || fileBump == NULL)
 	{
@@ -53,8 +55,13 @@ t_bump_color fill_bumpmap(char *fileColor, char *fileBump)
 		return (ret);
 	}
 	printf("filling\n");
-	ret.color = load_texture(fileColor);
-	ret.bump = load_texture(fileBump);
+
+	pathColor = ft_strjoin("textures/maps/", fileColor);
+	pathBump =  ft_strjoin("textures/maps/", fileBump);
+	ret.color = load_texture(pathColor);
+	ret.bump = load_texture(pathBump);
+	free(pathBump);
+	free(pathColor);
 	return (ret);
 }
 
