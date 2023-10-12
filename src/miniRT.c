@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 21:50:52 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:33:03 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ int main(int argc, char *argv[])
 		return (1);
 	window->lights = ft_calloc(1, sizeof(t_light));
 	window->num_lights = 0;
+	window->ambient.brightness = 0;
+	window->ambient.color = (t_vec3){0};
 	// init_lights(window);
 	//init_objects(window);
 	if (argc != 2)
