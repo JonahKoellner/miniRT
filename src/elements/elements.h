@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:55 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 00:23:13 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:47:20 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ typedef struct s_cylinder
 	double		radius;
 	double		height;
 }	t_cylinder;
+
+typedef struct s_cone
+{
+	double	cosa;
+	double	h;
+	t_vec3	v;
+	t_vec3	c;
+}	t_cone;
 
 typedef struct s_light
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 00:31:55 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:49:21 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef union u_hittable
 	t_sphere	sphere;
 	t_plane		plane;
 	t_cylinder	cylinder;
+	t_cone		cone;
 }	t_hittable;
 
 typedef struct s_object{
@@ -81,6 +82,8 @@ t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval);
 
 t_hit	hit_cylinder(t_hittable hit_obj, t_ray ray, t_interval interval);
+
+t_hit	hit_cone(t_hittable hit_obj, t_ray ray, t_interval interval);
 
 t_ray	scatter(t_hit hit, t_ray ray);
 

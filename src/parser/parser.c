@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/11 22:27:55 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:08:10 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ t_object	id_hit(char *definition_line, int *map)
 	else if (!ft_strncmp("cy ", definition_line, 3))
 		obj = create_cylinder(definition_line, map);
 	else
+	if (!ft_strncmp("co ", definition_line, 3))
+		obj = create_cone(definition_line, map);
+	else
 		obj = create_error(map);
+	
 	return (obj);
 }
 
@@ -55,6 +59,8 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	if (id_obj(&line[index], map, window))
 		return (l_obj);
 	hit = id_hit(&line[index], map);
+	//printf("inline check\n");
+	//check_map(map);
 	if (map[OBJ_ERROR] > 0)
 		return (NULL);
 	hit.transform = mat4_identity();
@@ -82,9 +88,10 @@ t_obj_list	*read_file(int fd, t_window *window)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
-		//check_map(map);
+		printf("%p %c \n", head, gnl[0]);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
+		printf("gnl: %s\n", gnl);
 		free(gnl);
 		gnl = get_next_line(fd);
 	}

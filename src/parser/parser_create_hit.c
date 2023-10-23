@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 18:01:13 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:12:53 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,37 @@ t_object	create_cylinder(char *define_line, int *map)
 		obj.mat.type = fill_material(split[6], map);
 	obj.hit_func = &hit_cylinder;
 	return (map[OBJ_CYLINDER]++, ft_vecfree(split), obj);
+}
+
+t_object	create_cone(char *define_line, int *map)
+{
+	char		**split;
+	t_object	obj;
+
+	split = ft_split(define_line, ' ');
+	if (!split)
+		return (map[OBJ_ERROR]++, (t_object){});
+	if (!(ft_veclen(split) >= 6 && ft_veclen(split) <= 8))
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	obj.obj.cone.c = fill_vec(split[1], map, -INFINITY, INFINITY);
+	obj.obj.cone.v = fill_vec(split[2], map, -1, 1);
+	obj.obj.cone.cosa = fill_double(split[3], map, 0, INFINITY);
+	obj.obj.cone.h = fill_double(split[4], map, 0, INFINITY);
+	obj.mat.color = fill_vec(split[5], map, 0, 255);
+	obj.mat.color = (t_vec3){0};
+	//if (!num_color(split[3]))
+		//obj.mat.color = fill_vec(split[3], map, 0, 255);
+	if (ft_veclen(split) != 6)
+		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	else
+		obj.mat.bump_color = fill_bumpmap(split[5], split[6]);
+	printf("in chec\n");
+	check_map(map);
+	obj.mat.type = METAL;
+	if (ft_veclen(split) == 7)
+		obj.mat.type = fill_material(split[6], map);
+	obj.hit_func = &hit_cone;
+	return (map[OBJ_CONE]++, ft_vecfree(split), obj);
 }
 
 t_object	create_error(int *map)

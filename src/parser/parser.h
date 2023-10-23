@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 17:44:33 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:43:57 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef enum e_object_type
 	OBJ_PLANE,
 	OBJ_SPHERE,
 	OBJ_CYLINDER,
+	OBJ_CONE,
 	OBJ_ERROR,
 	OBJ_ENUM_SIZE
 }	t_object_type;
@@ -38,6 +39,7 @@ double			ft_atof(char *str);
 t_object		create_plane(char *define_line, int *map);
 t_object		create_sphere(char *define_line, int *map);
 t_object		create_cylinder(char *define_line, int *map);
+t_object		create_cone(char *define_line, int *map);
 t_object		create_error(int *map);
 t_object		create_amb_light(char *define_line, int *map, t_window *window);
 t_object		create_camera(char *define_line, int *map, t_window *window);
