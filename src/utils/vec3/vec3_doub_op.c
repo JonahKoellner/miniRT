@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_doub_op.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:41:28 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 16:55:38 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:20:46 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,15 @@ t_vec3	vdivd(t_vec3 first, double second)
 	ret.x = first.x * (1 / second);
 	ret.y = first.y * (1 / second);
 	ret.z = first.z * (1 / second);
+	return (ret);
+}
+
+t_vec3	vsubd(t_vec3 first, double second)
+{
+	t_vec3	ret;
+
+	ret.x = first.x - second;
+	ret.y = first.y - second;
+	ret.z = first.z - second;
 	return (ret);
 }

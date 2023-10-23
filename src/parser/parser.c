@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/20 11:08:10 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:17:37 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ t_object	id_hit(char *definition_line, int *map)
 		obj = create_sphere(definition_line, map);
 	else if (!ft_strncmp("cy ", definition_line, 3))
 		obj = create_cylinder(definition_line, map);
-	else
-	if (!ft_strncmp("co ", definition_line, 3))
+	else if (!ft_strncmp("co ", definition_line, 3))
 		obj = create_cone(definition_line, map);
 	else
 		obj = create_error(map);
-	
+
 	return (obj);
 }
 
