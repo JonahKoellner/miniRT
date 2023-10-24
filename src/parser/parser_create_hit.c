@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/24 10:27:05 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/24 22:04:51 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ t_object	create_cone(char *define_line, int *map)
 	check_map(map);
 	obj.mat.color = fill_vec(split[5], map, 0, 255);
 	obj.mat.color = (t_vec3){0};
-	//if (!num_color(split[3]))
-	//	obj.mat.color = fill_vec(split[3], map, 0, 255);
+	if (!num_color(split[3]))
+		obj.mat.color = fill_vec(split[5], map, 0, 255);
 	if (ft_veclen(split) != 6)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	else

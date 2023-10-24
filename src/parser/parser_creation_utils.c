@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_creation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 18:18:57 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:48:23 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 {
 	t_vec3	ret;
 
+	printf("fill_vec subj: %s\n", subj);
 	if (ft_atov(subj, &ret))
 		return (map[OBJ_ERROR]++, (t_vec3){});
 	if ((ret.x > max || ret.x < min) || (ret.y > max || ret.y < min)

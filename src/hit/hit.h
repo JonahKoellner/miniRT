@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/20 10:49:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:42:28 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ typedef struct s_obj_list{
 	struct s_obj_list	*next_obj;
 }	t_obj_list;
 
-t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval);
+t_hit		hit_object(t_obj_list *objects, t_ray ray, t_interval interval);
 
-t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
+t_hit		hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval);
 
-t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval);
+t_hit		hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval);
 
-t_hit	hit_cylinder(t_hittable hit_obj, t_ray ray, t_interval interval);
+t_hit		hit_cylinder(t_hittable hit_obj, t_ray ray, t_interval interval);
 
-t_hit	hit_cone(t_hittable hit_obj, t_ray ray, t_interval interval);
+t_hit		hit_cone(t_hittable hit_obj, t_ray ray, t_interval interval);
 
-t_ray	scatter(t_hit hit, t_ray ray);
+t_ray		scatter(t_hit hit, t_ray ray);
 
 t_material	materials(t_material material);
 
