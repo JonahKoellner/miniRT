@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/23 16:26:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/24 10:27:05 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_object	create_cone(char *define_line, int *map)
 		return (map[OBJ_ERROR]++, (t_object){});
 	if (!(ft_veclen(split) >= 5 && ft_veclen(split) <= 8))
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
-	obj.obj.cone.cosa = fill_double(split[1], map, 0, INFINITY);
+	obj.obj.cone.cosa = cos(fill_double(split[1], map, 0, INFINITY));
 	obj.obj.cone.h = fill_double(split[2], map, 0, INFINITY);
 	obj.obj.cone.c = fill_vec(split[3], map, -INFINITY, INFINITY);
 	obj.obj.cone.v = fill_vec(split[4], map, 0, 91);
@@ -113,7 +113,7 @@ t_object	create_cone(char *define_line, int *map)
 	obj.mat.color = fill_vec(split[5], map, 0, 255);
 	obj.mat.color = (t_vec3){0};
 	//if (!num_color(split[3]))
-		//obj.mat.color = fill_vec(split[3], map, 0, 255);
+	//	obj.mat.color = fill_vec(split[3], map, 0, 255);
 	if (ft_veclen(split) != 6)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	else
