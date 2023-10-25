@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 09:46:43 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:44:19 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define BACK_COL_R 0.5
 # define BACK_COL_G 0.3
 # define BACK_COL_B 0.3
+# define NUM_THREADS 12
 
 typedef struct s_window{
 	mlx_t		*mlx_window;
@@ -27,6 +28,12 @@ typedef struct s_window{
 	int			num_lights;
 	t_ambient	ambient;
 }	t_window;
+
+typedef struct s_thread_args{
+	uint32_t	start;
+	uint32_t	end;
+	t_window	*window;
+}	t_thread_args;
 
 int			mlx_color(t_vec3 color);
 t_vec3		pixel_sample_square(t_window *window, int i, int j);
