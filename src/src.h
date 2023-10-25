@@ -6,16 +6,16 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 14:29:41 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:42:02 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SRC_H
 # define SRC_H
 
-# define BACK_COL_R 0.5
-# define BACK_COL_G 0.3
-# define BACK_COL_B 0.3
+# define BACK_COL_R 0.7
+# define BACK_COL_G 0.7
+# define BACK_COL_B 0.7
 
 typedef struct s_window{
 	mlx_t		*mlx_window;
