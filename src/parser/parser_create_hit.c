@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_create_hit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 16:57:15 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:18:54 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ t_object	create_sphere(char *define_line, int *map)
 	obj.mat.type = METAL;
 	if (!num_color(split[3]))
 		obj.mat.color = fill_vec(split[3], map, 0, 255);
-	if (ft_veclen(split) == 7)
-		obj.mat.bump_color = fill_bumpmap(split[5], split[6]);
 	if (ft_veclen(split) == 5)
 		obj.mat.type = fill_material(split[4], map);
-	//else
-	//	return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	if (ft_veclen(split) == 7)
+		obj.mat.bump_color = fill_bumpmap(split[5], split[6]);
 	printf("speren\n");
 	obj.hit_func = &hit_sphere;
 	return (map[OBJ_SPHERE]++, ft_vecfree(split), obj);
@@ -102,10 +100,8 @@ t_object	create_cone(char *define_line, int *map)
 	obj.mat.bump_color = fill_bumpmap(NULL, NULL);
 	obj.mat.color = (t_vec3){0};
 	obj.mat.color = fill_vec(split[5], map, 0, 255);
-	if (ft_veclen(split) != 6)
+	if (ft_veclen(split) != 6 && ft_veclen(split) != 7)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
-	else
-		obj.mat.bump_color = fill_bumpmap(split[5], split[6]);
 	printf("in chec\n");
 	obj.mat.type = METAL;
 	if (ft_veclen(split) == 7)
