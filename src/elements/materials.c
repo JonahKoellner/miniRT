@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   materials.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:58:10 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/10 19:28:08 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:48:09 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ t_ray	lambaterian_scatter(t_hit hit, t_ray ret)
 		if (near_zero(scattered_direction))
 			scattered_direction = hit.normal;
 	}
-	// 	scattered_direction = vaddv(hit.normal, random_unitv());
-	// if (near_zero(scattered_direction))
-	// 	scattered_direction = hit.normal;
 	ret.origin = hit.point;
 	ret.direction = scattered_direction;
 	return (ret);
@@ -68,11 +65,6 @@ t_material	materials(t_material material)
 	else if (material.type == PLASTIC)
 		return (plastic);
 	return (material);
-	// const t_material matteRed = {MATTE, {1.0, 0.0, 0.0}, 0.1, 0.7, 0.2, 10.0};
-	// const t_material plasticBlue = {PLASTIC, {0.0, 0.0, 1.0}, 0.1, 0.5, 0.8, 50.0};
-	// const t_material shinyMetal = {METAL, {0.8, 0.8, 0.8}, 0.05, 0.7, 0.9, 200.0};
-	// const t_material mirror = {MIRROR, {1.0, 1.0, 1.0}, 0.05, 0.0, 1.0, 1000.0};
-	// const t_material glass = {GLASS, {0.0, 0.0, 0.0}, 0.05, 0.0, 0.0, 100.0};
 }
 
 t_ray	scatter(t_hit hit, t_ray ray)
@@ -86,7 +78,5 @@ t_ray	scatter(t_hit hit, t_ray ray)
 		ret = metal_scatter(hit, ray);
 	else if (hit.mat.type == PLASTIC)
 		ret = lambaterian_scatter(hit, ray);
-	// else if (hit.material.type == DIELECTRIC)
-	// 	ret = dielectric_scatter(hit, ray, material);
 	return (ret);
 }

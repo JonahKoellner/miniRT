@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+         #
+#    By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/10/24 10:21:31 by jonahkollne      ###   ########.fr        #
+#    Updated: 2023/10/25 09:38:45 by jkollner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,8 @@ LIBFT_LIB = /libft.a
 LIBFT_DIR = ./lib/libft
 LIBFT_INC = -I $(LIBFT_DIR)
 
-#LIBS = ${MLX} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
-  LIBS = ${MLX} -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib"
+LIBS = ${MLX} -Iinclude -lglfw -L"/Users/$(USER)/homebrew/Cellar/glfw/3.3.8/lib"
+#  LIBS = ${MLX} -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.8/lib"
 INCLUDE = $(HEADER_INC) $(MLX_INC)
 
 #=================== Files =======================#

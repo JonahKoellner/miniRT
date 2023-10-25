@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:53:28 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 18:43:02 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:56:16 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_vec3	texture_get_pixel(t_texture *texture, double u, double v)
 
 	x = (int)(u * texture->width) % texture->width;
 	y = (int)(v * texture->height) % texture->height;
-	// printf("texture->pixels[y * texture->width + x] = %f\n", texture->pixels[y * texture->width + x].x);
 	return (texture->pixels[y * texture->width + x]);
 }
 
@@ -46,7 +45,8 @@ t_vec3	get_normal(t_object *object, t_vec3 point, t_vec3 normal)
 	if (object->mat.bump_color.bump)
 	{
 		uv = get_uv(point);
-		local_normal = texture_get_pixel(object->mat.bump_color.bump, uv.u, uv.v);
+		local_normal = texture_get_pixel(object->mat.bump_color.bump,
+				uv.u, uv.v);
 		tangent = cross(normal, (t_vec3){0, 1, 0});
 		bitangent = cross(normal, tangent);
 		tangent_to_world = (t_mat4){{

@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/23 16:17:37 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:50:18 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_object	id_hit(char *definition_line, int *map)
 		obj = create_cone(definition_line, map);
 	else
 		obj = create_error(map);
-
 	return (obj);
 }
 
@@ -58,8 +57,6 @@ t_obj_list	*make_obj(char *line, t_obj_list *l_obj, int *map, t_window *window)
 	if (id_obj(&line[index], map, window))
 		return (l_obj);
 	hit = id_hit(&line[index], map);
-	//printf("inline check\n");
-	//check_map(map);
 	if (map[OBJ_ERROR] > 0)
 		return (NULL);
 	hit.transform = mat4_identity();
@@ -109,13 +106,5 @@ int	parser(char *filename, t_window *window)
 	if (!head)
 		return (1);
 	window->objects = head;
-	//while (head->next_obj)
-	//{
-	//	printf("type: %d\n", head->obj.mat.type);
-	//	printf("color: %f %f %f\n", head->obj.mat.color.x, head->obj.mat.color.y, head->obj.mat.color.z);
-	//	printf("center: %f %f %f\n", head->obj.obj.sphere.center.x, head->obj.obj.sphere.center.y, head->obj.obj.sphere.center.z);
-	//	printf("radius: %f\n", head->obj.obj.sphere.radius);
-	//	head = head->next_obj;
-	//}
 	return (0);
 }
