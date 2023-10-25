@@ -6,14 +6,12 @@
 /*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 00:52:39 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/24 21:42:28 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:52:55 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HIT_H
 # define HIT_H
-
-# define DEPTH 100
 
 // # include "../utils/vec3/vec3.h"
 // # include "../elements/elements.h"
@@ -65,7 +63,7 @@ typedef union u_hittable
 
 typedef struct s_object{
 	t_hittable	obj;
-	t_hit		(*hit_func)(t_hittable obj, t_ray ray, t_interval interval);
+	t_hit		(*hit_func)(t_hittable, t_ray, t_interval);
 	t_material	mat;
 	t_mat4		transform;
 }	t_object;

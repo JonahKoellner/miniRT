@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+         #
+#    By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/13 09:27:00 by jkollner          #+#    #+#              #
-#    Updated: 2023/10/24 10:21:31 by jonahkollne      ###   ########.fr        #
+#    Updated: 2023/10/24 23:46:50 by mreidenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ SRC_FILES = miniRT.c
 
 ELEMENTS = $(addprefix $(ELEMENTS_DIR), $(ELEMENTS_FILES))
 ELEMENTS_DIR = $(addprefix $(SRC_DIR), elements/)
-ELEMENTS_FILES = sphere.c cylinder.c plane.c materials.c cone.c
+ELEMENTS_FILES = sphere.c cylinder.c plane.c materials.c cone.c lights.c
 
 HIT = $(addprefix $(HIT_DIR), $(HIT_FILES))
 HIT_DIR = $(addprefix $(SRC_DIR), hit/)
@@ -56,7 +56,7 @@ HIT_FILES = hit.c
 
 UTILS = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 UTILS_DIR = $(addprefix $(SRC_DIR), utils/)
-UTILS_FILES = colors.c anti_aliasing.c math_utils.c
+UTILS_FILES = colors.c anti_aliasing.c math_utils.c init.c
 
 RAY = $(addprefix $(RAY_DIR), $(RAY_FILES))
 RAY_DIR = $(addprefix $(UTILS_DIR), ray/)

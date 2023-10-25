@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 23:53:46 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 18:27:21 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:38:21 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/// @brief Calculates the UV coordinates of a point on a sphere.
+/// @param point The point to calculate the UV coordinates for.
+/// @return The UV coordinates of the point.
 t_u_v	get_uv(t_vec3 point)
 {
 	t_u_v	uv;
@@ -21,6 +24,9 @@ t_u_v	get_uv(t_vec3 point)
 	return (uv);
 }
 
+/// @brief Loads a texture from a PNG file into a @a t_texture.
+/// @param filename The name of the PNG file to load.
+/// @return The loaded texture.
 t_texture	*load_texture(char *filename)
 {
 	mlx_texture_t	*data;

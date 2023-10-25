@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 20:51:48 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 17:36:43 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:33:53 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/// @brief Calculates the root of the quadratic equation.
+/// @param sphere The sphere to calculate the root for.
+/// @param ray The ray to calculate the root for.
+/// @return The root of the quadratic equation. -1 if there is no intersection.
 static double	sphere_root(t_sphere sphere, t_ray ray)
 {
 	t_vec3	oc;
@@ -31,6 +35,10 @@ static double	sphere_root(t_sphere sphere, t_ray ray)
 		return ((-half_b - sqrt(discriminant)) / a);
 }
 
+/// @brief Calculates the normal vector of a sphere at a given point.
+/// @param sphere The sphere to calculate the normal for.
+/// @param point The point to calculate the normal for.
+/// @return The normal vector of the sphere at the given point.
 static t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
 {
 	t_vec3	normal;
@@ -41,6 +49,12 @@ static t_vec3	sphere_normal(t_sphere sphere, t_vec3 point)
 	return (normal);
 }
 
+/// @brief Calculates the intersection between a ray and a sphere.
+/// @param hit_obj The sphere object to intersect with.
+/// @param ray The ray to intersect with the sphere.
+/// @param interval The interval to check for intersection.
+/// @return The hit object containing information about the intersection.
+/// hit.t is -1 if there is no intersection.
 t_hit	hit_sphere(t_hittable hit_obj, t_ray ray, t_interval interval)
 {
 	t_hit		hit;

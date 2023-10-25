@@ -3,15 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 02:23:35 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/12 18:42:52 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:36:31 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/// @brief Calculates the intersection between a ray and and any object
+/// in the scene.
+/// @param objects The list of objects in the scene.
+/// @param ray The ray to intersect with the objects.
+/// @param interval The interval to check for intersection.
+/// @return The hit object containing information about the intersection.
 t_hit	hit_object(t_obj_list *objects, t_ray ray, t_interval interval)
 {
 	int		i;

@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:06:29 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/10 16:58:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:32:20 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
+/// @brief Calculates the intersection between a ray and a plane.
+/// @param hit_obj The plane object to intersect with.
+/// @param ray The ray to intersect with the plane.
+/// @param interval The interval to check for intersection.
+/// @return The hit object containing information about the intersection.
 t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval)
 {
 	t_hit	hit;

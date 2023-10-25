@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/12 17:47:20 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 00:37:31 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 # define BACK_COL_G 0.3
 # define BACK_COL_B 0.3
 
-
 typedef struct s_window{
 	mlx_t		*mlx_window;
 	mlx_image_t	*mlx_image;
-	double		aspect_ratio;
 	t_camera	camera;
 	t_obj_list	*objects;
 	t_light		*lights;
@@ -30,6 +28,8 @@ typedef struct s_window{
 }	t_window;
 
 int			mlx_color(t_vec3 color);
+void		key_hook(void *param);
+void		loading(double val, int max);
 t_vec3		pixel_sample_square(t_window *window, int i, int j);
 t_vec3		ray_color(t_ray r, int deph, t_window *window);
 t_vec3		light_color(t_hit hit, t_window *window, int i);
