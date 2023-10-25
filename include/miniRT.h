@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:47:08 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 10:36:14 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:31:00 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@
 # include "../src/src.h"
 
 # include "../src/parser/parser.h"
-
-# include "../src/utils/mlx_ut/mlx_ut.h"
 
 #endif

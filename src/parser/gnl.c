@@ -6,12 +6,12 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 10:03:04 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:10:18 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gnl.h"
-#if !defined BUFFER_SIZE
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1024
 #endif
 

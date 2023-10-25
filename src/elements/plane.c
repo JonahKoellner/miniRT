@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:06:29 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/25 12:04:34 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:56:31 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ t_hit	hit_plane(t_hittable hit_obj, t_ray ray, t_interval interval)
 	}
 	return (hit);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 12:03:12 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:28:14 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 #define WIDTH 800
 #define A_X 16.0
 #define A_Y 9.0
+#define THREADS 12
+
+typedef struct s_thread_args{
+	uint32_t	start;
+	uint32_t	end;
+	t_window	*window;
+}	t_thread_args;
 
 /* Single Threaded render function */
 
@@ -48,14 +55,6 @@
 //	return (0);
 //}
 
-#define THREADS 12
-
-typedef struct s_thread_args{
-	uint32_t	start;
-	uint32_t	end;
-	t_window	*window;
-}	t_thread_args;
-
 void	*render_thread(void *args)
 {
 	t_thread_args	*thread_args;
@@ -67,26 +66,20 @@ void	*render_thread(void *args)
 	j = thread_args->start;
 	while (j < thread_args->end)
 	{
-		i = 0;
-		while (i < thread_args->window->mlx_image->width)
+		i = -1;
+		while (++i < thread_args->window->mlx_image->width)
 		{
 			aa_color = pixel_sample_square(thread_args->window, i, j);
 			mlx_put_pixel(thread_args->window->mlx_image, i, j,
 				mlx_color(aa_color));
-			i++;
 		}
-		i = -1;
 		printf("\r");
-		loading((double)(thread_args->window->mlx_image->width),
-			(thread_args->window->mlx_image->height
-				* thread_args->window->mlx_image->width));
 		loading((double)(thread_args->window->mlx_image->width),
 			(thread_args->window->mlx_image->height
 				* thread_args->window->mlx_image->width));
 		fflush(stdout);
 		j++;
 	}
-	return (NULL);
 	return (NULL);
 }
 
@@ -120,7 +113,6 @@ int	render_scene(t_window *window, const uint32_t rows_per_thread)
 }
 
 int	main(int argc, char *argv[])
-int	main(int argc, char *argv[])
 {
 	t_window	*window;
 
@@ -140,7 +132,7 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		return (1);
 	if (parser(argv[1], window))
-		return (1); // clean window as well. Dont need to clean objects, if error in parser there are no objects
+		return (1);
 	printf("back in main\n");
 	render_scene(window, window->mlx_image->height / THREADS);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
