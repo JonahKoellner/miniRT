@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 16:48:30 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:56:41 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_object	create_cylinder(char *define_line, int *map)
 	if (!split)
 		return (map[OBJ_ERROR]++, (t_object){});
 	printf("%zu\n", ft_veclen(split));
-	if (!(ft_veclen(split) == 6))
+	if (!(ft_veclen(split) >= 6 && ft_veclen(split) <= 7))
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	obj.obj.cylinder.center = fill_vec(split[1], map, -INFINITY, INFINITY);
 	obj.obj.cylinder.axis = fill_vec(split[2], map, -1, 1);
@@ -79,6 +79,8 @@ t_object	create_cylinder(char *define_line, int *map)
 	obj.mat.color = fill_vec(split[5], map, 0, 255);
 	obj.mat.bump_color = fill_bumpmap(NULL, NULL);
 	obj.mat.type = METAL;
+	if (ft_veclen(split) == 7)
+		obj.mat.type = fill_material(split[6], map);
 	obj.hit_func = &hit_cylinder;
 	return (map[OBJ_CYLINDER]++, ft_vecfree(split), obj);
 }
