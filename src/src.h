@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 00:37:31 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:05:07 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_window{
 	int			num_lights;
 	t_ambient	ambient;
 }	t_window;
+
+typedef struct s_thread_args{
+	uint32_t	start;
+	uint32_t	end;
+	t_window	*window;
+}	t_thread_args;
 
 int			mlx_color(t_vec3 color);
 void		key_hook(void *param);

@@ -6,12 +6,12 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:59:46 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/25 15:56:00 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:49:10 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GNL_H
+# define GNL_H
 // Includes
 
 # include <stdlib.h>

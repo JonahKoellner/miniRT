@@ -6,7 +6,7 @@
 /*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/24 23:48:54 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:03:12 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,18 @@ void	*render_thread(void *args)
 				mlx_color(aa_color));
 			i++;
 		}
+		i = -1;
 		printf("\r");
+		loading((double)(thread_args->window->mlx_image->width),
+			(thread_args->window->mlx_image->height
+				* thread_args->window->mlx_image->width));
 		loading((double)(thread_args->window->mlx_image->width),
 			(thread_args->window->mlx_image->height
 				* thread_args->window->mlx_image->width));
 		fflush(stdout);
 		j++;
 	}
+	return (NULL);
 	return (NULL);
 }
 
@@ -114,6 +119,7 @@ int	render_scene(t_window *window, const uint32_t rows_per_thread)
 	return (0);
 }
 
+int	main(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_window	*window;

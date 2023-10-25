@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_creation_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/24 21:48:23 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:59:34 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 	if ((ret.x > max || ret.x < min) || (ret.y > max || ret.y < min)
 		|| (ret.z > max || ret.z < min))
 		return (map[OBJ_ERROR]++, (t_vec3){});
-	// hack around
 	if (min == 0 && max == 255)
 		ret = vdivv(ret, (t_vec3){255, 255, 255});
 	return (ret);
@@ -43,27 +42,26 @@ int	num_color(char *subj)
 	return (0);
 }
 
-t_bump_color fill_bumpmap(char *fileColor, char *fileBump)
+t_bump_color	fill_bumpmap(char *file_color, char *file_bump)
 {
 	t_bump_color	ret;
-	char			*pathColor;
-	char			*pathBump;
+	char			*path_color;
+	char			*path_bump;
 
-	if (fileColor == NULL || fileBump == NULL)
+	if (file_color == NULL || file_bump == NULL)
 	{
 		ret.bump = NULL;
 		ret.color = NULL;
 		return (ret);
 	}
 	printf("filling\n");
-
-	pathColor = ft_strjoin("src/textures/maps/", fileColor);
-	pathBump =  ft_strjoin("src/textures/maps/", fileBump);
-	ret.color = load_texture(pathColor);
-	ret.bump = load_texture(pathBump);
-	printf("%s\n%s\n", pathBump, pathColor);
-	free(pathBump);
-	free(pathColor);
+	path_color = ft_strjoin("src/textures/maps/", file_color);
+	path_bump = ft_strjoin("src/textures/maps/", file_bump);
+	ret.color = load_texture(path_color);
+	ret.bump = load_texture(path_bump);
+	printf("%s\n%s\n", path_bump, path_color);
+	free(path_bump);
+	free(path_color);
 	return (ret);
 }
 

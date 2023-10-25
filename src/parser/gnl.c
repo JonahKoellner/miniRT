@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/09/25 15:56:18 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:03:04 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,6 @@
 #if !defined BUFFER_SIZE
 # define BUFFER_SIZE 1024
 #endif
-
-//char	*ft_strchr(char *buffer, char c)
-//{
-//	int	counter;
-
-//	counter = 0;
-//	while (buffer[counter] != '\0')
-//	{
-//		if (buffer[counter] == (char)c)
-//			return ((char *)&buffer[counter]);
-//		counter++;
-//	}
-//	if ((char)c == '\0')
-//		return ((char *)&buffer[counter]);
-//	return (NULL);
-//}
 
 char	*read_til_n(int fd, char *buffer)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_math.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 09:45:41 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/10 23:23:57 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 09:52:00 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ double	dot(t_vec3 u, t_vec3 v)
 
 t_vec3	cross(t_vec3 u, t_vec3 v)
 {
-	t_vec3 ret;
+	t_vec3	ret;
 
 	ret.x = u.y * v.z - u.z * v.y;
 	ret.y = u.z * v.x - u.x * v.z;
