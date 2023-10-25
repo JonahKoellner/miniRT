@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 16:20:40 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:43:22 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_object	create_plane(char *define_line, int *map)
 		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	obj.obj.plane.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	obj.obj.plane.normal = fill_vec(split[2], map, -1, 1);
-	obj.mat.color = (t_vec3){0};
+	obj.mat.color = fill_vec(split[3], map, 0, 255);
 	obj.mat.bump_color = fill_bumpmap(NULL, NULL);
 	obj.mat.type = METAL;
 	if (ft_veclen(split) == 5)
