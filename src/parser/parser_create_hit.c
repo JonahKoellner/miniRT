@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:04:00 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 16:20:01 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:20:40 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ t_object	create_sphere(char *define_line, int *map)
 		obj.mat.bump_color = fill_bumpmap(split[5], split[6]);
 	if (ft_veclen(split) == 5)
 		obj.mat.type = fill_material(split[4], map);
-	else
-		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+	//else
+	//	return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
 	printf("speren\n");
 	obj.hit_func = &hit_sphere;
 	return (map[OBJ_SPHERE]++, ft_vecfree(split), obj);
