@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:04:18 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/26 11:35:51 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/26 14:28:14 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-#define BACK_COL_R 0.8
-#define BACK_COL_G 0.89
-#define BACK_COL_B 1
+#define BACK_COL_R 0
+#define BACK_COL_G 0
+#define BACK_COL_B 0
 
 /// @brief Converts from 0-1 to 0-255 and puts it into an int for mlx.
 /// @param color The color to convert.
