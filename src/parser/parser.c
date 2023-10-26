@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 09:50:18 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:04:40 by jonahkollne      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,13 @@ int	parser(char *filename, t_window *window)
 {
 	t_obj_list	*head;
 	int			fd;
+	char		**split;
 
+	split = ft_split(filename, '.');
+	if (!split)
+		return (1);
+	if (ft_veclen(split) != 2 || ft_strncmp(split[1], "rt", 3))
+		return (1);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (1);
