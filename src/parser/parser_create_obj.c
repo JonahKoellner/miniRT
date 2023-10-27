@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 10:02:00 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:09:54 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 	light.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
-	printf("Error %d\n", map[OBJ_ERROR]);
 	window->lights = ft_array_realloc(window->lights, window->num_lights,
 			window->num_lights + 1, sizeof(t_light));
 	if (window->lights == NULL)

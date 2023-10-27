@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   anti_aliasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/26 11:51:21 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/27 10:59:00 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

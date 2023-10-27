@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonahkollner <jonahkollner@student.42.f    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/26 15:04:40 by jonahkollne      ###   ########.fr       */
+/*   Updated: 2023/10/27 12:10:13 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,8 @@ t_obj_list	*read_file(int fd, t_window *window)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
-		printf("%p %c \n", head, gnl[0]);
 		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
 			return (error_clean(root, map), free(gnl), NULL);
-		printf("gnl: %s\n", gnl);
 		free(gnl);
 		gnl = get_next_line(fd);
 	}
@@ -108,6 +106,8 @@ int	parser(char *filename, t_window *window)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (1);
+	mlx_set_window_title(window->mlx_window, ft_strjoin_free(ft_strdup("miniRT - "), ft_strdup(filename)));
+	ft_vecfree(split);
 	head = read_file(fd, window);
 	if (!head)
 		return (1);

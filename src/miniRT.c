@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 20:46:59 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:09:31 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (parser(argv[1], window))
 		return (1);
-	printf("back in main\n");
 	render_scene(window, window->mlx_image->height / THREADS);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);

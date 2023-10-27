@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 09:59:34 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:10:04 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 {
 	t_vec3	ret;
 
-	printf("fill_vec subj: %s\n", subj);
 	if (ft_atov(subj, &ret))
 		return (map[OBJ_ERROR]++, (t_vec3){});
 	if ((ret.x > max || ret.x < min) || (ret.y > max || ret.y < min)
@@ -54,12 +53,10 @@ t_bump_color	fill_bumpmap(char *file_color, char *file_bump)
 		ret.color = NULL;
 		return (ret);
 	}
-	printf("filling\n");
 	path_color = ft_strjoin("src/textures/maps/", file_color);
 	path_bump = ft_strjoin("src/textures/maps/", file_bump);
 	ret.color = load_texture(path_color);
 	ret.bump = load_texture(path_bump);
-	printf("%s\n%s\n", path_bump, path_color);
 	free(path_bump);
 	free(path_color);
 	return (ret);
