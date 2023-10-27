@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   src.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:07:39 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 20:12:48 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:02:28 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_vec3		ray_color(t_ray r, int deph, t_window *window);
 t_vec3		light_color(t_hit hit, t_window *window, int i);
 double		degrees_to_radians(double degrees);
 t_camera	create_ccamera(int width, int height, t_ray	cam_ray, double fov);
-
+void		clean_window(t_window *win);
 //texture
 t_u_v		get_uv(t_vec3 point);
 t_texture	*load_texture(char *filename);

@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 12:10:13 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:40:29 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	id_obj(char *definition_line, int *map, t_window *window)
 	else if (!ft_strncmp("L ", definition_line, 2))
 		create_light(definition_line, map, window);
 	else
-		return (0);
+		return (free(definition_line), 0);
+	free(definition_line);
 	return (1);
 }
 
@@ -41,6 +42,7 @@ t_object	id_hit(char *definition_line, int *map)
 		obj = create_cone(definition_line, map);
 	else
 		obj = create_error(map);
+	free(definition_line);
 	return (obj);
 }
 
@@ -75,10 +77,10 @@ t_obj_list	*read_file(int fd, t_window *window)
 	gnl = get_next_line(fd);
 	head = ft_calloc(1, sizeof(t_obj_list));
 	if (!head)
-		return (NULL);
+		return (free(gnl), NULL);
 	map = ft_calloc(OBJ_ENUM_SIZE, sizeof(int));
 	if (map == NULL)
-		return (NULL);
+		return (free(gnl), NULL);
 	root = head;
 	while (gnl)
 	{
@@ -89,6 +91,8 @@ t_obj_list	*read_file(int fd, t_window *window)
 		free(gnl);
 		gnl = get_next_line(fd);
 	}
+	free(gnl);
+	free(map);
 	return (root);
 }
 
@@ -106,11 +110,11 @@ int	parser(char *filename, t_window *window)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	mlx_set_window_title(window->mlx_window, ft_strjoin_free(ft_strdup("miniRT - "), ft_strdup(filename)));
+	mlx_set_window_title(window->mlx_window, "miniRT");
 	ft_vecfree(split);
 	head = read_file(fd, window);
 	if (!head)
 		return (1);
 	window->objects = head;
-	return (0);
+	return (close(fd), 0);
 }

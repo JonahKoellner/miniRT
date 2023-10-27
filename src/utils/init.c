@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:30:12 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/27 12:10:19 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:35:54 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ void	loading(double val, int max)
 	printf("%.*s", (int)((loaded / max) * 10), "==========");
 	printf("%.*s", 10 - (int)((loaded / max) * 10), "          ");
 	printf("]%.0f %%", ((loaded / max) * 100));
+}
+
+void	clean_window(t_window *win)
+{
+	t_obj_list	*tmp;
+	t_obj_list	*obj;
+
+	obj = win->objects;
+	while (obj)
+	{
+		tmp = obj->next_obj;
+		free(obj);
+		obj = tmp;
+	}
+	free(win->lights);
+	free(win);
 }

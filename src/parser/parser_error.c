@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:05:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 09:56:43 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:41:05 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	error_clean(t_obj_list *head, int *map)
 		printf("Error in creation of the object\n");
 	else
 		printf("Error\n");
+	clean_list(head);
+	free(map);
 }
 
 int	check_map(int *map)

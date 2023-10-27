@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 12:09:31 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:34:29 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,9 @@ int	main(int argc, char *argv[])
 	render_scene(window, window->mlx_image->height / THREADS);
 	mlx_loop_hook(window->mlx_window, key_hook, window->mlx_window);
 	mlx_loop(window->mlx_window);
+	mlx_delete_image(window->mlx_window, window->mlx_image);
 	mlx_terminate(window->mlx_window);
+	clean_window(window);
+	system("leaks miniRT");
 	return (0);
 }
