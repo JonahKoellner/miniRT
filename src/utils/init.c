@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:30:12 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/27 16:35:54 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:57:15 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,16 @@ void	clean_window(t_window *win)
 	while (obj)
 	{
 		tmp = obj->next_obj;
+		if (obj->obj.mat.bump_color.color)
+		{
+			free(obj->obj.mat.bump_color.color->pixels);
+			free(obj->obj.mat.bump_color.color);
+		}
+		if (obj->obj.mat.bump_color.bump)
+		{
+			free(obj->obj.mat.bump_color.bump->pixels);
+			free(obj->obj.mat.bump_color.bump);
+		}
 		free(obj);
 		obj = tmp;
 	}

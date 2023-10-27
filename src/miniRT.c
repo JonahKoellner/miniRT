@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 16:34:29 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:58:48 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,5 @@ int	main(int argc, char *argv[])
 	mlx_loop(window->mlx_window);
 	mlx_delete_image(window->mlx_window, window->mlx_image);
 	mlx_terminate(window->mlx_window);
-	clean_window(window);
-	system("leaks miniRT");
-	return (0);
+	return (clean_window(window), 0);
 }
