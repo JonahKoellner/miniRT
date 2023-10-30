@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:30:12 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/27 16:57:15 by mreidenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:21:43 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	clean_window(t_window *win)
 		free(obj);
 		obj = tmp;
 	}
-	free(win->lights);
-	free(win);
+	if (win->lights)
+		free(win->lights);
+	if (win)
+		free(win);
 }

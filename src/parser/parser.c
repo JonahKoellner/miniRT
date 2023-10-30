@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/30 10:37:17 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:20:13 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ t_obj_list	*read_file(int fd, t_window *window)
 	}
 	if (check_map(map, 1))
 		return (error_clean(root, map), free(gnl), NULL);
-	//free(gnl);
-	//free(map);
 	return (free(map), free(gnl), root);
 }
 
