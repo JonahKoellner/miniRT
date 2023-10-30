@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:41:15 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 16:40:29 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:37:17 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,16 @@ t_obj_list	*read_file(int fd, t_window *window)
 	{
 		if (!(gnl[0] == '\n'))
 			head = make_obj(gnl, head, map, window);
-		if (head == NULL || (!(gnl[0] == '\n') && check_map(map)))
+		if (head == NULL || (!(gnl[0] == '\n') && check_map(map, 0)))
 			return (error_clean(root, map), free(gnl), NULL);
 		free(gnl);
 		gnl = get_next_line(fd);
 	}
-	free(gnl);
-	free(map);
-	return (root);
+	if (check_map(map, 1))
+		return (error_clean(root, map), free(gnl), NULL);
+	//free(gnl);
+	//free(map);
+	return (free(map), free(gnl), root);
 }
 
 int	parser(char *filename, t_window *window)

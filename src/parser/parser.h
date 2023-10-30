@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/25 10:02:19 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:35:00 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_object		create_amb_light(char *define_line, int *map, t_window *window);
 t_object		create_camera(char *define_line, int *map, t_window *window);
 t_object		create_light(char *define_line, int *map, t_window *window);
 void			error_clean(t_obj_list *head, int *map);
-int				check_map(int *map);
+int				check_map(int *map, int final);
 int				ft_atov(char *str, t_vec3 *vec);
 int				ft_strdnum(char *str);
 t_vec3			fill_vec(char *subj, int *map, double min, double max);
