@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 09:56:01 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/30 10:35:00 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:17:06 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef enum e_object_type
 {
+	OBJ_ERROR,
 	OBJ_AMBIENT_LIGHT,
 	OBJ_CAMERA,
 	OBJ_LIGHT,
@@ -29,7 +30,6 @@ typedef enum e_object_type
 	OBJ_SPHERE,
 	OBJ_CYLINDER,
 	OBJ_CONE,
-	OBJ_ERROR,
 	OBJ_ENUM_SIZE
 }	t_object_type;
 
@@ -52,7 +52,7 @@ t_vec3			fill_vec(char *subj, int *map, double min, double max);
 double			fill_double(char *subj, int *map, double min, double max);
 t_MaterialType	fill_material(char *subj, int *map);
 t_bump_color	fill_bumpmap(char *fileColor, char *fileBump);
-int				num_color(char *subj);
+int				is_num(char *subj, int doub);
 void			*parse_camera(char *str, int *map, t_window *window);
 
 #endif

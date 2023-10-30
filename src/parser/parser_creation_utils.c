@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 10:14:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 12:10:04 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:29:32 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 {
 	t_vec3	ret;
 
+	if (is_num(subj, 0))
+		return (map[OBJ_ERROR]++, (t_vec3){});
 	if (ft_atov(subj, &ret))
 		return (map[OBJ_ERROR]++, (t_vec3){});
 	if ((ret.x > max || ret.x < min) || (ret.y > max || ret.y < min)
@@ -26,7 +28,7 @@ t_vec3	fill_vec(char *subj, int *map, double min, double max)
 	return (ret);
 }
 
-int	num_color(char *subj)
+int	is_num(char *subj, int doub)
 {
 	int	index;
 
@@ -34,7 +36,9 @@ int	num_color(char *subj)
 	while (subj[index])
 	{
 		if (!(subj[index] >= '0' && subj[index] <= '9')
-			&& subj[index] != '.' && subj[index] != ',')
+			&& subj[index] != '+' && subj[index] != '-'
+			&& subj[index] != '.' && ((doub == 0 && subj[index] != ',')
+			|| (doub == 1)))
 			return (1);
 		index++;
 	}
@@ -66,6 +70,8 @@ double	fill_double(char *subj, int *map, double min, double max)
 {
 	double	ret;
 
+	if (is_num(subj, 1))
+		return (map[OBJ_ERROR]++, -1);
 	ret = ft_atof(subj);
 	if (min == INFINITY || min == -INFINITY)
 	{

@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:05:23 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/30 10:36:22 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:28:08 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,37 @@ void	clean_list(t_obj_list *head)
 	}
 }
 
+char	*enun_to_str(int enun)
+{
+	if (enun == OBJ_CAMERA)
+		return ("OBJ_CAMERA");
+	if (enun == OBJ_LIGHT)
+		return ("OBJ_LIGHT");
+	if (enun == OBJ_SPHERE)
+		return ("OBJ_SPHERE");
+	if (enun == OBJ_PLANE)
+		return ("OBJ_PLANE");
+	if (enun == OBJ_CYLINDER)
+		return ("OBJ_CYLINDER");
+	if (enun == OBJ_CONE)
+		return ("OBJ_CONE");
+	if (enun == OBJ_AMBIENT_LIGHT)
+		return ("OBJ_AMBIENT_LIGHT");
+	if (enun == -1)
+		return ("Unkown Object");
+	return ("OBJ_ERROR");
+}
+
 void	error_clean(t_obj_list *head, int *map)
 {
+	printf("Error with %d. %s\n", map[map[OBJ_ERROR]] + 1,
+		enun_to_str(map[OBJ_ERROR]));
 	if (map[OBJ_ERROR] > 0)
 		printf("Error in creation of the object\n");
+	if (map[OBJ_CAMERA] > 1)
+		printf("Too many cameras\n");
+	if (map[OBJ_AMBIENT_LIGHT] > 1)
+		printf("Too many ambient lights\n");
 	else
 		printf("Error\n");
 	clean_list(head);

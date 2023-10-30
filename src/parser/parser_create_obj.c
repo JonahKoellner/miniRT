@@ -6,7 +6,7 @@
 /*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:54:25 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/27 12:09:54 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:27:01 by jkollner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ t_object	create_amb_light(char *define_line, int *map, t_window *window)
 
 	split = ft_split(define_line, ' ');
 	if (!split)
-		return (map[OBJ_ERROR]++, (t_object){});
+		return (map[OBJ_ERROR] = OBJ_AMBIENT_LIGHT, (t_object){});
 	if (!(ft_veclen(split) == 3))
-		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+		return (map[OBJ_ERROR] = OBJ_AMBIENT_LIGHT,
+			ft_vecfree(split), (t_object){});
 	light.brightness = fill_double(split[1], map, 0, 1);
 	light.color = fill_vec(split[2], map, 0, 255);
 	window->ambient = light;
@@ -36,12 +37,14 @@ t_object	create_camera(char *define_line, int *map, t_window *window)
 
 	split = ft_split(define_line, ' ');
 	if (!split)
-		return (map[OBJ_ERROR]++, (t_object){});
+		return (map[OBJ_ERROR] = OBJ_CAMERA, (t_object){});
 	if (!(ft_veclen(split) == 4))
-		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+		return (map[OBJ_ERROR] = OBJ_CAMERA, ft_vecfree(split), (t_object){});
 	ray.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	ray.direction = fill_vec(split[2], map, -1, 1);
 	fov = fill_double(split[3], map, 0, 180);
+	if (map[OBJ_ERROR] > 0)
+		return (map[OBJ_ERROR] = OBJ_CAMERA, ft_vecfree(split), (t_object){});
 	window->camera = create_ccamera(window->mlx_window->width,
 			window->mlx_window->height, ray, fov);
 	return (map[OBJ_CAMERA]++, ft_vecfree(split), (t_object){});
@@ -69,16 +72,16 @@ t_object	create_light(char *define_line, int *map, t_window *window)
 
 	split = ft_split(define_line, ' ');
 	if (!split)
-		return (map[OBJ_ERROR]++, (t_object){});
+		return (map[OBJ_ERROR] = OBJ_LIGHT, (t_object){});
 	if (!(ft_veclen(split) == 4))
-		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+		return (map[OBJ_ERROR] = OBJ_LIGHT, ft_vecfree(split), (t_object){});
 	light.origin = fill_vec(split[1], map, -INFINITY, INFINITY);
 	light.brightness = fill_double(split[2], map, 0, 1);
 	light.color = fill_vec(split[3], map, 0, 255);
 	window->lights = ft_array_realloc(window->lights, window->num_lights,
 			window->num_lights + 1, sizeof(t_light));
 	if (window->lights == NULL)
-		return (map[OBJ_ERROR]++, ft_vecfree(split), (t_object){});
+		return (map[OBJ_ERROR] = OBJ_LIGHT, ft_vecfree(split), (t_object){});
 	window->lights[window->num_lights] = light;
 	window->num_lights += 1;
 	return (map[OBJ_LIGHT]++, ft_vecfree(split), (t_object){});
