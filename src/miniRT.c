@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:46:22 by jkollner          #+#    #+#             */
-/*   Updated: 2023/10/30 14:22:00 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:41:55 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 #include <pthread.h>
 
-#define WIDTH 800
+#define WIDTH 1400
 #define A_X 16.0
 #define A_Y 9.0
 #define THREADS 12

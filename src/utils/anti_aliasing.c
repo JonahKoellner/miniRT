@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   anti_aliasing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkollner <jkollner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mreidenb <mreidenb@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 14:59:22 by mreidenb          #+#    #+#             */
-/*   Updated: 2023/10/27 15:30:54 by jkollner         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:38:54 by mreidenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-#define DEPTH 50
-#define SAMPLES 50
+#define DEPTH 100
+#define SAMPLES 100
 
 /// @brief Gets the ray from the camera to the pixel.
 /// @param camera The camera that casts the ray.

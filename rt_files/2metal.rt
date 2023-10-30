@@ -1,6 +1,5 @@
-L 0,10,10 0.6 50,50,50
 C 0,0,2 0,0,-1 90
-A 0.2 0,0,0
-sp 0,-100.5,1 100.0 244,244,244 metal
-sp -0.7,0.2,0 0.5 map plastic jupiter.png jupiter_bump.png
+A 0.4 204,204,204
+sp 0,-100.5,1 100.0 200,244,244 metal
+sp -0.7,0.2,0 0.5 map metal Checker.png Checker_bump.png
 sp 0.7,0.2,0 0.5 map plastic earth_color.png earth_bump.png
