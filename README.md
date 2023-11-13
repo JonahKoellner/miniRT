@@ -70,6 +70,8 @@ For a raytacer to work we need to define, what the **scene** should look like.
 	* **c** = color;
 	* **r** = radius;
 	* **fov** = field of view (in degree)
+	* **cm** = colormap
+	* **bm** = bumpmap
 <br>
 
 * Restraints:
@@ -88,26 +90,29 @@ Strcture
 A i p
 L d i p
 C d p fov
-sp p r c
 
+sp p r c m //normal sphere with color
+sp p r cm bm m
+
+pl
 ````
 
+#### Test Files
+	In case you dont want to create your own files and just test the Raytracer,
+	we have provided you with some test examples.
 
-L 2,10,10 0.6 100,100,100
+	Our suggestions are:
+	- show_case_rt/book.rt (little longer)
+	- rt_files/Hall.rt (a lot longer)
+	- show_case_rt/ball_pyramind (fast)
 
-C 0,0,2 0,0,-1 90
+	or every other file
+	- rt_files/*.rt
+	- show_case_rt/*.rt
 
-sp 0,-100.5,-1 100.0 147,212,237
+	! Keep in mind some may take longer than others, due to the complexity of the scene and in rt_files are some that dont work (on purpose to show missconfigurations) !
 
-sp 0,0.2,-1 0.5 240,150,48 lambertian
 
-sp 1.5,0.15,-1 0.5 240,150,48 plastic
 
-sp -1.5,0.15,-1 0.5 240,150,48 metal
 
-sp -0.8,1,-1 0.5 81,214,174 plastic
 
-sp 0.8,1,-1 0.5 81,214,174 lambertian
-
-sp 0,2,-1 0.5 148,81,214 metal
-````
