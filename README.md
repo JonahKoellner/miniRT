@@ -3,8 +3,7 @@
 **made by** Jonah Köllner, Maximilian Reidenbach
 
 <br>
-<br>
-<br>
+
 
 
 <img width="801" alt="Book.rt high resolution" src="https://github.com/JonahKoellner/miniRT/assets/33061141/209997d8-1ce5-4a3a-811e-6fcc8805f365">
