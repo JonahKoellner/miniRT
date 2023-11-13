@@ -25,9 +25,8 @@
 	user@pc:~$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	```
 
-cmake :
-: https://cmake.org/
-or
+cmake :<br> https://cmake.org/
+<br>or<br>
 	```bash
 	user@pc:~$ brew install cmake
 	```
