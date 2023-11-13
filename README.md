@@ -25,7 +25,7 @@
 	user@pc:~$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	```
 
-<img width="30" alt="CMAKE logo" src="https://github.com/JonahKoellner/miniRT/assets/33061141/c4ad10cb-6dd8-4a0d-a0e8-6f57f523a875"> cmake :<br> https://cmake.org/
+<img width="20" alt="CMAKE logo" src="https://github.com/JonahKoellner/miniRT/assets/33061141/c4ad10cb-6dd8-4a0d-a0e8-6f57f523a875"> cmake :<br> https://cmake.org/
 <br>or<br>
 	```bash
 	user@pc:~$ brew install cmake
