@@ -7,9 +7,7 @@
 <br>
 
 
-<img width="801" alt="Screen Shot 2023-10-27 at 3 24 47 PM" src="https://github.com/JonahKoellner/miniRT/assets/33061141/209997d8-1ce5-4a3a-811e-6fcc8805f365">
-
-![image](https://github.com/JonahKoellner/miniRT/assets/33061141/c4ad10cb-6dd8-4a0d-a0e8-6f57f523a875)
+<img width="801" alt="Book.rt high resolution" src="https://github.com/JonahKoellner/miniRT/assets/33061141/209997d8-1ce5-4a3a-811e-6fcc8805f365">
 
 # Overview
 ### - [Prerequisites](#prerequisites)
@@ -27,7 +25,7 @@
 	user@pc:~$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	```
 
-cmake :<br> https://cmake.org/
+<img width="30" alt="CMAKE logo" src="https://github.com/JonahKoellner/miniRT/assets/33061141/c4ad10cb-6dd8-4a0d-a0e8-6f57f523a875"> cmake :<br> https://cmake.org/
 <br>or<br>
 	```bash
 	user@pc:~$ brew install cmake
