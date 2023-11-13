@@ -8,8 +8,7 @@
 
 
 <img width="801" alt="Screen Shot 2023-10-27 at 3 24 47 PM" src="https://github.com/JonahKoellner/miniRT/assets/33061141/209997d8-1ce5-4a3a-811e-6fcc8805f365">
-
-![Screenshot](Screen Shot 2023-10-30 at 5.15.11 PM.png)
+<img width="804" alt="Screen Shot 2023-10-30 at 5 15 11 PM" src="https://github.com/JonahKoellner/miniRT/assets/33061141/7f72106c-35d9-4983-8539-7b60bdd18f76">
 
 # Overview
 ### - [Prerequisites](#prerequisites)
