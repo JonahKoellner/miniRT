@@ -32,7 +32,7 @@ or
 <br>
 
 ## How to use the Raytracer
-#### Start the Raytracer :
+### Start the Raytracer :
 
 ```bash
 user@pc:~/miniRT$ git clone https://github.com/JonahKoellner/miniRT.git
@@ -42,7 +42,7 @@ user@pc:~/miniRT$ make
 user@pc:~/miniRT$ ./miniRT <path_to_.rt_file>
 ```
 
-#### What are .rt files ?
+### What are .rt files ?
 <font size="1">
 
 The file format is **not** and official format. It is a custom made one by us / the task given.
@@ -102,7 +102,7 @@ sp p r cm bm m
 pl
 ````
 
-#### Test Files
+### Test Files
 	In case you dont want to create your own files and just test the Raytracer,
 	we have provided you with some test examples.
 
