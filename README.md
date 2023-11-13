@@ -19,9 +19,8 @@
 
 ## Prerequisites
 
-🍺 brew / homebrew :
-: https://brew.sh/
-or
+🍺 brew / homebrew: <br> https://brew.sh/
+<br>or<br>
 	```bash
 	user@pc:~$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	```
