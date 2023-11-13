@@ -12,8 +12,8 @@
 #Overview
 #### - [Prerequisites](#prerequisites)
 #### - [How to use the Raytracer](#how-to-use-the-raytracer)
-- [Start the Raytracer](##start-the-raytracer)
-- [What are .rt files ?](##what-are-rt-files)
+- [Start the Raytracer](#start-the-raytracer-)
+- [What are .rt files ?](#what-are-rt-files-)
 #### - [Testing](#test-files)
 
 <br>
