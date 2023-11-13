@@ -9,6 +9,8 @@
 
 <img width="801" alt="Screen Shot 2023-10-27 at 3 24 47 PM" src="https://github.com/JonahKoellner/miniRT/assets/33061141/209997d8-1ce5-4a3a-811e-6fcc8805f365">
 
+![image](https://github.com/JonahKoellner/miniRT/assets/33061141/c4ad10cb-6dd8-4a0d-a0e8-6f57f523a875)
+
 # Overview
 ### - [Prerequisites](#prerequisites)
 ### - [How to use the Raytracer](#how-to-use-the-raytracer)
