@@ -45,7 +45,7 @@ user@pc:~/miniRT$ ./miniRT <path_to_.rt_file>
 ### What are .rt files ?
 <font size="1">
 
-<font color="red">[Spoiler]</font> The file format is **not** and official format. It is a custom made one by us / the task given. <font color="red">[Spoiler]</font>
+<font color="red">[Spoiler]</font> The file format is **not** and official format. It is a custom made file format, created by us / the task given. <font color="red">[Spoiler]</font>
 <font size="3">
 
 For a raytacer to work we need to define, what the **scene** should look like.
